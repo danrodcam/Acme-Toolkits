@@ -19,10 +19,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<name>Acme-Toolkits</name>
-	<description>This is a Acme-Toolkits-22.1</description>
+	<description>This is a Acme-Toolkits project</description>
 
 	<groupId>Acme</groupId>	
-	<artifactId>Acme-Toolkits-22.1</artifactId>
+	<artifactId>Acme-Toolkits</artifactId>
 
 	<version>22.1</version>
 	<packaging>war</packaging>
