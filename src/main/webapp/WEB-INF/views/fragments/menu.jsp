@@ -21,6 +21,7 @@
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.danrodcam" action="https://www.worldpadeltour.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.antrosbar" action="https://www.youtube.com/"/>
+			<acme:menu-suboption code="master.menu.anonymous.alvrodgar" action="https://prettycure.fandom.com/"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
