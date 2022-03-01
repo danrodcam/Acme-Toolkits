@@ -24,6 +24,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.alvrodgar" action="https://prettycure.fandom.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.ferandgal" action="https://soymotor.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.framurpri" action="https://www.twitch.tv/"/>
+			<acme:menu-suboption code="master.menu.anonymous.josruiper" action="https://www.flashscore.es/"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
