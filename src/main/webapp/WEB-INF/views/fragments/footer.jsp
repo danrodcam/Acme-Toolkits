@@ -36,6 +36,6 @@
 
 	<acme:footer-logo logo="images/logo.png">
 		<acme:footer-copyright code="master.company.name"/>
-	</acme:footer-logo>		
+	</acme:footer-logo>
 
 </acme:footer-panel>
