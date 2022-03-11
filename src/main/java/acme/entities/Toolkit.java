@@ -40,8 +40,4 @@ public class Toolkit extends AbstractEntity{
 	
 	@URL
 	protected String link;
-	
-	//@OneToMany(cascade = CascadeType.ALL, mappedBy = "player", fetch = FetchType.EAGER)
-	//public List<Tool> tool;
-	
 }
