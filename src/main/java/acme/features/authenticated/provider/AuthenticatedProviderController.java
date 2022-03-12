@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import acme.framework.controllers.AbstractController;
 import acme.framework.roles.Authenticated;
-import acme.roles.Provider;
+import acme.roles.Patron;
 
 @Controller
 @RequestMapping("/authenticated/provider/")
-public class AuthenticatedProviderController extends AbstractController<Authenticated, Provider> {
+public class AuthenticatedProviderController extends AbstractController<Authenticated, Patron> {
 
 	// Internal state ---------------------------------------------------------
 
