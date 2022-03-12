@@ -1,0 +1,5 @@
+key,username,password,identity,enabled
+user-account-inventor-01,inventor1,inventor1,"UserIdentity{name: 'Inventor', surname: 'One'}",true
+user-account-inventor-02,inventor2,inventor2,"UserIdentity{name: 'Inventor', surname: 'Two'}",true
+user-account-patron-01,patron1,patron1,"UserIdentity{name: 'Patron', surname: 'One'}",true
+user-account-patron-02,patron2,patron2,"UserIdentity{name: 'Patron', surname: 'Two'}",true
