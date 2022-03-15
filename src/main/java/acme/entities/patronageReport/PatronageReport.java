@@ -18,21 +18,25 @@ import lombok.Setter;
 @Setter
 public class PatronageReport extends AbstractEntity {
 	
+	// Serialisation identifier -----------------------------------------------
+
 	protected static final long serialVersionUID = 1L;
 	
+	// Attributes -------------------------------------------------------------
+
 	@Past
-	protected Date creationMoment;
+	protected Date 					creationMoment;
 	
-	protected Integer serialNumber;
+	protected Integer 				serialNumber;
 	
-	protected String patronageCode;
+	protected String 				patronageCode;
 	
 	@NotBlank
 	@Length(max=256)
-	protected String memorandum;
+	protected String 				memorandum;
 	
 	@URL
-	protected String link;
+	protected String 				link;
 	
 	
 	public String automaticSecuenceNumber() {
@@ -44,5 +48,9 @@ public class PatronageReport extends AbstractEntity {
 		result = numSer + " : " + codePatronage;
 		return result;
 	}
+	
+	// Derived attributes -----------------------------------------------------
+	
+	// Relationships ----------------------------------------------------------
 
 }

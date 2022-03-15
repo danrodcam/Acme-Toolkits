@@ -15,7 +15,10 @@ import javax.validation.constraints.Positive;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.entities.patronageReport.PatronageReport;
 import acme.framework.entities.AbstractEntity;
+import acme.roles.Inventor;
+import acme.roles.Patron;
 import ch.qos.logback.core.util.Duration;
 import lombok.Getter;
 import lombok.Setter;

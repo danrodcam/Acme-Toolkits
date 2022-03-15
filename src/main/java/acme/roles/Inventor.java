@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.entities.patronages.Patronage;
 import acme.framework.roles.UserRole;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,22 +19,30 @@ import lombok.Setter;
 @Setter
 public class Inventor extends UserRole {
 	
+	// Serialisation identifier -----------------------------------------------
+	
 	protected static final long serialVersionUID = 1L;
 	
+	// Attributes -------------------------------------------------------------
+
 	@NotBlank
 	@Length(max = 100)
-	protected String company;
+	protected String 				company;
 	
 	@NotBlank
 	@Length(max = 255)
-	protected String statement;
+	protected String 				statement;
 	
 	@URL
-	protected String optionalLink;
+	protected String 				optionalLink;
 	
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
+
 	@NotNull
 	@Valid
 	@OneToMany
-	protected Patronage patronage;
+	protected Patronage 			patronage;
 
 }
