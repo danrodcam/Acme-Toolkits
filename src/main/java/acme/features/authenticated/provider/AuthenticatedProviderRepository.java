@@ -17,13 +17,13 @@ import org.springframework.stereotype.Repository;
 
 import acme.framework.entities.UserAccount;
 import acme.framework.repositories.AbstractRepository;
-import acme.roles.Provider;
+import acme.roles.Patron;
 
 @Repository
 public interface AuthenticatedProviderRepository extends AbstractRepository {
 
 	@Query("select p from Provider p where p.userAccount.id = :id")
-	Provider findOneProviderByUserAccountId(int id);
+	Patron findOneProviderByUserAccountId(int id);
 
 	@Query("select ua from UserAccount ua where ua.id = :id")
 	UserAccount findOneUserAccountById(int id);
