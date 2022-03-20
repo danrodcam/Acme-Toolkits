@@ -1,0 +1,11 @@
+key,company,statement,optional-link,key:user-account
+patron-01,Company 1,Statement 1,null,user-account-patron-01
+patron-02,Company 2,Statement 2,http://www.patron2.com,user-account-patron-02
+patron-03,Company 3,Statement 3,http://www.patron3.com,user-account-patron-03
+patron-04,Company 4,Statement 4,null,user-account-patron-04
+patron-05,Company 5,Statement 5,http://www.patron5.com,user-account-patron-05
+patron-06,Company 6,Statement 6,http://www.patron6.com,user-account-patron-06
+patron-07,Company 7,Statement 7,null,user-account-patron-07
+patron-08,Company 8,Statement 8,http://www.patron8.com,user-account-patron-08
+patron-09,Company 9,Statement 9,http://www.patron9.com,user-account-patron-09
+patron-10,Company 10,Statement 10,null,user-account-patron-10

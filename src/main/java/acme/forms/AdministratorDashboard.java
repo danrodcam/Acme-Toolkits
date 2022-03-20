@@ -3,6 +3,7 @@ package acme.forms;
 import java.io.Serializable;
 import java.util.Map;
 
+import acme.entities.patronages.PatronageStatus;
 import acme.framework.components.database.Record;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,25 +22,25 @@ public class AdministratorDashboard implements Serializable {
 	
 
 	
-	final Integer						numberOfComponents; 
-	final Map<Record,Double>			averageComponents;  //Componentes agrupados por currency y technology
-	final Map<Record,Double>			desviationComponents;
-	final Map<Record,Double>			maxComponents;
-	final Map<Record,Double>			minComponents;
+	final Integer						numberOfComponents = null; 
+	final Map<Record,Double>			averageComponents = null;  //Componentes agrupados por currency y technology
+	final Map<Record,Double>			desviationComponents = null;
+	final Map<Record,Double>			maxComponents = null;
+	final Map<Record,Double>			minComponents = null;
 	
 	
-	final Integer						numberOfTools; 
-	final Map<String,Double>			averageTools;  //Tools agrupadas por currency
-	final Map<String,Double>			desviationTools;
-	final Map<String,Double>			maxTools;
-	final Map<String,Double>			minTools;
+	final Integer						numberOfTools = null; 
+	final Map<String,Double>			averageTools = null;  //Tools agrupadas por currency
+	final Map<String,Double>			desviationTools = null;
+	final Map<String,Double>			maxTools = null;
+	final Map<String,Double>			minTools = null;
 	
 	
-	final Map<PatronageStatus,Integer>  numberOfPatronages; 
-	final Map<PatronageStatus,Double>   averagePatronages;  //Patronages agrupados por el estado del Patronage
-	final Map<PatronageStatus,Double>   desviationPatronages;
-	final Map<PatronageStatus,Double>   maxPatronages;
-	final Map<PatronageStatus,Double>   minPatronages;
+	final Map<PatronageStatus,Integer>  numberOfPatronages = null; 
+	final Map<PatronageStatus,Double>   averagePatronages = null;  //Patronages agrupados por el estado del Patronage
+	final Map<PatronageStatus,Double>   desviationPatronages = null;
+	final Map<PatronageStatus,Double>   maxPatronages = null;
+	final Map<PatronageStatus,Double>   minPatronages = null;
 	
 	
 

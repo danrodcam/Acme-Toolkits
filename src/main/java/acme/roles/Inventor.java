@@ -39,10 +39,6 @@ public class Inventor extends UserRole {
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
-
-	@NotNull
-	@Valid
-	@OneToMany
-	protected Patronage 			patronage;
+	
 
 }
