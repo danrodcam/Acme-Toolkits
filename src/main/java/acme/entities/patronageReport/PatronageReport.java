@@ -1,10 +1,10 @@
-package acme.entities.announcements;
+package acme.entities.patronageReport;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -12,6 +12,7 @@ import javax.validation.constraints.Past;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.entities.patronages.Patronage;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,38 +20,38 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Announcement extends AbstractEntity {
-
+public class PatronageReport extends AbstractEntity {
+	
 	// Serialisation identifier -----------------------------------------------
 
-	protected static final long		serialVersionUID	= 1L;
-
-	// Attributes -------------------------------------------------------------
+	protected static final long serialVersionUID = 1L;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	// Attributes -------------------------------------------------------------
+
 	@Past
 	@NotNull
-	protected Date					creationMoment;
-
+	protected Date 					creationMoment;
+	
 	@NotBlank
-	@Length(max=100)
-	protected String				title;
-
-
-
+	protected Integer 				automaticSequenceNumber;
+	
+	
 	@NotBlank
 	@Length(max=255)
-	protected String				body;
+	protected String 				memorandum;
+	
+	@URL
+	protected String 				link;
+	
+	
+	
+	// Derived attributes -----------------------------------------------------
+	
+	// Relationships ----------------------------------------------------------
 	
 	@NotNull
-	protected Boolean               isCritical;              
-
-	@URL
-	protected String				info;
-
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
+	@Valid
+	@ManyToOne
+	protected Patronage 			patronage;
 
 }
-

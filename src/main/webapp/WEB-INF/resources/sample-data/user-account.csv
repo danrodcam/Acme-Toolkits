@@ -1,0 +1,22 @@
+key,enabled,identity,password,username
+user-account-inventor-01,true,"UserIdentity{name: 'Inventor', surname: 'One', email: 'inventor1@mail.com', phone: {country-code: '+34', area-code: null, number: '123-456-789'}}",inventor1,inventor1
+user-account-inventor-02,true,"UserIdentity{name: 'Inventor', surname: 'Two', email: 'inventor2@mail.com', phone: {country-code: '+34', area-code: null, number: '132-456-789'}}",inventor2,inventor2
+user-account-inventor-03,false,"UserIdentity{name: 'Inventor', surname: 'Three', email: 'inventor3@mail.com', phone: {country-code: '+34', area-code: null, number: '132-456-779'}}",inventor3,inventor3
+user-account-inventor-04,true,"UserIdentity{name: 'Inventor', surname: 'Forth', email: 'inventor4@mail.com', phone: {country-code: '+34', area-code: null, number: '223-456-789'}}",inventor4,inventor4
+user-account-inventor-05,true,"UserIdentity{name: 'Inventor', surname: 'Five', email: 'inventor5@mail.com', phone: {country-code: '+34', area-code: null, number: '232-456-789'}}",inventor5,inventor5
+user-account-inventor-06,false,"UserIdentity{name: 'Inventor', surname: 'Six', email: 'inventor6@mail.com', phone: {country-code: '+34', area-code: null, number: '232-456-779'}}",inventor6,inventor6
+user-account-inventor-07,true,"UserIdentity{name: 'Inventor', surname: 'Seven', email: 'inventor7@mail.com', phone: {country-code: '+34', area-code: null, number: '323-456-789'}}",inventor7,inventor7
+user-account-inventor-08,true,"UserIdentity{name: 'Inventor', surname: 'Eight', email: 'inventor8@mail.com', phone: {country-code: '+34', area-code: null, number: '332-456-789'}}",inventor8,inventor8
+user-account-inventor-09,false,"UserIdentity{name: 'Inventor', surname: 'Nine', email: 'inventor9@mail.com', phone: {country-code: '+34', area-code: null, number: '332-456-779'}}",inventor9,inventor9
+user-account-inventor-10,true,"UserIdentity{name: 'Inventor', surname: 'Ten', email: 'inventor10@mail.com', phone: {country-code: '+34', area-code: null, number: '423-456-789'}}",inventor10,inventor10
+
+user-account-patron-01,true,"UserIdentity{name: 'Patron', surname: 'One', email: 'patron1@mail.com', phone: {country-code: '+34', area-code: null, number: '123-565-789'}}",patron1,patron1
+user-account-patron-02,false,"UserIdentity{name: 'Patron', surname: 'Two', email: 'patron2@mail.com', phone: {country-code: '+34', area-code: null, number: '123-556-798'}}",patron2,patron2
+user-account-patron-03,true,"UserIdentity{name: 'Patron', surname: 'Three', email: 'patron3@mail.com', phone: {country-code: '+34', area-code: null, number: '113-556-798'}}",patron3,patron3
+user-account-patron-04,true,"UserIdentity{name: 'Patron', surname: 'Forth', email: 'patron4@mail.com', phone: {country-code: '+34', area-code: null, number: '123-665-789'}}",patron4,patron4
+user-account-patron-05,false,"UserIdentity{name: 'Patron', surname: 'Five', email: 'patron5@mail.com', phone: {country-code: '+34', area-code: null, number: '123-656-798'}}",patron5,patron5
+user-account-patron-06,true,"UserIdentity{name: 'Patron', surname: 'Six', email: 'patron6@mail.com', phone: {country-code: '+34', area-code: null, number: '113-656-798'}}",patron6,patron6
+user-account-patron-07,true,"UserIdentity{name: 'Patron', surname: 'Seven', email: 'patron7@mail.com', phone: {country-code: '+34', area-code: null, number: '123-765-789'}}",patron7,patron7
+user-account-patron-08,false,"UserIdentity{name: 'Patron', surname: 'Eight', email: 'patron8@mail.com', phone: {country-code: '+34', area-code: null, number: '123-756-798'}}",patron8,patron8
+user-account-patron-09,true,"UserIdentity{name: 'Patron', surname: 'Nine', email: 'patron9@mail.com', phone: {country-code: '+34', area-code: null, number: '113-756-798'}}",patron9,patron9
+user-account-patron-10,true,"UserIdentity{name: 'Patron', surname: 'Ten', email: 'patron10@mail.com', phone: {country-code: '+34', area-code: null, number: '123-865-789'}}",patron10,patron10

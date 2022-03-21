@@ -24,10 +24,10 @@ import acme.framework.entities.Principal;
 import acme.framework.helpers.PrincipalHelper;
 import acme.framework.roles.Authenticated;
 import acme.framework.services.AbstractUpdateService;
-import acme.roles.Provider;
+import acme.roles.Patron;
 
 @Service
-public class AuthenticatedProviderUpdateService implements AbstractUpdateService<Authenticated, Provider> {
+public class AuthenticatedProviderUpdateService implements AbstractUpdateService<Authenticated, Patron> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -38,14 +38,14 @@ public class AuthenticatedProviderUpdateService implements AbstractUpdateService
 
 
 	@Override
-	public boolean authorise(final Request<Provider> request) {
+	public boolean authorise(final Request<Patron> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public void bind(final Request<Provider> request, final Provider entity, final Errors errors) {
+	public void bind(final Request<Patron> request, final Patron entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -54,7 +54,7 @@ public class AuthenticatedProviderUpdateService implements AbstractUpdateService
 	}
 
 	@Override
-	public void unbind(final Request<Provider> request, final Provider entity, final Model model) {
+	public void unbind(final Request<Patron> request, final Patron entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -63,10 +63,10 @@ public class AuthenticatedProviderUpdateService implements AbstractUpdateService
 	}
 
 	@Override
-	public Provider findOne(final Request<Provider> request) {
+	public Patron findOne(final Request<Patron> request) {
 		assert request != null;
 
-		Provider result;
+		Patron result;
 		Principal principal;
 		int userAccountId;
 
@@ -79,14 +79,14 @@ public class AuthenticatedProviderUpdateService implements AbstractUpdateService
 	}
 
 	@Override
-	public void validate(final Request<Provider> request, final Provider entity, final Errors errors) {
+	public void validate(final Request<Patron> request, final Patron entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
 	}
 
 	@Override
-	public void update(final Request<Provider> request, final Provider entity) {
+	public void update(final Request<Patron> request, final Patron entity) {
 		assert request != null;
 		assert entity != null;
 
@@ -94,7 +94,7 @@ public class AuthenticatedProviderUpdateService implements AbstractUpdateService
 	}
 
 	@Override
-	public void onSuccess(final Request<Provider> request, final Response<Provider> response) {
+	public void onSuccess(final Request<Patron> request, final Response<Patron> response) {
 		assert request != null;
 		assert response != null;
 

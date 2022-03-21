@@ -1,17 +1,15 @@
-package acme.entities.announcements;
+package acme.entities.tookit;
 
-import java.util.Date;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,38 +17,38 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Announcement extends AbstractEntity {
+public class Toolkit extends AbstractEntity{
 
 	// Serialisation identifier -----------------------------------------------
 
-	protected static final long		serialVersionUID	= 1L;
+	protected static final long serialVersionUID = 1L;
 
 	// Attributes -------------------------------------------------------------
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Past
-	@NotNull
-	protected Date					creationMoment;
 
+	@Column(unique=true)
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
+	protected String 				code;
+	
 	@NotBlank
 	@Length(max=100)
-	protected String				title;
-
-
-
+	protected String 				title;
+	
 	@NotBlank
 	@Length(max=255)
-	protected String				body;
+	protected String 				description;
+	
+	@NotBlank
+	@Length(max=255)
+	protected String 				assemblyNotes;
+	
+	@URL
+	protected String 				link;
 	
 	@NotNull
-	protected Boolean               isCritical;              
-
-	@URL
-	protected String				info;
-
+	protected Money					totalPrice;
+	
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
 
 }
-
