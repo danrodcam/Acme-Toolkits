@@ -11,6 +11,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
+
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,15 +34,15 @@ public class Chirp extends AbstractEntity{
 	protected Date					creationMoment;
 	
 	@NotBlank
-	@Size(max=100)
+	@Length(max=100)
 	protected String 				title;
 	
 	@NotBlank
-	@Size(max=100)
+	@Length(max=100)
 	protected String 				author;
 	
 	@NotBlank
-	@Size(max=255)
+	@Length(max=255)
 	protected String 				body;
 	
 	@Email

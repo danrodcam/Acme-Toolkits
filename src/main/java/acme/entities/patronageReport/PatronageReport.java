@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -27,8 +28,12 @@ public class PatronageReport extends AbstractEntity {
 	@Past
 	protected Date 					creationMoment;
 	
+	@NotBlank
+	@Pattern(regexp = "^[0-9]{3}$")
 	protected Integer 				serialNumber;
 	
+	@NotBlank
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
 	protected String 				patronageCode;
 	
 	@NotBlank

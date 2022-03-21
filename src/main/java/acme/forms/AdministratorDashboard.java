@@ -18,32 +18,26 @@ public class AdministratorDashboard implements Serializable {
 
 	// Attributes -------------------------------------------------------------
 	
+	Integer						numberOfComponents; 
+	Map<Record,Double>			averageComponents;  //Componentes agrupados por currency y technology
+	Map<Record,Double>			desviationComponents;
+	Map<Record,Double>			maxComponents;
+	Map<Record,Double>			minComponents;
 	
 	
-
-	
-	final Integer						numberOfComponents = null; 
-	final Map<Record,Double>			averageComponents = null;  //Componentes agrupados por currency y technology
-	final Map<Record,Double>			desviationComponents = null;
-	final Map<Record,Double>			maxComponents = null;
-	final Map<Record,Double>			minComponents = null;
+	Integer						numberOfTools; 
+	Map<String,Double>			averageTools;  //Tools agrupadas por currency
+	Map<String,Double>			desviationTools;
+	Map<String,Double>			maxTools;
+	Map<String,Double>			minTools;
 	
 	
-	final Integer						numberOfTools = null; 
-	final Map<String,Double>			averageTools = null;  //Tools agrupadas por currency
-	final Map<String,Double>			desviationTools = null;
-	final Map<String,Double>			maxTools = null;
-	final Map<String,Double>			minTools = null;
+	Map<PatronageStatus,Integer>  numberOfPatronages; 
+	Map<PatronageStatus,Double>   averagePatronages;  //Patronages agrupados por el estado del Patronage
+	Map<PatronageStatus,Double>   desviationPatronages;
+	Map<PatronageStatus,Double>   maxPatronages;
+	Map<PatronageStatus,Double>   minPatronages;
 	
-	
-	final Map<PatronageStatus,Integer>  numberOfPatronages = null; 
-	final Map<PatronageStatus,Double>   averagePatronages = null;  //Patronages agrupados por el estado del Patronage
-	final Map<PatronageStatus,Double>   desviationPatronages = null;
-	final Map<PatronageStatus,Double>   maxPatronages = null;
-	final Map<PatronageStatus,Double>   minPatronages = null;
-	
-	
-
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------

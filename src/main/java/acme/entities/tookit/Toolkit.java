@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.entities.AbstractEntity;
@@ -28,15 +29,15 @@ public class Toolkit extends AbstractEntity{
 	protected String 				code;
 	
 	@NotBlank
-	@Size(max=100)
+	@Length(max=100)
 	protected String 				title;
 	
 	@NotBlank
-	@Size(max=255)
+	@Length(max=255)
 	protected String 				description;
 	
 	@NotBlank
-	@Size(max=255)
+	@Length(max=255)
 	protected String 				assemblyNotes;
 	
 	@URL
