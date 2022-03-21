@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 import acme.framework.components.database.Record;
+import acme.framework.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,10 +19,10 @@ public class PatronDashboard implements Serializable {
 	// Attributes -------------------------------------------------------------
 	
 	Map<Record,Integer>  numberOfPatronages; 
-	Map<Record,Double>   averagePatronages;  //Patronages agrupados por el estado del Patronage y por currency
-	Map<Record,Double>   desviationPatronages;
-	Map<Record,Double>   maxPatronages;
-	Map<Record,Double>   minPatronages;
+	Map<Record,Money>   averagePatronages;  //Patronages agrupados por el estado del Patronage y por currency
+	Map<Record,Money>   desviationPatronages;
+	Map<Record,Money>   maxPatronages;
+	Map<Record,Money>   minPatronages;
 	
 	
 

@@ -1,7 +1,5 @@
 package acme.systemConfiguration;
 
-import java.util.ArrayList;
-
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -25,11 +23,11 @@ public class SystemConfiguration extends AbstractEntity{
 	protected String systemCurrency;
 	
 	@NotEmpty
-	protected ArrayList<String> acceptedCurrency;
+	protected String acceptedCurrency;
 	
-	protected ArrayList<String> strongSpamTerms;
+	protected String strongSpamTerms;
 	
-	protected ArrayList<String> weakSpamTerms;
+	protected String weakSpamTerms;
 	
 	@Range(min=0, max=1)
 	protected Double strongSpamThreshold;

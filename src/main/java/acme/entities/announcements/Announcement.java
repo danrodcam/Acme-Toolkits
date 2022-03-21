@@ -33,14 +33,12 @@ public class Announcement extends AbstractEntity {
 	protected Date					creationMoment;
 
 	@NotBlank
-	@NotNull
 	@Length(max=100)
 	protected String				title;
 
 
 
 	@NotBlank
-	@NotNull
 	@Length(max=255)
 	protected String				body;
 	

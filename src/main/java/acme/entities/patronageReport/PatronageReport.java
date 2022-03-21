@@ -3,13 +3,16 @@ package acme.entities.patronageReport;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.entities.patronages.Patronage;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,36 +29,29 @@ public class PatronageReport extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Past
+	@NotNull
 	protected Date 					creationMoment;
 	
 	@NotBlank
-	@Pattern(regexp = "^[0-9]{3}$")
-	protected Integer 				serialNumber;
+	protected Integer 				automaticSequenceNumber;
+	
 	
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
-	protected String 				patronageCode;
-	
-	@NotBlank
-	@Length(max=256)
+	@Length(max=255)
 	protected String 				memorandum;
 	
 	@URL
 	protected String 				link;
 	
 	
-	public String automaticSecuenceNumber() {
-		int numSer;
-		String codePatronage;
-		String result;
-		numSer = this.serialNumber;
-		codePatronage = this.patronageCode;
-		result = numSer + " : " + codePatronage;
-		return result;
-	}
 	
 	// Derived attributes -----------------------------------------------------
 	
 	// Relationships ----------------------------------------------------------
+	
+	@NotNull
+	@Valid
+	@ManyToOne
+	protected Patronage 			patronage;
 
 }

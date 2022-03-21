@@ -200,10 +200,10 @@ Chirp
 --
 bg=green
 + creationMoment: Date {NotNull, Temporal(TIMESTAMP), Past}
-+ title: String {NotBlank, Lenght(1,100)}
++ title: String {NotBlank, Length(1,100)}
 + author: String {NotBlank, Length(1,100)}
 + body: String {NotBlank, Length(1,255)}
-+ emailAdress: String {Email}
++ email: String {Email}
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -222,7 +222,7 @@ bg=green
 + creationMoment: Date {NotNull, Temporal(TIMESTAMP), Past}
 + title: String {NotBlank, Length(1,100)}
 + body: String {NotBlank, Length(1,255)}
-+ critical: Boolean{NotNull}
++ isCritical: Boolean{NotNull}
 + optionalLink : String {URL}
 </panel_attributes>
     <additional_attributes/>
@@ -244,7 +244,7 @@ bg=green
 + assemblyNotes: String {NotBlank, Lenght(1,255)}
 + description: String {NotBlank, Length(1,255)}
 + optionalLink: String {URL}
-+ /totalPrice: Money{NotNull}</panel_attributes>
++ totalPrice: Money{NotNull}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -253,7 +253,7 @@ bg=green
       <x>553</x>
       <y>490</y>
       <w>287</w>
-      <h>126</h>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Patronage
@@ -264,6 +264,7 @@ bg=green
 + code: String {Pattern “^[A-Z]{3}-[0-9]{3}(-[A-Z])?$”, Unique}
 + budget: Money{min=0}
 + optionalLink: String {URL}
++ creationMoment: Date {NotNull, Temporal(TIMESTAMP), Past}
 + inicialDate: Date {NotNull}
 + finalDate: Date {NotNull}
 + /periodOfTime: Integer {NotNull, Trasient}</panel_attributes>
@@ -301,7 +302,7 @@ bg=green
 + automaticSequenceNumber: String: {NotBlank, Pattern “〈patronage-code〉:〈serial-number〉”}
 + creationMoment: Date {NotNull, Past}
 + memorandum: String {NotBlank, Length(1,255)}
-+ optionalLink. String{URL}
++ link. String{URL}
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -311,15 +312,17 @@ bg=green
       <x>1323</x>
       <y>532</y>
       <w>224</w>
-      <h>56</h>
+      <h>105</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 Patron Dashboard
 --
 bg=green
-+ totalPatronages: Integer {NotNull}
-+ budget: Map{String:Money}
-</panel_attributes>
++ numberOfPatronages: Map&lt;Record,Integer&gt;
++ averagePatronages: Map&lt;Record,Money&gt;
++ desviationPatronages: Map&lt;Record,Money&gt;
++ maxPatronages: Map&lt;Record,Money&gt;
++ minPatronages: Map&lt;Record,Money&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -331,24 +334,24 @@ bg=green
       <h>203</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
-Admistrator Dashboard
+Administrator Dashboard
 --
 bg=green
 + numberOfComponents: Integer {NotNull}
-+ averageComponents: Map{Record:Money}
-+ deviationComponents: Map{Record:Money}
-+ maxComponents: Map{Record:Money}
-+ minComponents: Map{Record:Money}
++ averageComponents: Map&lt;Record,Money&gt;
++ deviationComponents: Map&lt;Record,Money&gt;
++ maxComponents: Map&lt;Record,Money&gt;
++ minComponents: Map&lt;Record,Money&gt;
 + numberOfTools: Integer {NotNull}
-+ averageTools: Map{String:Money}
-+ deviationTools: Map{String:Money}
-+ maxTools: Map{String:Money}
-+ minTools: Map{String:Money}
++ averageTools: Map&lt;String,Money&gt;
++ deviationTools: Map&lt;String,Money&gt;
++ maxTools: Map&lt;String,Money&gt;
++ minTools: Map&lt;String,Money&gt;
 + numberOfPatronages = Integer {NotNull}
-+ averagePatronages = Map{PatronageStatus:Money}
-+ deviationPatronages = Map{PatronageStatus:Money}
-+ maxPatronages = Map{PatronageStatus:Money}
-+ minPatronages = Map{PatronageStatus:Money}</panel_attributes>
++ averagePatronages = Map&lt;PatronageStatus,Money&gt;
++ deviationPatronages = Map&lt;PatronageStatus,Money&gt;
++ maxPatronages = Map&lt;PatronageStatus,Money&gt;
++ minPatronages = Map&lt;PatronageStatus,Money&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -363,7 +366,7 @@ bg=green
 SystemConfiguration
 --
 bg=green
-+ sistemCurrency: String
++ systemCurrency: String
 + acceptedCurrency: String
 + spamTerms: String
 + spamThresHold: Double {Range(min=0, max=1}}
@@ -427,7 +430,7 @@ bg=green
 + technology: String {NotBlank, Lentgh(1,100)}
 + description: String {NotBlank, Length(1,255)}
 + retailPrice: Money {min=0}
-+ optionalLink: String {URL}
++ link: String {URL}
 + type: ItemType</panel_attributes>
     <additional_attributes/>
   </element>
@@ -500,5 +503,32 @@ m2=1..*</panel_attributes>
 m1=1
 m2= 1..n</panel_attributes>
     <additional_attributes>10.0;10.0;80.0;10.0;80.0;120.0;200.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>574</x>
+      <y>707</y>
+      <w>133</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>bg=red
+a period of time is valid if 
+at least one month long, 
+starting at least one month 
+after the patronage 
+is created </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>623</x>
+      <y>616</y>
+      <w>49</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>50.0;10.0;10.0;130.0</additional_attributes>
   </element>
 </diagram>
