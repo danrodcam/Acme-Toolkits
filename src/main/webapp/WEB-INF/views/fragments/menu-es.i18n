@@ -36,8 +36,8 @@ master.menu.administrator.shut-down = Parar el sistema
 
 # master.menu.provider ########################################################
 
-master.menu.provider = Proveedor
-master.menu.provider.favourite-link = Enlace favorito
+master.menu.inventor = Inventor
+master.menu.inventor.component.list.own = Mis Componentes
 
 # master.menu.consumer ##########################################################
 

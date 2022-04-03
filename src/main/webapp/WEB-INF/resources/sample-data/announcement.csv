@@ -1,16 +1,16 @@
 key,creation-moment,title,body,isCritical,info
-announcement-01,2000/01/01 00:00,INFO,Very old announcement,false,This is the oldest announcement in the system.
-announcement-02,2001/02/01 00:00,INFO,Prueba 2,true,Esto es un mesaje de prueba 2.
-announcement-03,2002/05/01 00:00,INFO,Prueba 3,false,Esto es un mesaje de prueba 3.
-announcement-04,2003/07/01 00:00,INFO,Prueba 4,false,Esto es un mesaje de prueba 4.
-announcement-05,2004/08/01 00:00,INFO,Prueba 5,true,Esto es un mesaje de prueba 5.
-announcement-06,2005/08/01 00:00,INFO,Prueba 6,true,Esto es un mesaje de prueba 6.
-announcement-07,2006/01/01 00:00,INFO,Prueba 7,true,Esto es un mesaje de prueba 7.
-announcement-08,2006/09/01 00:00,INFO,Prueba 8,false,Esto es un mesaje de prueba 8.
-announcement-09,2006/11/01 00:00,INFO,Prueba 9,true,Esto es un mesaje de prueba 9.
-announcement-10,2007/10/01 00:00,INFO,Prueba 10,false,Esto es un mesaje de prueba 10.
-announcement-11,2010/02/01 00:00,INFO,Prueba 11,true,Esto es un mesaje de prueba 11.
-announcement-12,2014/03/01 00:00,INFO,Prueba 12,true,Esto es un mesaje de prueba 12.
-announcement-13,2015/12/01 00:00,INFO,Prueba 13,false,Esto es un mesaje de prueba 13.
-announcement-14,2019/03/01 00:00,INFO,Prueba 14,false,Esto es un mesaje de prueba 14.
-announcement-15,2021/01/01 00:00,INFO,Prueba 15,true,Esto es un mesaje de prueba 15.
+announcement-01,2000/01/01 00:00,INFO,Very old announcement,false,null
+announcement-02,2001/02/01 00:00,INFO,Prueba 2,true,http://www.example.com
+announcement-03,2002/05/01 00:00,INFO,Prueba 3,false,null
+announcement-04,2003/07/01 00:00,INFO,Prueba 4,false,null
+announcement-05,2004/08/01 00:00,INFO,Prueba 5,true,http://www.example.com
+announcement-06,2005/08/01 00:00,INFO,Prueba 6,true,null
+announcement-07,2006/01/01 00:00,INFO,Prueba 7,true,null
+announcement-08,2006/09/01 00:00,INFO,Prueba 8,false,null
+announcement-09,2006/11/01 00:00,INFO,Prueba 9,true,http://www.example.com
+announcement-10,2007/10/01 00:00,INFO,Prueba 10,false,http://www.example.com
+announcement-11,2010/02/01 00:00,INFO,Prueba 11,true,http://www.example.com
+announcement-12,2014/03/01 00:00,INFO,Prueba 12,true,http://www.example.com
+announcement-13,2015/12/01 00:00,INFO,Prueba 13,false,http://www.example.com
+announcement-14,2019/03/01 00:00,INFO,Prueba 14,false,null
+announcement-15,2021/01/01 00:00,INFO,Prueba 15,true,null
