@@ -10,22 +10,23 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.provider;
+package acme.features.inventor.item;
+
+import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.framework.entities.UserAccount;
+import acme.entities.item.Item;
 import acme.framework.repositories.AbstractRepository;
-import acme.roles.Patron;
 
 @Repository
-public interface AuthenticatedProviderRepository extends AbstractRepository {
+public interface InventorItemRepository extends AbstractRepository {
 
-	@Query("select p from Provider p where p.userAccount.id = :id")
-	Patron findOneProviderByUserAccountId(int id);
-
-	@Query("select ua from UserAccount ua where ua.id = :id")
-	UserAccount findOneUserAccountById(int id);
+	@Query("select item from Item item where item.id = :id")
+	Item findOneComponentById(int id);
+	
+	@Query("select item from Item item where item.type = 'COMPONENT' and item.inventor.id = :inventorId")
+	Collection<Item> findManyComponentsByInventorId(int inventorId);
 
 }

@@ -1,4 +1,4 @@
-key,company,statement,optional-link,patronage,key:user-account
+key,company,statement,optional-link,key:user-account
 inventor-01,Company 1,Statement 1,null,user-account-inventor-01
 inventor-02,Company 2,Statement 2,http://www.inventor2.com,user-account-inventor-02
 inventor-03,Company 3,Statement 3,http://www.inventor3.com,user-account-inventor-03
