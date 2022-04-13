@@ -10,37 +10,32 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.provider;
+package acme.features.authenticated.systemConfiguration;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import acme.framework.controllers.AbstractController;
 import acme.framework.roles.Authenticated;
-import acme.roles.Patron;
+import acme.systemConfiguration.SystemConfiguration;
 
 @Controller
-@RequestMapping("/authenticated/provider/")
-public class AuthenticatedProviderController extends AbstractController<Authenticated, Patron> {
+public class AuthenticatedSystemConfigurationController extends AbstractController<Authenticated, SystemConfiguration> {
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	protected AuthenticatedProviderCreateService	createService;
 
 	@Autowired
-	protected AuthenticatedProviderUpdateService	updateService;
+	protected AuthenticatedSystemConfigurationShowService	showService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("create", this.createService);
-		super.addCommand("update", this.updateService);
+		super.addCommand("show", this.showService);
 	}
 
 }
