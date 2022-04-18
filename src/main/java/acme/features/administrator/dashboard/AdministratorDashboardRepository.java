@@ -17,7 +17,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.patronages.PatronageStatus;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
@@ -26,57 +25,15 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select count(i) from Item i where i.type = 'COMPONENT'")
 	Integer numberOfComponents();
 	
-	@Query("select avg(i.retailPrice.amount) from Item i where i.type = 'COMPONENT' group by i.retailPrice.currency,i.technology")
-	List<Double> averagePriceOfComponents();
-	
-	@Query("select stddev(i.retailPrice.amount) from Item i where i.type = 'COMPONENT' group by i.retailPrice.currency,i.technology")
-	List<Double> stdPriceOfComponents();
-	
-	@Query("select max(i.retailPrice.amount) from Item i where i.type = 'COMPONENT' group by i.retailPrice.currency,i.technology")
-	List<Double> maxPriceOfComponents();
-	
-	@Query("select min(i.retailPrice.amount) from Item i where i.type = 'COMPONENT' group by i.retailPrice.currency,i.technology")
-	List<Double> minPriceOfComponents();
-	
-	@Query("select i.technology from Item i where i.type = 'COMPONENT' group by i.retailPrice.currency,i.technology")
-	List<String> technologyComponents();
-	
-	@Query("select i.retailPrice.currency from Item i where i.type = 'COMPONENT' group by i.retailPrice.currency,i.technology")
-	List<String> currencyComponents();
+	@Query("select i.retailPrice.currency,i.technology,avg(i.retailPrice.amount),stddev(i.retailPrice.amount),max(i.retailPrice.amount),min(i.retailPrice.amount) from Item i where i.type = 'COMPONENT' group by i.retailPrice.currency,i.technology")
+	List<List<Object>> getStatsComponents();
 	
 	@Query("select count(i) from Item i where i.type = 'TOOL'")
 	Integer numberOfTools();
 	
-	@Query("select avg(i.retailPrice.amount) from Item i where i.type = 'TOOL' group by i.retailPrice.currency")
-	List<Double> averagePriceOfTools();
+	@Query("select i.retailPrice.currency,avg(i.retailPrice.amount),stddev(i.retailPrice.amount),max(i.retailPrice.amount),min(i.retailPrice.amount) from Item i where i.type = 'TOOL' group by i.retailPrice.currency")
+	List<List<Object>> getStatsTools();
 	
-	@Query("select stddev(i.retailPrice.amount) from Item i where i.type = 'TOOL' group by i.retailPrice.currency")
-	List<Double> stdPriceOfTools();
-	
-	@Query("select max(i.retailPrice.amount) from Item i where i.type = 'TOOL' group by i.retailPrice.currency")
-	List<Double> maxPriceOfTools();
-	
-	@Query("select min(i.retailPrice.amount) from Item i where i.type = 'TOOL' group by i.retailPrice.currency")
-	List<Double> minPriceOfTools();
-	
-	@Query("select i.retailPrice.currency from Item i where i.type = 'TOOL' group by i.retailPrice.currency")
-	List<String> currencyTools();
-	
-	@Query("select  count(p) from Patronage p group by p.status")
-	List<Integer> countPatronages();
-	
-	@Query("select  avg(p.budget.amount) from Patronage p group by p.status")
-	List<Double> averageBudgetPatronages();
-	
-	@Query("select  stddev(p.budget.amount) from Patronage p group by p.status")
-	List<Double> stdBudgetPatronages();
-	
-	@Query("select  min(p.budget.amount) from Patronage p group by p.status")
-	List<Double> minBudgetPatronages();
-	
-	@Query("select  max(p.budget.amount) from Patronage p group by p.status")
-	List<Double> maxBudgetPatronages();
-	
-	@Query("select  p.status from Patronage p group by p.status")
-	List<PatronageStatus> statusPatronages();
+	@Query("select  p.status,avg(p.budget.amount),stddev(p.budget.amount),max(p.budget.amount),min(p.budget.amount),count(p) from Patronage p group by p.status")
+	List<List<Object>> getStatsPatronages();
 }
