@@ -22,16 +22,16 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AdministratorDashboardRepository extends AbstractRepository {
 
-	@Query("select count(i) from Item i where i.type = 'COMPONENT'")
+	@Query("select count(i) from Item i where i.type = acme.entities.item.ItemType.COMPONENT")
 	Integer numberOfComponents();
 	
-	@Query("select i.retailPrice.currency,i.technology,avg(i.retailPrice.amount),stddev(i.retailPrice.amount),max(i.retailPrice.amount),min(i.retailPrice.amount) from Item i where i.type = 'COMPONENT' group by i.retailPrice.currency,i.technology")
+	@Query("select i.retailPrice.currency,i.technology,avg(i.retailPrice.amount),stddev(i.retailPrice.amount),max(i.retailPrice.amount),min(i.retailPrice.amount) from Item i where i.type = acme.entities.item.ItemType.COMPONENT group by i.retailPrice.currency,i.technology")
 	List<List<Object>> getStatsComponents();
 	
-	@Query("select count(i) from Item i where i.type = 'TOOL'")
+	@Query("select count(i) from Item i where i.type = acme.entities.item.ItemType.TOOL")
 	Integer numberOfTools();
 	
-	@Query("select i.retailPrice.currency,avg(i.retailPrice.amount),stddev(i.retailPrice.amount),max(i.retailPrice.amount),min(i.retailPrice.amount) from Item i where i.type = 'TOOL' group by i.retailPrice.currency")
+	@Query("select i.retailPrice.currency,avg(i.retailPrice.amount),stddev(i.retailPrice.amount),max(i.retailPrice.amount),min(i.retailPrice.amount) from Item i where i.type = acme.entities.item.ItemType.TOOL group by i.retailPrice.currency")
 	List<List<Object>> getStatsTools();
 	
 	@Query("select  p.status,avg(p.budget.amount),stddev(p.budget.amount),max(p.budget.amount),min(p.budget.amount),count(p) from Patronage p group by p.status")
