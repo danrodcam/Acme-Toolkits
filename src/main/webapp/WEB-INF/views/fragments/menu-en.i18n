@@ -41,7 +41,7 @@ master.menu.inventor.component.list.own = My Components
 
 # master.menu.any ##########################################################
 
-master.menu.any = Actions
+master.menu.any = Any
 master.menu.any.component.list.published = List Components
 
 # master.menu.user-account ####################################################
