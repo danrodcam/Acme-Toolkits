@@ -1,14 +1,14 @@
-key,status,legal-stuff,code,budget,optional-link,initial-date,final-date,key:inventor,key:patron
-patronage-01,PROPOSED,LegalStuff 1,AAA-000,10.0,http://www.patronage1.com,2020/12/11 23:00,2020/12/12 23:00,inventor-01,patron-01
-patronage-02,ACCEPTED,LegalStuff 2,AAA-001,11.0,http://www.patronage2.com,2017/12/11 23:00,2017/12/12 23:00,inventor-02,patron-01
-patronage-03,DENIED,LegalStuff 3,AAA-002,12.0,http://www.patronage3.com,2019/12/11 23:00,2019/12/12 23:00,inventor-01,patron-02
-patronage-04,PROPOSED,LegalStuff 4,AAA-003,13.5,null,2020/12/11 23:00,2020/12/12 23:00,inventor-02,patron-02
-patronage-05,ACCEPTED,LegalStuff 5,AAA-004,14.25,http://www.patronage5.com,2017/12/11 23:00,2017/12/12 23:00,inventor-02,patron-03
-patronage-06,DENIED,LegalStuff 6,AAA-005,15.0,null,2019/12/11 23:00,2019/12/12 23:00,inventor-03,patron-03
-patronage-07,PROPOSED,LegalStuff 7,AAA-006,16.75,null,2020/12/11 23:00,2020/12/12 23:00,inventor-04,patron-04
-patronage-08,ACCEPTED,LegalStuff 8,AAA-007,19.0,http://www.patronage8.com,2017/12/11 23:00,2017/12/12 23:00,inventor-05,patron-05
-patronage-09,DENIED,LegalStuff 9,AAA-008,30.0,http://www.patronage9.com,2019/12/11 23:00,2019/12/12 23:00,inventor-06,patron-06
-patronage-10,PROPOSED,LegalStuff 10,AAA-009,0.0,http://www.patronage10.com,2020/12/11 23:00,2020/12/12 23:00,inventor-07,patron-07
-patronage-11,ACCEPTED,LegalStuff 11,AAA-010,5.0,http://www.patronage11.com,2017/12/11 23:00,2017/12/12 23:00,inventor-08,patron-08
-patronage-12,DENIED,LegalStuff 12,AAA-011,24.5,http://www.patronage12.com,2019/12/11 23:00,2019/12/12 23:00,inventor-09,patron-09
-patronage-13,PROPOSED,LegalStuff 13,AAA-012,19.0,http://www.patronage13.com,2020/12/11 23:00,2020/12/12 23:00,inventor-10,patron-10
+key,status,legal-stuff,code,budget,creation-moment,optional-link,initial-date,final-date,key:inventor,key:patron
+patronage-01,PROPOSED,LegalStuff 1,AAA-000,10.0EUR,2002/12/12 23:00,http://www.patronage1.com,2020/12/11 23:00,2020/12/12 23:00,inventor-01,patron-01
+patronage-02,ACCEPTED,LegalStuff 2,AAA-001,11.0EUR,2003/12/12 22:00,http://www.patronage2.com,2017/12/11 23:00,2017/12/12 23:00,inventor-02,patron-01
+patronage-03,DENIED,LegalStuff 3,AAA-002,12.0USD,2004/12/12 22:00,http://www.patronage3.com,2019/12/11 23:00,2019/12/12 23:00,inventor-01,patron-02
+patronage-04,PROPOSED,LegalStuff 4,AAA-003,13.5USD,2005/12/12 21:00,null,2020/12/11 23:00,2020/12/12 23:00,inventor-02,patron-02
+patronage-05,ACCEPTED,LegalStuff 5,AAA-004,14.25USD,2006/12/12 20:00,http://www.patronage5.com,2017/12/11 23:00,2017/12/12 23:00,inventor-02,patron-03
+patronage-06,DENIED,LegalStuff 6,AAA-005,15.0GBP,2001/12/12 23:10,null,2019/12/11 23:00,2019/12/12 23:00,inventor-03,patron-03
+patronage-07,PROPOSED,LegalStuff 7,AAA-006,16.75GBP,2004/12/12 23:20,null,2020/12/11 23:00,2020/12/12 23:00,inventor-04,patron-04
+patronage-08,ACCEPTED,LegalStuff 8,AAA-007,19.0GBP,2004/12/12 23:30,http://www.patronage8.com,2017/12/11 23:00,2017/12/12 23:00,inventor-05,patron-05
+patronage-09,DENIED,LegalStuff 9,AAA-008,30.0GBP,2009/12/12 23:40,http://www.patronage9.com,2019/12/11 23:00,2019/12/12 23:00,inventor-06,patron-06
+patronage-10,PROPOSED,LegalStuff 10,AAA-009,0.0USD,2010/12/12 23:50,http://www.patronage10.com,2020/12/11 23:00,2020/12/12 23:00,inventor-07,patron-07
+patronage-11,ACCEPTED,LegalStuff 11,AAA-010,5.0EUR,2011/12/12 10:00,http://www.patronage11.com,2017/12/11 23:00,2017/12/12 23:00,inventor-08,patron-08
+patronage-12,DENIED,LegalStuff 12,AAA-011,24.5USD,2011/12/12 15:00,http://www.patronage12.com,2019/12/11 23:00,2019/12/12 23:00,inventor-09,patron-09
+patronage-13,PROPOSED,LegalStuff 13,AAA-012,19.0EUR,2011/12/12 04:00,http://www.patronage13.com,2020/12/11 23:00,2020/12/12 23:00,inventor-10,patron-10
