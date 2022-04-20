@@ -48,3 +48,9 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.authenticated = Authenticated
 master.menu.systemConfiguration= System Configuration
+
+# master.menu.any ####################################################
+
+master.menu.any = Any
+master.menu.any.userAccount = Users Accounts
+
