@@ -15,10 +15,10 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
-<acme:form>
-	<acme:input-textbox code="authenticated.provider.form.label.company" path="company"/>
-	<acme:input-textbox code="authenticated.provider.form.label.sector" path="sector"/>
+<acme:form readonly="true">
+	<acme:input-textbox code="administrator.announcement.form.label.title" path="title"/>
+	<acme:input-textarea code="administrator.announcement.form.label.body" path="body"/>
+	<acme:input-textbox code="administrator.announcement.form.label.isCritical" path="isCritical"/>
+	<acme:input-url code="administrator.announcement.form.label.info" path="info"/>
 	
-	<acme:submit test="${command == 'create'}" code="authenticated.provider.form.button.create" action="/authenticated/provider/create"/>
-	<acme:submit test="${command == 'update'}" code="authenticated.provider.form.button.update" action="/authenticated/provider/update"/>
 </acme:form>
