@@ -48,3 +48,5 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.authenticated = Authenticated
 master.menu.systemConfiguration= System Configuration
+master.menu.chirp.list = Chirps
+master.menu.any = Any

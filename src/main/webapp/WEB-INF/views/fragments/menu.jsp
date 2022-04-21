@@ -27,6 +27,11 @@
 			<acme:menu-suboption code="master.menu.anonymous.josruiper" action="https://www.flashscore.es/"/>
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.any">
+			<acme:menu-suboption code="master.menu.chirp.list" action="/any/chirp/list"/>
+			
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.systemConfiguration" action="/authenticated/system-configuration/show"/>
 			
