@@ -39,6 +39,7 @@ master.menu.administrator.shut-down = Shut down
 master.menu.inventor = Inventor
 master.menu.inventor.component.list.own = My Components
 master.menu.inventor.patronage.list.own = My Patronages
+master.menu.inventor.toolkit.list.own = My Toolkits
 
 
 # master.menu.consumer ##########################################################

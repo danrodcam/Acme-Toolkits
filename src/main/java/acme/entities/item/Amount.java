@@ -5,7 +5,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import acme.entities.tookit.Toolkit;
+import acme.entities.toolkit.Toolkit;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
