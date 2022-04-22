@@ -1,0 +1,11 @@
+2022-04-20 18:17:35.900968400 INFO  [acme.Launcher@main] Starting Launcher using Java 11.0.13 on LAPTOP-5376KGQA with PID 8016 (C:\Users\sarip\Workspace-22.0\Frameworks\Acme-Framework-22.3\target\classes started by pepelolo in C:\Users\sarip\Workspace-22.0\Projects\Acme-Toolkits) 
+2022-04-20 18:17:35.901964500 DEBUG [acme.Launcher@main] Running with Spring Boot v2.4.2, Spring v5.3.3 
+2022-04-20 18:17:35.902961600 INFO  [acme.Launcher@main] The following profiles are active: development,populator 
+2022-04-20 18:17:39.095141400 DEBUG [org.apache.jasper.servlet.JasperInitializer@main] Initializing Jasper for context [application] 
+2022-04-20 18:17:44.619868600 DEBUG [org.apache.jasper.servlet.JspServlet@main] Scratch dir for the JSP engine is: [C:\Users\sarip\AppData\Local\Temp\tomcat.8083.18413549256481773195\work\Tomcat\localhost\acme-toolkits-22.1] 
+2022-04-20 18:17:44.620864100 DEBUG [org.apache.jasper.servlet.JspServlet@main] IMPORTANT: Do not modify the generated servlets 
+2022-04-20 18:17:44.638816600 INFO  [acme.Launcher@main] Started Launcher in 9.759 seconds (JVM running for 10.726) 
+2022-04-20 18:17:44.644800100 ERROR [acme.Launcher@main] acme.Launcher.logContextInformation(Launcher.java:259): class jdk.internal.loader.ClassLoaders$AppClassLoader cannot be cast to class java.net.URLClassLoader (jdk.internal.loader.ClassLoaders$AppClassLoader and java.net.URLClassLoader are in module java.base of loader 'bootstrap') 
+2022-04-20 18:17:44.645798200 INFO  [acme.Launcher@main] The application log provides additional debugging messages! 
+2022-04-20 18:17:46.225319700 INFO  [acme.framework.configuration.ShutdownConfiguration@main] The system is shutting down... 
+2022-04-20 18:17:46.249256400 DEBUG [acme.Launcher@main] Exit code = 0 
