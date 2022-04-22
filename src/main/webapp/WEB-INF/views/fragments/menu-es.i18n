@@ -38,6 +38,7 @@ master.menu.administrator.shut-down = Parar el sistema
 
 master.menu.inventor = Inventor
 master.menu.inventor.component.list.own = Mis Componentes
+master.menu.inventor.tool.list.own = Mis Herramientas
 
 # master.menu.consumer ##########################################################
 
