@@ -59,8 +59,10 @@
 		
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.userAccount" action="/any/user-account/list"/>
+      <acme:menu-suboption code="master.menu.any.component.list.published" action="/any/item/list-published-components"/>
 		</acme:menu-option>
 		
+
 	</acme:menu-left>
 
 	<acme:menu-right>
