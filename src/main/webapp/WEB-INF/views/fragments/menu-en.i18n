@@ -38,6 +38,9 @@ master.menu.administrator.shut-down = Shut down
 
 master.menu.inventor = Inventor
 master.menu.inventor.component.list.own = My Components
+master.menu.inventor.tool.list.own = My Tools
+master.menu.inventor.patronage.list.own = My Patronages
+
 
 # master.menu.any ##########################################################
 
@@ -46,9 +49,16 @@ master.menu.any.component.list.published = List Components
 
 # master.menu.user-account ####################################################
 
-master.menu.user-account = Account
-master.menu.user-account.general-data = General data
-master.menu.user-account.provider = Provider data
-master.menu.user-account.become-provider = Become a provider
-master.menu.user-account.consumer = Consumer data
-master.menu.user-account.become-consumer = Become a consumer
+master.menu.authenticated = Authenticated
+master.menu.systemConfiguration= System Configuration
+
+
+# master.menu.any ####################################################
+
+master.menu.any = Any
+master.menu.any.userAccount = Patrons & Inventors
+master.menu.chirp.list = Chirps
+master.menu.any = Any
+master.menu.announcement.list = Announcements
+
+

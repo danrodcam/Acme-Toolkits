@@ -28,6 +28,9 @@ public class InventorItemController extends AbstractController<Inventor, Item> {
 
 	@Autowired
 	protected InventorItemListOwnComponentsService	listOwnComponentsService;
+	
+	@Autowired
+	protected InventorItemListOwnToolsService	listOwnToolsService;
 
 	@Autowired
 	protected InventorItemShowService	showService;
@@ -38,6 +41,7 @@ public class InventorItemController extends AbstractController<Inventor, Item> {
 	@PostConstruct
 	protected void initialise() {
 		super.addCommand("list-own-components", "list" ,this.listOwnComponentsService);
+		super.addCommand("list-own-tools", "list" ,this.listOwnToolsService);
 		super.addCommand("show", this.showService);
 	}
 
