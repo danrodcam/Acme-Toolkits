@@ -21,8 +21,5 @@
 	<acme:input-textbox code="any.userAccount.form.label.email" path="identity.email"/>
 	<acme:input-textbox code="any.userAccount.form.label.username" path="username"/>
 	<acme:input-textbox code="any.userAccount.form.label.role" path="roleList"/>
-	<acme:input-textbox code="any.userAccount.form.label.company" path="company"/>
-	<acme:input-textbox code="any.userAccount.form.label.statement" path="statement"/>
-	<acme:input-textbox code="any.userAccount.form.label.optionalLink" path="optionalLink"/>
 	
 </acme:form>

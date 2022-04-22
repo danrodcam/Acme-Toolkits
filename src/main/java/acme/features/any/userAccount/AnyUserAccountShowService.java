@@ -56,7 +56,7 @@ public class AnyUserAccountShowService implements AbstractShowService<Any, UserA
 		buffer = new StringBuilder();
 		for (final UserRole role : roles) {
 			buffer.append(role.getAuthorityName());
-			buffer.append(" ");
+			buffer.append(" | ");
 		}
 		model.setAttribute("roleList", buffer.toString());
 	}

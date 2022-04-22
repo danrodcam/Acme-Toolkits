@@ -54,4 +54,4 @@ master.menu.systemConfiguration= Configuracion Sistema
 # master.menu.any ####################################################
 
 master.menu.any = General
-master.menu.any.userAccount = Usuarios
+master.menu.any.userAccount = Patrones e Inventores

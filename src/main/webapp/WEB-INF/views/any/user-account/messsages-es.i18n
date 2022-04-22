@@ -8,18 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-any.userAccount.form.label.company = Empresa
-any.userAccount.form.label.userAccount = Cuenta de Usuario
-any.userAccount.form.label.statement = Declaración
-any.userAccount.form.label.optionalLink = Link
 any.userAccount.form.label.name = Nombre
 any.userAccount.form.label.surname = Apellidos
 any.userAccount.form.label.email = Correo Electrónico
 any.userAccount.form.label.username = Nombre de Usuario
-any.userAccount.form.label.role = Rol
+any.userAccount.form.label.role = Roles
 
 any.userAccount.list.label.name = Nombre
 any.userAccount.list.label.surname = Apellidos
-any.userAccount.list.label.email = Correo Elctrónico
-any.userAccount.list.label.username = Usuario
 any.userAccount.list.label.role = Rol

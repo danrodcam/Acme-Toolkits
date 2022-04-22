@@ -16,8 +16,7 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:list>
-	<acme:list-column code="any.userAccount.list.label.username" path="username" width="20%"/>
-	<acme:list-column code="any.userAccount.list.label.name" path="identity.name" width="20%"/>
-	<acme:list-column code="any.userAccount.list.label.surname" path="identity.surname" width="20%"/>
+	<acme:list-column code="any.userAccount.list.label.name" path="identity.name" width="30%"/>
+	<acme:list-column code="any.userAccount.list.label.surname" path="identity.surname" width="30%"/>
 	<acme:list-column code="any.userAccount.list.label.role" path="roleList" width="40%"/>
 </acme:list>
