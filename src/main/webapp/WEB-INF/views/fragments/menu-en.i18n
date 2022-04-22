@@ -44,6 +44,12 @@ master.menu.inventor.component.list.own = My Components
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+# master.menu.any ##########################################################
+
+master.menu.any = Any
+master.menu.any.component.list.published = List Components
+master.menu.any.tool.list.published = List Tools
+
 # master.menu.user-account ####################################################
 
 master.menu.authenticated = Authenticated
