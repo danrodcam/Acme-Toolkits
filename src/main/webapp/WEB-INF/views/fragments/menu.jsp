@@ -27,8 +27,14 @@
 			<acme:menu-suboption code="master.menu.anonymous.josruiper" action="https://www.flashscore.es/"/>
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.any">
+			<acme:menu-suboption code="master.menu.chirp.list" action="/any/chirp/list"/>
+			
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.systemConfiguration" action="/authenticated/system-configuration/show"/>
+			<acme:menu-suboption code="master.menu.announcement.list" action="/authenticated/announcement/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -43,6 +49,8 @@
 
 		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">
 			<acme:menu-suboption code="master.menu.inventor.component.list.own" action="/inventor/item/list-own-components"/>
+			<acme:menu-suboption code="master.menu.inventor.tool.list.own" action="/inventor/item/list-own-tools"/>
+			<acme:menu-suboption code="master.menu.inventor.patronage.list.own" action="/inventor/patronage/list-own-patronage"/>			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">

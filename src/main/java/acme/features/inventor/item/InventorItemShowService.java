@@ -57,7 +57,7 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "code", "technology","description", "retailPrice", "link");
+		request.unbind(entity, model, "name", "code", "type", "technology","description", "retailPrice", "link");
 	}
 
 

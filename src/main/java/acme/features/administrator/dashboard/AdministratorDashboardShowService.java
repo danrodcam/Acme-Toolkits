@@ -75,24 +75,16 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	}
 	
 	private Map<Record,Map<String,Double>> createStatsComponentsMap(){
-		final List<Double> avgItms = this.repository.averagePriceOfComponents();
-		final List<Double> stdItms = this.repository.stdPriceOfComponents();
-		final List<Double> maxItms = this.repository.maxPriceOfComponents();
-		final List<Double> minItms = this.repository.minPriceOfComponents();
-		final List<String> techItms = this.repository.technologyComponents();
-		final List<String> curItms = this.repository.currencyComponents();
-		final Integer size = avgItms.size();
+		final List<List<Object>> statsList = this.repository.getStatsComponents();
 		final Map<Record,Map<String,Double>> map = new HashMap<Record,Map<String,Double>>();
-		for (int i=0;i<size;i++) {
+		for (final List<Object> l:statsList) {
 			final Record record = new Record();
 			final Map<String, Double> stats = new HashMap<String,Double>();
-			stats.put("AVG", avgItms.get(i));
-			stats.put("STDEV", stdItms.get(i));
-			stats.put("MIN", minItms.get(i));
-			stats.put("MAX", maxItms.get(i));
-			final String technology = techItms.get(i);
-			final String currency = curItms.get(i);
-			record.put(technology, currency);
+			stats.put("AVG", (Double) l.get(2));
+			stats.put("STDEV", (Double) l.get(3));
+			stats.put("MIN", (Double) l.get(5));
+			stats.put("MAX", (Double) l.get(4));
+			record.put((String) l.get(1), (String) l.get(0));
 			map.put(record, stats);
 			
 		}
@@ -100,42 +92,32 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	}
 	
 	private Map<String,Map<String,Double>> createStatsToolsMap(){
-		final List<Double> avgItms = this.repository.averagePriceOfTools();
-		final List<Double> stdItms = this.repository.stdPriceOfTools();
-		final List<Double> maxItms = this.repository.maxPriceOfTools();
-		final List<Double> minItms = this.repository.minPriceOfTools();
-		final List<String> curItms = this.repository.currencyTools();
-		final Integer size = avgItms.size();
+		final List<List<Object>> statsList = this.repository.getStatsTools();
 		final Map<String,Map<String,Double>> map = new HashMap<String,Map<String,Double>>();
-		for (int i=0;i<size;i++) {
+		for (final List<Object>l:statsList) {
 			final Map<String, Double> stats = new HashMap<String,Double>();
-			stats.put("AVG", avgItms.get(i));
-			stats.put("STDEV", stdItms.get(i));
-			stats.put("MIN", minItms.get(i));
-			stats.put("MAX", maxItms.get(i));
-			map.put(curItms.get(i), stats);
+			stats.put("AVG", (Double) l.get(1));
+			stats.put("STDEV", (Double) l.get(2));
+			stats.put("MIN", (Double) l.get(4));
+			stats.put("MAX", (Double) l.get(3));
+			map.put((String) l.get(0), stats);
 			
 		}
 		return map;
 	}
 
+	
 	private Map<PatronageStatus,Map<String,Double>> createStatsPatronageMap(){
-		final List<Double> avgItms = this.repository.averageBudgetPatronages();
-		final List<Double> stdItms = this.repository.stdBudgetPatronages();
-		final List<Double> maxItms = this.repository.maxBudgetPatronages();
-		final List<Double> minItms = this.repository.minBudgetPatronages();
-		final List<Integer> countItms = this.repository.countPatronages();
-		final List<PatronageStatus> statusItms = this.repository.statusPatronages();
-		final Integer size = avgItms.size();
+		final List<List<Object>> statsList = this.repository.getStatsPatronages();
 		final Map<PatronageStatus,Map<String,Double>> map = new HashMap<PatronageStatus,Map<String,Double>>();
-		for (int i=0;i<size;i++) {
+		for (final List<Object> l:statsList) {
 			final Map<String, Double> stats = new HashMap<String,Double>();
-			stats.put("TOTAL", countItms.get(i).doubleValue());
-			stats.put("AVG", avgItms.get(i));
-			stats.put("STDEV", stdItms.get(i));
-			stats.put("MIN", minItms.get(i));
-			stats.put("MAX", maxItms.get(i));
-			map.put(statusItms.get(i), stats);
+			stats.put("TOTAL", ((Long) l.get(5)).doubleValue());
+			stats.put("AVG", (Double) l.get(1));
+			stats.put("STDEV", (Double) l.get(2));
+			stats.put("MIN", (Double) l.get(4));
+			stats.put("MAX", (Double) l.get(3));
+			map.put((PatronageStatus) l.get(0), stats);
 			
 		}
 		return map;

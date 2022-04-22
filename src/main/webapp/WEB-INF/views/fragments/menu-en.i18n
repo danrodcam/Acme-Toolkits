@@ -38,6 +38,9 @@ master.menu.administrator.shut-down = Shut down
 
 master.menu.inventor = Inventor
 master.menu.inventor.component.list.own = My Components
+master.menu.inventor.tool.list.own = My Tools
+master.menu.inventor.patronage.list.own = My Patronages
+
 
 # master.menu.consumer ##########################################################
 
@@ -49,8 +52,13 @@ master.menu.consumer.favourite-link = Favourite link
 master.menu.authenticated = Authenticated
 master.menu.systemConfiguration= System Configuration
 
+
 # master.menu.any ####################################################
 
 master.menu.any = Any
 master.menu.any.userAccount = Patrons & Inventors
+master.menu.chirp.list = Chirps
+master.menu.any = Any
+master.menu.announcement.list = Announcements
+
 

@@ -18,6 +18,7 @@
 <acme:form>
 	<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
 	<acme:input-textbox code="inventor.item.form.label.code" path="code"/>
+	<acme:input-textbox code="inventor.item.form.label.type" path="type"/>
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
 	<acme:input-textbox code="inventor.item.form.label.description" path="description"/>
 	<acme:input-url code="inventor.item.form.label.link" path="link"/>

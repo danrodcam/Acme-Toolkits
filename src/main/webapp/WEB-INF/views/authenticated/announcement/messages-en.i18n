@@ -8,11 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.provider.provider.form.title.create = Become an provider
-authenticated.provider.provider.form.title.update = Update provider data
+administrator.announcement.form.label.creationMoment = CreationMoment:
+administrator.announcement.form.label.title = Title:
+administrator.announcement.form.label.body = Body:
+administrator.announcement.form.label.isCritical = IsCritical:
+administrator.announcement.form.label.info = Info:
 
-authenticated.provider.form.label.company = Company: 
-authenticated.provider.form.label.sector = Sector:
-
-authenticated.provider.form.button.create = Register
-authenticated.provider.form.button.update = Update
+authenticated.announcement.list.label.creationMoment = CreationMoment
+authenticated.announcement.list.label.title = Title
+authenticated.announcement.list.label.body = Body

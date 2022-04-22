@@ -23,48 +23,79 @@
 <h3>
 	<acme:message code="administrator.dashboard.form.title.componentStats"/>
 </h3>
-<acme:message code="administrator.dashboard.form.total"/>
-<acme:print value="${numberOfComponents}"/><br>
-<jstl:forEach var="entry" items="${statsComponents}">
-<jstl:forEach var="record" items="${entry.key}">
-<strong><acme:print value="${record.key}"/>
-<jstl:out value=","></jstl:out>
-<acme:print value="${record.value}"/>
-</strong>
+<table class="table table-sm">
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.total"/>
+		</th>
+		<td>
+			<acme:print value="${numberOfComponents}"/><br>
+		</td>
+	</tr>
+	<jstl:forEach var="entry" items="${statsComponents}">
+	<tr>
+	<jstl:forEach var="record" items="${entry.key}">
+		<th scope="row">
+			<strong><acme:print value="${record.key}"/>
+			<jstl:out value=","></jstl:out>
+			<acme:print value="${record.value}"/>
+			</strong>
+		</th>	
+	</jstl:forEach>
+	<jstl:forEach var="map" items="${entry.value}">
+		<th>
+			<acme:print value="${map.key}"/>
+		</th>
+		<td>
+			<acme:print value="${map.value}"/>
+		</td>	
+	</jstl:forEach>
 </jstl:forEach>
-<jstl:forEach var="map" items="${entry.value}">
-<acme:print value="${map.key}"/>
-<jstl:out value=":"></jstl:out>
-<acme:print value="${map.value}"/>
-</jstl:forEach>
-<br>
-</jstl:forEach>
-<br>
+</table>
 <h3>
 	<acme:message code="administrator.dashboard.form.title.toolStats"/>
 </h3>
-<acme:message code="administrator.dashboard.form.total"></acme:message>
-<acme:print value="${numberOfTools}"/><br>
-<jstl:forEach var="entry" items="${statsTools}">
-<strong><acme:print value="${entry.key}"/></strong>
-<jstl:forEach var="map" items="${entry.value}">
-<acme:print value="${map.key}"/>
-<jstl:out value=":"></jstl:out>
-<acme:print value="${map.value}"/>
+<table class="table table-sm">
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.total"/>
+		</th>
+		<td>
+			<acme:print value="${numberOfTools}"/><br>
+		</td>
+	</tr>
+	<jstl:forEach var="entry" items="${statsTools}">
+	<tr>
+		<th scope="row">
+			<strong><acme:print value="${entry.key}"/></strong>
+		</th>	
+	<jstl:forEach var="map" items="${entry.value}">
+		<th>
+			<acme:print value="${map.key}"/>
+		</th>
+		<td>
+			<acme:print value="${map.value}"/>
+		</td>	
+	</jstl:forEach>
 </jstl:forEach>
-<br>
-</jstl:forEach>
-<br>
+</table>
 <h3>
 	<acme:message code="administrator.dashboard.form.title.patronageStats"/>
 </h3>
-<jstl:forEach var="entry" items="${statsPatronages}">
-<strong><acme:print value="${entry.key}"/></strong>
-<jstl:forEach var="map" items="${entry.value}">
-<acme:print value="${map.key}"/>
-<jstl:out value=":"></jstl:out>
-<acme:print value="${map.value}"/>
+<table class="table table-sm">
+	<jstl:forEach var="entry" items="${statsPatronages}">
+	<tr>
+		<th scope="row">
+			<strong><acme:print value="${entry.key}"/></strong>
+		</th>	
+	<jstl:forEach var="map" items="${entry.value}">
+		<th>
+			<acme:print value="${map.key}"/>
+		</th>
+		<td>
+			<acme:print value="${map.value}"/>
+		</td>	
+	</jstl:forEach>
 </jstl:forEach>
-<br>
-</jstl:forEach>
+</table>
 
