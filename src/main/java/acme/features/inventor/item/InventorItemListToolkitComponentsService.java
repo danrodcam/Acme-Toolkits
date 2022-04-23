@@ -10,34 +10,38 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.toolkit;
+package acme.features.inventor.item;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.toolkit.Toolkit;
+import acme.entities.item.Amount;
+import acme.entities.item.Item;
+import acme.entities.item.ItemType;
+import acme.features.inventor.toolkit.InventorToolkitRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.roles.Any;
 import acme.framework.services.AbstractListService;
-
+import acme.roles.Inventor;
 
 
 @Service
-public class AnyToolkitListPublishedToolkitsService implements AbstractListService<Any, Toolkit> {
+public class InventorItemListToolkitComponentsService implements AbstractListService<Inventor, Item> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyToolkitRepository repository;
+	protected InventorToolkitRepository repository;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
 
 	@Override
-	public boolean authorise(final Request<Toolkit> request) {
+	public boolean authorise(final Request<Item> request) {
 		assert request != null;
 
 		return true;
@@ -45,24 +49,36 @@ public class AnyToolkitListPublishedToolkitsService implements AbstractListServi
 
 
 	@Override
-	public void unbind(final Request<Toolkit> request, final Toolkit entity, final Model model) {
+	public void unbind(final Request<Item> request, final Item entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title","description");
+		request.unbind(entity, model, "name", "code", "technology","description", "retailPrice", "link");
 	}
-
-
-
+	
+	
+	
 	@Override
-	public Collection<Toolkit> findMany(final Request<Toolkit> request) {
+	public List<Item> findMany(final Request<Item> request){
 		assert request != null;
 		
-		Collection<Toolkit> result;
-
-		result = this.repository.findManyPublishedToolkit();
+		int masterId;
+		
+		masterId = request.getModel().getInteger("masterId");
+		
+		final List<Item> result = new ArrayList<>() ;
+		
+		final Collection<Amount> amounts = this.repository.findItemsByToolkit(masterId);
+		
+		for(final Amount amount:amounts) {
+			final Item i = amount.getItem();
+			if(i.getType() == ItemType.COMPONENT) {
+				result.add(i);
+			}
+		}
 		return result;
+		
 	}
 
 	
