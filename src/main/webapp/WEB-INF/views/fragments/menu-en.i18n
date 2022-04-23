@@ -30,26 +30,38 @@ master.menu.anonymous.josruiper = 20502265L: Ruiz Pérez, José Manuel
 master.menu.administrator = Administrator
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
+master.menu.administrator.system-configuration = System Configuration
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 
-# master.menu.provider ########################################################
+# master.menu.inventor ########################################################
 
 master.menu.inventor = Inventor
 master.menu.patron = Patron
 master.menu.inventor.component.list.own = My Components
+master.menu.inventor.tool.list.own = My Tools
 master.menu.inventor.patronage.list.own = My Patronages
 master.menu.patron.patronage.list.own = My Patronages
 
 
-# master.menu.consumer ##########################################################
+# master.menu.any ##########################################################
 
-master.menu.consumer = Consumer
-master.menu.consumer.favourite-link = Favourite link
+master.menu.any = Any
+master.menu.any.component.list.published = List Components
 
 # master.menu.user-account ####################################################
 
 master.menu.authenticated = Authenticated
 master.menu.systemConfiguration= System Configuration
+
+
+# master.menu.any ####################################################
+
+master.menu.any = Any
+master.menu.any.userAccount = Patrons & Inventors
+master.menu.chirp.list = Chirps
+master.menu.any = Any
 master.menu.announcement.list = Announcements
+
+
