@@ -10,47 +10,36 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.inventor.item;
+package acme.features.inventor.toolkit;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import acme.entities.item.Item;
+import acme.entities.toolkit.Toolkit;
 import acme.framework.controllers.AbstractController;
 import acme.roles.Inventor;
 
 @Controller
-public class InventorItemController extends AbstractController<Inventor, Item> {
+public class InventorToolkitController extends AbstractController<Inventor, Toolkit> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorItemListOwnComponentsService	listOwnComponentsService;
-	
-	@Autowired
-	protected InventorItemListOwnToolsService	listOwnToolsService;
+	protected InventorToolkitListOwnService	listOwnToolkitService;
 
 	@Autowired
-	protected InventorItemShowService	showService;
+	protected InventorToolkitShowService	showService;
 	
-	@Autowired
-	protected InventorItemListToolkitComponentsService listComponentsToolkitService;
 	
-	@Autowired
-	protected InventorItemListToolkitToolsService listToolsToolkitService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("list-own-components", "list" ,this.listOwnComponentsService);
-		super.addCommand("list-own-tools", "list" ,this.listOwnToolsService);
+		super.addCommand("list-own", "list" ,this.listOwnToolkitService);
 		super.addCommand("show", this.showService);
-		super.addCommand("list-components-toolkit", "list", this.listComponentsToolkitService);
-		super.addCommand("list-tools-toolkit", "list", this.listToolsToolkitService);
 	}
 
 }

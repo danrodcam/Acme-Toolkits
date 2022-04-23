@@ -10,28 +10,32 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.item;
+package acme.features.inventor.item;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.Amount;
 import acme.entities.item.Item;
+import acme.entities.item.ItemType;
+import acme.features.inventor.toolkit.InventorToolkitRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.roles.Any;
 import acme.framework.services.AbstractListService;
-
+import acme.roles.Inventor;
 
 
 @Service
-public class AnyItemListPublishedComponentsService implements AbstractListService<Any, Item> {
+public class InventorItemListToolkitComponentsService implements AbstractListService<Inventor, Item> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyItemRepository repository;
+	protected InventorToolkitRepository repository;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -54,14 +58,29 @@ public class AnyItemListPublishedComponentsService implements AbstractListServic
 	}
 	
 	
+	
 	@Override
-	public Collection<Item> findMany(final Request<Item> request) {
+	public List<Item> findMany(final Request<Item> request){
 		assert request != null;
 		
-		Collection<Item> result;
-
-		result = this.repository.findManyPublishedComponents();
+		int masterId;
+		
+		masterId = request.getModel().getInteger("masterId");
+		
+		final List<Item> result = new ArrayList<>() ;
+		
+		final Collection<Amount> amounts = this.repository.findItemsByToolkit(masterId);
+		
+		for(final Amount amount:amounts) {
+			final Item i = amount.getItem();
+			if(i.getType() == ItemType.COMPONENT) {
+				result.add(i);
+			}
+		}
 		return result;
-	}	
+		
+	}
+
+	
 
 }

@@ -10,34 +10,32 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.item;
+package acme.features.inventor.toolkit;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import acme.entities.item.Item;
+import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.roles.Any;
 import acme.framework.services.AbstractListService;
-
+import acme.roles.Inventor;
 
 
 @Service
-public class AnyItemListPublishedComponentsService implements AbstractListService<Any, Item> {
+public class InventorToolkitListOwnService implements AbstractListService<Inventor, Toolkit> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyItemRepository repository;
+	protected InventorToolkitRepository repository;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
 
 	@Override
-	public boolean authorise(final Request<Item> request) {
+	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
 
 		return true;
@@ -45,23 +43,28 @@ public class AnyItemListPublishedComponentsService implements AbstractListServic
 
 
 	@Override
-	public void unbind(final Request<Item> request, final Item entity, final Model model) {
+	public void unbind(final Request<Toolkit> request, final Toolkit entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "code", "technology","description", "retailPrice", "link");
+		request.unbind(entity, model, "code", "title", "description");
 	}
-	
-	
+
+
+
 	@Override
-	public Collection<Item> findMany(final Request<Item> request) {
+	public Collection<Toolkit> findMany(final Request<Toolkit> request) {
 		assert request != null;
 		
-		Collection<Item> result;
-
-		result = this.repository.findManyPublishedComponents();
+		Collection<Toolkit> result;
+		int inventorId;
+		
+		inventorId = request.getPrincipal().getActiveRoleId();
+		result = this.repository.findManyToolkitsByInventorId(inventorId);
 		return result;
-	}	
+	}
+
+	
 
 }

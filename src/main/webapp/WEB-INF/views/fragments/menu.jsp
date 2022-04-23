@@ -27,10 +27,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.josruiper" action="https://www.flashscore.es/"/>
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.any">
-			<acme:menu-suboption code="master.menu.chirp.list" action="/any/chirp/list"/>
-			
-		</acme:menu-option>
+		
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.systemConfiguration" action="/authenticated/system-configuration/show"/>
@@ -51,6 +48,7 @@
 		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">
 			<acme:menu-suboption code="master.menu.inventor.component.list.own" action="/inventor/item/list-own-components"/>
 			<acme:menu-suboption code="master.menu.inventor.tool.list.own" action="/inventor/item/list-own-tools"/>
+			<acme:menu-suboption code="master.menu.inventor.toolkit.list.own" action="/inventor/toolkit/list-own"/>
 			<acme:menu-suboption code="master.menu.inventor.patronage.list.own" action="/inventor/patronage/list-own-patronage"/>			
 		</acme:menu-option>
 		
@@ -68,7 +66,11 @@
 		
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.userAccount" action="/any/user-account/list"/>
-      <acme:menu-suboption code="master.menu.any.component.list.published" action="/any/item/list-published-components"/>
+      		<acme:menu-suboption code="master.menu.any.component.list.published" action="/any/item/list-published-components"/>
+      		<acme:menu-suboption code="master.menu.any.tool.list.published" action="/any/item/list-published-tools"/>
+      		<acme:menu-suboption code="master.menu.any.toolkit.list.published" action="/any/toolkit/list-published-toolkits"/>
+      		<acme:menu-suboption code="master.menu.chirp.list" action="/any/chirp/list"/>
+      		
 		</acme:menu-option>
 		
 

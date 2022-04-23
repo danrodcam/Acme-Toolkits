@@ -26,7 +26,7 @@ import acme.framework.services.AbstractListService;
 
 
 @Service
-public class AnyItemListPublishedComponentsService implements AbstractListService<Any, Item> {
+public class AnyItemListPublishedToolsService implements AbstractListService<Any, Item> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -52,16 +52,18 @@ public class AnyItemListPublishedComponentsService implements AbstractListServic
 
 		request.unbind(entity, model, "name", "code", "technology","description", "retailPrice", "link");
 	}
-	
-	
+
+
+
 	@Override
 	public Collection<Item> findMany(final Request<Item> request) {
 		assert request != null;
 		
 		Collection<Item> result;
 
-		result = this.repository.findManyPublishedComponents();
+		result = this.repository.findManyPublishedTools();
 		return result;
-	}	
-
+	}
+	
+	
 }
