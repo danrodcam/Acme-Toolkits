@@ -19,12 +19,12 @@ inventor.patronage.form.label.legalStuff = Legal Stuff:
 inventor.patronage.form.label.code = Code:
 inventor.patronage.form.label.budget = Budget:
 inventor.patronage.form.label.creationMoment = Creation Moment:
-inventor.patronage.form.label.optionalLink = Optional Link:
+inventor.patronage.form.label.optionalLink = Link:
 inventor.patronage.form.label.initialDate = initial Date:
 inventor.patronage.form.label.finalDate = Final Date:
 		
 inventor.patronage.patron.form.label.company = Company:
 inventor.patronage.patron.form.label.statement = Statement:
-inventor.patronage.patron.form.label.optionalLink = OptionalLink:
+inventor.patronage.patron.form.label.optionalLink = Link:
 
 inventor.patronage.form.button.patron = Patron

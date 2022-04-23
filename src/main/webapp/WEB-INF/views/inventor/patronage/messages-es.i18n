@@ -8,18 +8,24 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-inventor.patronage.form.label.status = Estado
-inventor.patronage.form.label.legalStuff = Asuntos Legales
-inventor.patronage.form.label.budget = Presupuesto
-inventor.patronage.form.label.creationMoment = Momento de Creacion
+
+inventor.patronage.list.label.status = Estado
+inventor.patronage.list.label.legalStuff = Asuntos Legales
+inventor.patronage.list.label.budget = Presupuesto
+inventor.patronage.list.label.creationMoment = Momento Creación
 
 
 inventor.patronage.form.label.status = Estado:
 inventor.patronage.form.label.legalStuff = Asuntos Legales:
+inventor.patronage.form.label.code = Código:
 inventor.patronage.form.label.budget = Presupuesto:
-inventor.patronage.form.label.creationMoment = Momento de Creacion:
-inventor.patronage.form.label.optionalLink = Link Opcional:
-inventor.patronage.form.label.initialDate = Fecha de Inicio:
-inventor.patronage.form.label.finalDate = Fecha de Fin:
+inventor.patronage.form.label.creationMoment = Momento Creación:
+inventor.patronage.form.label.optionalLink = Link:
+inventor.patronage.form.label.initialDate = Fecha Inicio:
+inventor.patronage.form.label.finalDate = Fecha fin:
 		
+inventor.patronage.patron.form.label.company = Compañía:
+inventor.patronage.patron.form.label.statement = Declaración:
+inventor.patronage.patron.form.label.optionalLink = Link:
+
 inventor.patronage.form.button.patron = Patron

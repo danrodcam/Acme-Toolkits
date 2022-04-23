@@ -27,7 +27,7 @@ public interface AnyItemRepository extends AbstractRepository {
 	@Query("select item from Item item where item.id = :id")
 	Item findOneComponentById(int id);
 	
-	@Query("select item from Item item where item.type = acme.entities.item.ItemType.TOOL and item.published = true")
+	@Query("select item from Item item where item.type = acme.entities.item.ItemType.COMPONENT and item.published = true")
 	Collection<Item> findManyPublishedComponents();
 	
 	@Query("select item from Item item where item.type = acme.entities.item.ItemType.TOOL and item.published = true")

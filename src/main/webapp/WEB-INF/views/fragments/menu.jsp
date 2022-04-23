@@ -53,12 +53,10 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
-			<acme:menu-suboption code="master.menu.patron.patronage.list.own" action="/patron/patronage/list-own-patron-patronage"/>			
+			<acme:menu-suboption code="master.menu.patron.patronage.list.own" action="/patron/patronage/list-own-patron-patronage"/>
+			<acme:menu-suboption code="master.menu.patron.dashboard" action="/patron/dashboard/show"/>			
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
-			<acme:menu-suboption code="master.menu.patron.dashboard" action="/patron/dashboard/show"/>
-		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>	
