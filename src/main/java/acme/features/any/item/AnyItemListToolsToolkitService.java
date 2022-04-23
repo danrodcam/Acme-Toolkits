@@ -12,12 +12,16 @@
 
 package acme.features.any.item;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.Amount;
 import acme.entities.item.Item;
+import acme.entities.item.ItemType;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.roles.Any;
@@ -26,7 +30,7 @@ import acme.framework.services.AbstractListService;
 
 
 @Service
-public class AnyItemListPublishedComponentsService implements AbstractListService<Any, Item> {
+public class AnyItemListToolsToolkitService implements AbstractListService<Any, Item> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -54,14 +58,29 @@ public class AnyItemListPublishedComponentsService implements AbstractListServic
 	}
 	
 	
+	
 	@Override
-	public Collection<Item> findMany(final Request<Item> request) {
+	public List<Item> findMany(final Request<Item> request){
 		assert request != null;
 		
-		Collection<Item> result;
-
-		result = this.repository.findManyPublishedComponents();
+		int masterId;
+		
+		masterId = request.getModel().getInteger("masterId");
+		
+		final List<Item> result = new ArrayList<>() ;
+		
+		final Collection<Amount> amounts = this.repository.findManyAmountByMasterId(masterId);
+		
+		for(final Amount amount:amounts) {
+			final Item i = amount.getItem();
+			if(!result.contains(i) && i.getType() == ItemType.TOOL) {
+				result.add(i);
+			}
+		}
 		return result;
-	}	
+		
+	}
+
+	
 
 }

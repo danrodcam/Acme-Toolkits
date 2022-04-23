@@ -10,30 +10,23 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.item;
+package acme.features.any.toolkit;
 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.item.Amount;
-import acme.entities.item.Item;
+import acme.entities.tookit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
-public interface AnyItemRepository extends AbstractRepository {
+public interface AnyToolkitRepository extends AbstractRepository {
 
-	@Query("select item from Item item where item.id = :id")
-	Item findOneComponentById(int id);
+	@Query("select toolkit from Toolkit toolkit where toolkit.id = :id")
+	Toolkit findOneToolkitById(int id);
 	
-	@Query("select item from Item item where item.type = 'COMPONENT' and item.published = true")
-	Collection<Item> findManyPublishedComponents();
-	
-	@Query("select item from Item item where item.type = acme.entities.item.ItemType.TOOL and item.published = true")
-	Collection<Item> findManyPublishedTools();
-	
-	@Query("select amount from Amount amount where amount.toolkit.id = :masterId")
-	Collection<Amount> findManyAmountByMasterId(int masterId);
+	@Query("select toolkit from Toolkit toolkit where toolkit.draftMode = false")
+	Collection<Toolkit> findManyPublishedToolkit();
 
 }

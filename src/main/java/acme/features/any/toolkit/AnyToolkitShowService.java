@@ -10,58 +10,69 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.item;
-
-import java.util.Collection;
+package acme.features.any.toolkit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.item.Item;
+import acme.entities.tookit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.roles.Any;
-import acme.framework.services.AbstractListService;
+import acme.framework.services.AbstractShowService;
 
 
 
 @Service
-public class AnyItemListPublishedComponentsService implements AbstractListService<Any, Item> {
+public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyItemRepository repository;
+	protected AnyToolkitRepository repository;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
 
 	@Override
-	public boolean authorise(final Request<Item> request) {
+	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		final int toolkitId;
+		final Toolkit toolkit;
+		
+		toolkitId = request.getModel().getInteger("id");
+		toolkit = this.repository.findOneToolkitById(toolkitId);
+		result = !toolkit.isDraftMode();
+
+		return result;
 	}
 
 
 	@Override
-	public void unbind(final Request<Item> request, final Item entity, final Model model) {
+	public void unbind(final Request<Toolkit> request, final Toolkit entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "code", "technology","description", "retailPrice", "link");
+		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "link","totalPrice");
 	}
-	
-	
+
+
+
 	@Override
-	public Collection<Item> findMany(final Request<Item> request) {
+	public Toolkit findOne(final Request<Toolkit> request) {
 		assert request != null;
 		
-		Collection<Item> result;
-
-		result = this.repository.findManyPublishedComponents();
+		Toolkit result;
+		int id;
+		
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneToolkitById(id);
 		return result;
-	}	
+	}
+
+	
 
 }
