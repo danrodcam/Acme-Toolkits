@@ -73,7 +73,7 @@ public class AnyItemListComponentsToolkitService implements AbstractListService<
 		
 		for(final Amount amount:amounts) {
 			final Item i = amount.getItem();
-			if(!result.contains(i) && i.getType() == ItemType.COMPONENT) {
+			if(i.getType() == ItemType.COMPONENT) {
 				result.add(i);
 			}
 		}

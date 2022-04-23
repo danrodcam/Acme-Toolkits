@@ -73,7 +73,7 @@ public class AnyItemListToolsToolkitService implements AbstractListService<Any, 
 		
 		for(final Amount amount:amounts) {
 			final Item i = amount.getItem();
-			if(!result.contains(i) && i.getType() == ItemType.TOOL) {
+			if(i.getType() == ItemType.TOOL) {
 				result.add(i);
 			}
 		}
