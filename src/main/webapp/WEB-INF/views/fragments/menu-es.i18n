@@ -39,6 +39,11 @@ master.menu.administrator.shut-down = Parar el sistema
 master.menu.inventor = Inventor
 master.menu.inventor.component.list.own = Mis Componentes
 
+# master.menu.patron ##########################################################
+
+master.menu.patron = Patron
+master.menu.patron.dashboard = Panel de indicadores
+
 # master.menu.consumer ##########################################################
 
 master.menu.consumer = Consumidor
