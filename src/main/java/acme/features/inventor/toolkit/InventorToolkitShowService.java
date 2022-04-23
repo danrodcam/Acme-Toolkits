@@ -12,13 +12,17 @@
 
 package acme.features.inventor.toolkit;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.Amount;
 import acme.entities.item.Item;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractShowService;
 import acme.roles.Inventor;
 
@@ -41,13 +45,14 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		boolean result;
 		int toolkitId;
 		Toolkit toolkit;
-		int principalId; 
+		int principalId;  
 		
 		principalId = request.getPrincipal().getAccountId();
 		toolkitId = request.getModel().getInteger("id");
 		toolkit = this.repository.findOneToolkitById(toolkitId);
 		result = toolkit.getInventor().getUserAccount().getId()==principalId; 
-
+		
+		
 		return result;
 	}
 
@@ -72,9 +77,32 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneToolkitById(id);
+		result.setTotalPrice(this.calcularPrecioTotal(request));
 		return result;
 	}
-
 	
+	private Money calcularPrecioTotal(final Request<Toolkit> request) {
+        int masterId;
+        masterId = request.getModel().getInteger("id");
+        Double cantidad = 0.;
+        String moneda = "";
 
+        final Money result = new Money();
+
+        final Collection<Amount> amounts = this.repository.findItemsByToolkit(masterId);
+
+        for(final Amount amount:amounts) {
+            final Item i = amount.getItem();
+            cantidad =  cantidad + i.getRetailPrice().getAmount() * amount.getUnits();
+            moneda = i.getRetailPrice().getCurrency();
+        }
+
+        result.setAmount(cantidad);
+        result.setCurrency(moneda);
+
+        return result;
+
+
+    }
+	
 }

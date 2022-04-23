@@ -19,3 +19,5 @@ inventor.toolkit.form.label.description = Description
 inventor.toolkit.form.label.assemblyNotes = AssemblyNotes
 inventor.toolkit.form.label.link = Link
 inventor.toolkit.form.label.totalPrice = Total Price
+inventor.toolkit.form.button.components = Components
+inventor.toolkit.form.button.tools = Tools

@@ -33,5 +33,9 @@ public class Amount extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	protected Toolkit 				toolkit;
+	
+	@Valid
+	@ManyToOne(optional = false)
+	protected Item					item;
 
 }

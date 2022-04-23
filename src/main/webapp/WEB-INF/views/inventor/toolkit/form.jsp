@@ -23,4 +23,7 @@
 	<acme:input-url code="inventor.toolkit.form.label.link" path="link"/>
 	<acme:input-money code="inventor.toolkit.form.label.totalPrice" path="totalPrice"/>
 	
+	<acme:button code="inventor.toolkit.form.button.components" action="/inventor/item/list-components-toolkits?masterId=${id}"/>
+    <acme:button code="inventor.toolkit.form.button.tools" action="/inventor/item/list-tools-toolkits?masterId=${id}"/>
 </acme:form>
+
