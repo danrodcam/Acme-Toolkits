@@ -45,6 +45,13 @@ master.menu.inventor.toolkit.list.own = My Toolkits
 master.menu.inventor.patronage.list.own = My Patronages
 master.menu.patron.patronage.list.own = My Patronages
 
+# master.menu.patron ##########################################################
+
+master.menu.patron = Patron
+master.menu.patron.dashboard = Dashboard
+
+# master.menu.consumer ##########################################################
+
 
 
 # master.menu.user-account ####################################################
