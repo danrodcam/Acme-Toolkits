@@ -45,10 +45,6 @@ master.menu.inventor.patronage.list.own = My Patronages
 master.menu.patron.patronage.list.own = My Patronages
 
 
-# master.menu.any ##########################################################
-
-master.menu.any = Any
-master.menu.any.component.list.published = List Components
 
 # master.menu.user-account ####################################################
 
@@ -61,7 +57,9 @@ master.menu.systemConfiguration= System Configuration
 master.menu.any = Any
 master.menu.any.userAccount = Patrons & Inventors
 master.menu.chirp.list = Chirps
-master.menu.any = Any
 master.menu.announcement.list = Announcements
+master.menu.any.component.list.published = List Components
+master.menu.any.tool.list.published = List Tools
+master.menu.any.toolkit.list.published = List Toolkits
 
 
