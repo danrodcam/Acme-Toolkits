@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.toolkit;
+package acme.features.inventor.toolkit;
 
 import java.util.Collection;
 
@@ -23,18 +23,17 @@ import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.datatypes.Money;
-import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
-
+import acme.roles.Inventor;
 
 
 @Service
-public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> {
+public class InventorToolkitShowService implements AbstractShowService<Inventor, Toolkit> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyToolkitRepository repository;
+	protected InventorToolkitRepository repository;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -44,13 +43,16 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 		assert request != null;
 
 		boolean result;
-		final int toolkitId;
-		final Toolkit toolkit;
+		int toolkitId;
+		Toolkit toolkit;
+		int principalId;  
 		
+		principalId = request.getPrincipal().getAccountId();
 		toolkitId = request.getModel().getInteger("id");
 		toolkit = this.repository.findOneToolkitById(toolkitId);
-		result = !toolkit.getDraftMode();
-
+		result = toolkit.getInventor().getUserAccount().getId()==principalId; 
+		
+		
 		return result;
 	}
 
@@ -61,51 +63,46 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "link","totalPrice");
+		request.unbind(entity, model, "code", "title", "description","assemblyNotes", "link", "totalPrice");
 	}
 
 
 
 	@Override
 	public Toolkit findOne(final Request<Toolkit> request) {
-        assert request != null;
+		assert request != null;
+		
+		Toolkit result;
+		int id;
+		
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneToolkitById(id);
+		result.setTotalPrice(this.calcularPrecioTotal(request));
+		return result;
+	}
+	
+	private Money calcularPrecioTotal(final Request<Toolkit> request) {
+        int masterId;
+        masterId = request.getModel().getInteger("id");
+        Double cantidad = 0.;
+        String moneda = "";
 
-        Toolkit result;
-        int id;
+        final Money result = new Money();
 
-        id = request.getModel().getInteger("id");
-        result = this.repository.findOneToolkitById(id);
-        result.setTotalPrice(this.calcularPrecioTotal(request));
+        final Collection<Amount> amounts = this.repository.findItemsByToolkit(masterId);
+
+        for(final Amount amount:amounts) {
+            final Item i = amount.getItem();
+            cantidad =  cantidad + i.getRetailPrice().getAmount() * amount.getUnits();
+            moneda = i.getRetailPrice().getCurrency();
+        }
+
+        result.setAmount(cantidad);
+        result.setCurrency(moneda);
+
         return result;
+
+
     }
 	
-	
-	 private Money calcularPrecioTotal(final Request<Toolkit> request) {
-	        int masterId;
-	        masterId = request.getModel().getInteger("id");
-	        Double cantidad = 0.;
-	        String moneda = "";
-
-	        final Money result = new Money();
-
-	        final Collection<Amount> amounts = this.repository.findManyAmountByMasterId(masterId);
-
-	        for(final Amount amount:amounts) {
-	            final Item i = amount.getItem();
-	            cantidad =  cantidad + i.getRetailPrice().getAmount() * amount.getUnits();
-	            moneda = i.getRetailPrice().getCurrency();
-	        }
-
-	        result.setAmount(cantidad);
-	        result.setCurrency(moneda);
-
-	        return result;
-
-
-	    }
-
-
-
-	
-
 }

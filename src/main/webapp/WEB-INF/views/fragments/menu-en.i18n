@@ -41,6 +41,7 @@ master.menu.inventor = Inventor
 master.menu.patron = Patron
 master.menu.inventor.component.list.own = My Components
 master.menu.inventor.tool.list.own = My Tools
+master.menu.inventor.toolkit.list.own = My Toolkits
 master.menu.inventor.patronage.list.own = My Patronages
 master.menu.patron.patronage.list.own = My Patronages
 

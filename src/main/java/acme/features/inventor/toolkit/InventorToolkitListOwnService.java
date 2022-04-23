@@ -10,28 +10,26 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.toolkit;
+package acme.features.inventor.toolkit;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.roles.Any;
 import acme.framework.services.AbstractListService;
-
+import acme.roles.Inventor;
 
 
 @Service
-public class AnyToolkitListPublishedToolkitsService implements AbstractListService<Any, Toolkit> {
+public class InventorToolkitListOwnService implements AbstractListService<Inventor, Toolkit> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyToolkitRepository repository;
+	protected InventorToolkitRepository repository;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -50,7 +48,7 @@ public class AnyToolkitListPublishedToolkitsService implements AbstractListServi
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title","description");
+		request.unbind(entity, model, "code", "title", "description");
 	}
 
 
@@ -60,8 +58,10 @@ public class AnyToolkitListPublishedToolkitsService implements AbstractListServi
 		assert request != null;
 		
 		Collection<Toolkit> result;
-
-		result = this.repository.findManyPublishedToolkit();
+		int inventorId;
+		
+		inventorId = request.getPrincipal().getActiveRoleId();
+		result = this.repository.findManyToolkitsByInventorId(inventorId);
 		return result;
 	}
 
