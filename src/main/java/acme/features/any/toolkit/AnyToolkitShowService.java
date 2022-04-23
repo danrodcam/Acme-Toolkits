@@ -12,12 +12,17 @@
 
 package acme.features.any.toolkit;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.Amount;
+import acme.entities.item.Item;
 import acme.entities.tookit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
 
@@ -63,15 +68,43 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 
 	@Override
 	public Toolkit findOne(final Request<Toolkit> request) {
-		assert request != null;
-		
-		Toolkit result;
-		int id;
-		
-		id = request.getModel().getInteger("id");
-		result = this.repository.findOneToolkitById(id);
-		return result;
-	}
+        assert request != null;
+
+        Toolkit result;
+        int id;
+
+        id = request.getModel().getInteger("id");
+        result = this.repository.findOneToolkitById(id);
+        result.setTotalPrice(this.calcularPrecioTotal(request));
+        return result;
+    }
+	
+	
+	 private Money calcularPrecioTotal(final Request<Toolkit> request) {
+	        int masterId;
+	        masterId = request.getModel().getInteger("id");
+	        Double cantidad = 0.;
+	        String moneda = "";
+
+	        final Money result = new Money();
+
+	        final Collection<Amount> amounts = this.repository.findManyAmountByMasterId(masterId);
+
+	        for(final Amount amount:amounts) {
+	            final Item i = amount.getItem();
+	            cantidad =  cantidad + i.getRetailPrice().getAmount() * amount.getUnits();
+	            moneda = i.getRetailPrice().getCurrency();
+	        }
+
+	        result.setAmount(cantidad);
+	        result.setCurrency(moneda);
+
+	        return result;
+
+
+	    }
+
+
 
 	
 

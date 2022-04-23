@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.item.Amount;
 import acme.entities.tookit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
 
@@ -28,5 +29,8 @@ public interface AnyToolkitRepository extends AbstractRepository {
 	
 	@Query("select toolkit from Toolkit toolkit where toolkit.draftMode = false")
 	Collection<Toolkit> findManyPublishedToolkit();
+	
+	@Query("select amount from Amount amount where amount.toolkit.id = :masterId")
+	Collection<Amount> findManyAmountByMasterId(int masterId);
 
 }
