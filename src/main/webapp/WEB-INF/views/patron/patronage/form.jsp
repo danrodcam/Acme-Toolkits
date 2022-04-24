@@ -24,7 +24,10 @@
 	<acme:input-url code="patron.patronage.form.label.optionalLink" path="optionalLink"/>
 	<acme:input-moment code="patron.patronage.form.label.initialDate" path="initialDate"/>
 	<acme:input-moment code="patron.patronage.form.label.finalDate" path="finalDate"/>
-	<acme:input-textbox code="patron.patronage.patron.form.label.company" path="patron.company"/>
-	<acme:input-textbox code="patron.patronage.patron.form.label.statement" path="patron.statement"/>
-	<acme:input-url code="patron.patronage.patron.form.label.optionalLink" path="patron.optionalLink"/>
+	<acme:input-textbox code="patron.patronage.patron.form.label.name" path="inventor.userAccount.identity.name"/>
+	<acme:input-textbox code="patron.patronage.patron.form.label.surname" path="inventor.userAccount.identity.surname"/>
+	<acme:input-textbox code="patron.patronage.patron.form.label.username" path="inventor.userAccount.username"/>
+	<acme:input-textbox code="patron.patronage.patron.form.label.company" path="inventor.company"/>
+	<acme:input-textbox code="patron.patronage.patron.form.label.statement" path="inventor.statement"/>
+	<acme:input-url code="patron.patronage.patron.form.label.optionalLink" path="inventor.optionalLink"/>
 </acme:form>
