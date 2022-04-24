@@ -1,4 +1,4 @@
-# i18n-es.i18n
+# i18n-en.i18n
 #
 # Copyright (C) 2012-2022 Rafael Corchuelo.
 #
@@ -8,11 +8,10 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.consumer.consumer.form.title.create = Hazte trabajador
-authenticated.consumer.consumer.form.title.update = Actualiza tus datos de trabajador
+inventor.patronage-report.list.label.creationMoment = Momento de creación
+inventor.patronage-report.list.label.link = Enlace
 
-authenticated.consumer.consumer.form.label.compañía = Compañía
-authenticated.consumer.consumer.form.label.sector = Sector
-
-authenticated.consumer.consumer.form.button.create = Registrar
-authenticated.consumer.consumer.form.button.update = Actualizar
+inventor.patronage-report.form.label.creationMoment = Momento de creación:
+inventor.patronage-report.form.label.automaticSequenceNumber = Número de secuencia automático:
+inventor.patronage-report.form.label.memorandum = Memorándum:
+inventor.patronage-report.form.label.link = Enlace:

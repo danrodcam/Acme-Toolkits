@@ -10,37 +10,35 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.provider;
+package acme.features.inventor.patronagereport;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import acme.entities.patronageReport.PatronageReport;
 import acme.framework.controllers.AbstractController;
-import acme.framework.roles.Authenticated;
-import acme.roles.Patron;
+import acme.roles.Inventor;
 
 @Controller
-@RequestMapping("/authenticated/provider/")
-public class AuthenticatedProviderController extends AbstractController<Authenticated, Patron> {
+public class InventorPatronageReportController extends AbstractController<Inventor, PatronageReport> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuthenticatedProviderCreateService	createService;
+	protected InventorPatronageReportListOwnPatronageService	listOwnPatronageReportService;
 
 	@Autowired
-	protected AuthenticatedProviderUpdateService	updateService;
+	protected InventorPatronageReportShowService 				showService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("create", this.createService);
-		super.addCommand("update", this.updateService);
+		super.addCommand("list-own-patronage-report", "list", this.listOwnPatronageReportService);
+		super.addCommand("show", this.showService);
 	}
 
 }

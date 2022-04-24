@@ -1,9 +1,11 @@
 package acme.entities.patronageReport;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -28,12 +30,13 @@ public class PatronageReport extends AbstractEntity {
 	
 	// Attributes -------------------------------------------------------------
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	@NotNull
 	protected Date 					creationMoment;
 	
 	@NotBlank
-	protected Integer 				automaticSequenceNumber;
+	protected String 				automaticSequenceNumber;
 	
 	
 	@NotBlank

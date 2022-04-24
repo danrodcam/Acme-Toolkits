@@ -15,10 +15,9 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
-<acme:form>
-	<acme:input-textbox code="authenticated.consumer.consumer.form.label.company" path="company"/>
-	<acme:input-textbox code="authenticated.consumer.consumer.form.label.sector" path="sector"/>
-	
-	<acme:submit test="${command == 'create'}" code="authenticated.consumer.consumer.form.button.create" action="/authenticated/consumer/create"/>
-	<acme:submit test="${command == 'update'}" code="authenticated.consumer.consumer.form.button.update" action="/authenticated/consumer/update"/>
+<acme:form> 
+	<acme:input-textbox code="inventor.patronage-report.form.label.creationMoment" path="creationMoment"/>
+	<acme:input-textbox code="inventor.patronage-report.form.label.automaticSequenceNumber" path="automaticSequenceNumber"/>
+	<acme:input-textbox code="inventor.patronage-report.form.label.memorandum" path="link"/>
+	<acme:input-double code="inventor.patronage-report.form.label.link" path="link"/>
 </acme:form>

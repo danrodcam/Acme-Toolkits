@@ -1,5 +1,5 @@
 <%--
-- form.jsp
+- list.jsp
 -
 - Copyright (C) 2012-2022 Rafael Corchuelo.
 -
@@ -15,10 +15,7 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
-<acme:form>
-	<acme:input-textbox code="authenticated.provider.form.label.company" path="company"/>
-	<acme:input-textbox code="authenticated.provider.form.label.sector" path="sector"/>
-	
-	<acme:submit test="${command == 'create'}" code="authenticated.provider.form.button.create" action="/authenticated/provider/create"/>
-	<acme:submit test="${command == 'update'}" code="authenticated.provider.form.button.update" action="/authenticated/provider/update"/>
-</acme:form>
+<acme:list>
+	<acme:list-column code="inventor.patronage-report.list.label.creationMoment" path="creationMoment" width="50%"/>
+	<acme:list-column code="inventor.patronage-report.list.label.link" path="link" width="50%"/>
+</acme:list>
