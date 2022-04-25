@@ -29,7 +29,7 @@ public class AnyChirpListAllTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/chirp/list-all.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(10)
+	@Order(3)
 	public void positiveTest(final int recordIndex, final String creationmoment, final String title, final String author, final String body, final String email) {
 		
 		

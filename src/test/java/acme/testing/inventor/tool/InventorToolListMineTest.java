@@ -26,7 +26,7 @@ public class InventorToolListMineTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/tool/list-mine.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(10)
+	@Order(5)
 	public void positiveTest(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice,
 			final String link, final String type) {
 		super.signIn("inventor1", "inventor1");

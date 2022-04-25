@@ -2,16 +2,16 @@ package acme.testing.patron.patronage;
 
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+
 import acme.testing.TestHarness;
 
 public class PatronPatronageListOwnTest extends TestHarness{
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/patron/patronage/list-own.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(17)
+	@Order(7)
 	public void positiveTest(final int recordIndex,final String status, final String legalStuff, final String code, final String budget, final String creationMoment,
 			final String optionalLink, final String initialDate, final String finalDate, final String inventorName, final String inventorSurname,
 			final String inventorUsername, final String inventorCompany, final String inventorStatement, final String inventorLink) {

@@ -11,7 +11,7 @@ public class InventorToolkitListOwnTest extends TestHarness{
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/toolkit/list-own.csv", encoding = "utf-8", numLinesToSkip = 1 )
-	@Order(10)
+	@Order(6)
 	public void positiveCase(final int recordIndex, final String code, final String title, final String description, final String assemblyNotes, final String link, final String totalPrice, final String firstToolCode, final String firstComponentCode) {
 		
 		super.signIn("inventor1", "inventor1");

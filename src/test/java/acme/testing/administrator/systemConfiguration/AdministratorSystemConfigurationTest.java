@@ -14,7 +14,7 @@ public class AdministratorSystemConfigurationTest extends TestHarness {
 
 		@ParameterizedTest
 		@CsvFileSource(resources = "/administrator/systemConfiguration/list-all.csv", encoding = "utf-8", numLinesToSkip = 1)
-		@Order(10)
+		@Order(2)
 		public void positiveTest(final int recordIndex, final String systemCurrency, final String acceptedCurrency, final String strongSpamTerms, final String weakSpamTerms,
 			final String strongSpamThreshold, final String weakSpamThreshold) {
 			
