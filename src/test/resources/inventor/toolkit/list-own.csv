@@ -1,0 +1,5 @@
+recordIndex,code,title,description,assembly-notes,link,totalPrice,firstToolCode,firsComponentCode
+0,AAA-000,Title 1,Description 1,AssemblyNotes 1,http://www.toolkit1.com,EUR 5.00,AAB-001,AAB-000
+1,AAA-001,Title 2,Description 2,AssemblyNotes 2,http://www.toolkit2.com,EUR 9.00,null,AAB-002 
+2,AAA-005,Title 6,Description 6,AssemblyNotes 6,http://www.toolkit6.com,USD 3.00,null,AAB-008
+3,AAA-014,Title 15,Description 15,AssemblyNotes 15,http://www.toolkit15.com, EUR 26.00,AAB-019,AAB-017

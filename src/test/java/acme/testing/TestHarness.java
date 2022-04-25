@@ -31,7 +31,7 @@ public abstract class TestHarness extends AbstractTest {
 		super.fillInputBoxIn("remember", "true");
 		super.clickOnSubmit("Sign in");
 		super.checkCurrentPath("/master/welcome");
-		super.checkLinkExists("Account");
+		super.checkLinkExists("Authenticated");
 	}
 
 	protected void signOut() {
