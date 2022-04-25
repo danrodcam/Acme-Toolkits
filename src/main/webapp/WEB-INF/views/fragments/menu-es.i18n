@@ -8,47 +8,65 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-﻿# master.menu #################################################################
+# master.menu #################################################################
 
 master.menu.home = Inicio
 master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
 
-# master.menu.anonymous #######################################################
-
-master.menu.anonymous = Anónimo
-master.menu.anonymous.danrodcam = 77859056P: Rodriguez Camacho, Daniel
-master.menu.anonymous.antrosbar = 48981751P: Rosado Barrera, Antonio
-master.menu.anonymous.alvrodgar = 28848332F: Rodriguez Garcia, Alvaro
-master.menu.anonymous.ferandgal = 77394824P: Andrés Galindo, Fernando
-master.menu.anonymous.framurpri = 20542018M: Murillo Prior, Francisco
-master.menu.anonymous.josruiper = 20502265L: Ruiz Pérez, José Manuel
-
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
 master.menu.administrator.dashboard = Panel de indicadores
+master.menu.administrator.system-configuration = Configuración del Sistema
 master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
 
-# master.menu.provider ########################################################
+# master.menu.inventor ########################################################
 
-master.menu.provider = Proveedor
-master.menu.provider.favourite-link = Enlace favorito
+master.menu.inventor = Inventor
+master.menu.patron = Patron
+master.menu.inventor.component.list.own = Mis Componentes
+master.menu.inventor.patronage-report.list.own = Mis informes de patrocinio
+
+# master.menu.patron ##########################################################
+
+master.menu.patron = Patron
+master.menu.patron.dashboard = Panel de indicadores
+master.menu.patron.patronage.list.own = Mis patrocinios
+master.menu.patron.patronage-report.list.own = Mis informes de patrocinio
 
 # master.menu.consumer ##########################################################
 
-master.menu.consumer = Consumidor
-master.menu.consumer.favourite-link = Enlace favorito
+master.menu.inventor.toolkit.list.own = Mis Kits de Herramientas
+master.menu.patron.patronage.list.own = Mis patrocinios
+
+master.menu.inventor.patronage.list.own = Mis patrocinios
+
+master.menu.any.patron = Patrones
+master.menu.any.inventor = Inventores
+master.menu.inventor.tool.list.own = Mis Herramientas
+
+
+
 
 # master.menu.user-account ####################################################
 
-master.menu.user-account = Cuenta
-master.menu.user-account.general-data = Datos generales
-master.menu.user-account.provider = Datos de proveedor
-master.menu.user-account.become-provider = Hazte proveedor
-master.menu.user-account.consumer = Datos de consumidor
-master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.authenticated = Autentificado
+master.menu.systemConfiguration= Configuracion Sistema
+
+
+# master.menu.any ####################################################
+
+master.menu.any = Cualquiera
+master.menu.any.userAccount = Patrones e Inventores
+master.menu.chirp.list = Chirps
+master.menu.any.component.list.published = Lista de Componentes
+master.menu.any.tool.list.published = Lista de Herramientas
+master.menu.any.toolkit.list.published = Lista de Cajas de Herramientas
+master.menu.announcement.list = Anuncios
+
+

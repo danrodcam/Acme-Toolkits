@@ -1,11 +1,11 @@
-key,company,statement,optional-link,patronage,key:user-account
+key,company,statement,optional-link,key:user-account
 inventor-01,Company 1,Statement 1,null,user-account-inventor-01
 inventor-02,Company 2,Statement 2,http://www.inventor2.com,user-account-inventor-02
 inventor-03,Company 3,Statement 3,http://www.inventor3.com,user-account-inventor-03
 inventor-04,Company 4,Statement 4,null,user-account-inventor-04
 inventor-05,Company 5,Statement 5,http://www.inventor5.com,user-account-inventor-05
 inventor-06,Company 6,Statement 6,http://www.inventor6.com,user-account-inventor-06
-inventor-07,Company 7,Statement 7,null,user-account-inventor-07
+inventor-07,Company 7,Statement 7,http://www.inventor7.com,user-account-inventor-07
 inventor-08,Company 8,Statement 8,http://www.inventor8.com,user-account-inventor-08
 inventor-09,Company 9,Statement 9,http://www.inventor9.com,user-account-inventor-09
 inventor-10,Company 10,Statement 10,null,user-account-inventor-10
