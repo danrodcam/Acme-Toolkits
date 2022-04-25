@@ -30,6 +30,7 @@ public class PatronageReport extends AbstractEntity {
 	
 	// Attributes -------------------------------------------------------------
 	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	@NotNull

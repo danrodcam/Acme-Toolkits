@@ -39,7 +39,9 @@
 			<acme:menu-suboption code="master.menu.inventor.component.list.own" action="/inventor/item/list-own-components"/>
 			<acme:menu-suboption code="master.menu.inventor.tool.list.own" action="/inventor/item/list-own-tools"/>
 			<acme:menu-suboption code="master.menu.inventor.toolkit.list.own" action="/inventor/toolkit/list-own"/>
-			<acme:menu-suboption code="master.menu.inventor.patronage.list.own" action="/inventor/patronage/list-own-patronage"/>			
+			<acme:menu-suboption code="master.menu.inventor.patronage.list.own" action="/inventor/patronage/list-own-patronage"/>		
+      <acme:menu-suboption code="master.menu.inventor.patronage-report.list.own" action="/inventor/patronage-report/list-own-patronage-report"/>
+
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
@@ -47,6 +49,7 @@
 			<acme:menu-suboption code="master.menu.patron.dashboard" action="/patron/dashboard/show"/>			
 		</acme:menu-option>
 		
+
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>	
@@ -61,6 +64,7 @@
       		
 		</acme:menu-option>
 		
+
 
 	</acme:menu-left>
 
