@@ -1,0 +1,7 @@
+recordIndex,name,code,technology,description,retailPrice,link,type,published,key:inventor
+0,Item 14,AAB-013,Technology 14, Description 14,GBP 2.00,http://www.item14.com,TOOL,true,inventor-08
+1,Item 2,AAB-001,Technology 2,Description 2,EUR 2.00,http://www.item2.com,TOOL,true,inventor-01
+2,Item 20,AAB-019,Technology 20,Description 20,EUR 2.00,http://www.item20.com,TOOL,true,inventor-10
+3,Item 5,AAB-004,Technology 5,Description 5,GBP 2.00,http://www.item5.com,TOOL,true,inventor-03
+4,Item 8,AAB-007,Technology 8,Description 8,EUR 2.00,"",TOOL,true,inventor-04
+
