@@ -30,28 +30,28 @@ public class Toolkit extends AbstractEntity{
 
 	@Column(unique=true)
 	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
-	protected String 				code;
+	protected String 				 code;
 	
 	@NotBlank
 	@Length(max=100)
-	protected String 				title;
+	protected String 				 title;
 	
 	@NotBlank
 	@Length(max=255)
-	protected String 				description;
+	protected String 				 description;
 	
 	@NotBlank
 	@Length(max=255)
-	protected String 				assemblyNotes;
+	protected String 				 assemblyNotes;
 	
 	@URL
-	protected String 				link;
+	protected String 				 link;
 	
 	
-	protected Money					totalPrice;
+	protected Money					 totalPrice;
 	
 	
-	protected Boolean				draftMode;	
+	protected Boolean				 draftMode;	
 	
 	// Derived attributes -----------------------------------------------------
 

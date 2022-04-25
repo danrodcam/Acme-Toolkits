@@ -22,9 +22,12 @@ patron.patronage.form.label.creationMoment = Creation Moment:
 patron.patronage.form.label.optionalLink = Optional Link:
 patron.patronage.form.label.initialDate = initial Date:
 patron.patronage.form.label.finalDate = Final Date:
-		
-patron.patronage.patron.form.label.company = Company:
-patron.patronage.patron.form.label.statement = Statement:
-patron.patronage.patron.form.label.optionalLink = OptionalLink:
+
+patron.patronage.patron.form.label.name = Inventor's name:
+patron.patronage.patron.form.label.surname = Inventor's surname:
+patron.patronage.patron.form.label.username	= Inventor's username:	
+patron.patronage.patron.form.label.company = Inventor's Company:
+patron.patronage.patron.form.label.statement = Inventor's Statement:
+patron.patronage.patron.form.label.optionalLink = Inventor's OptionalLink:
 
 patron.patronage.form.button.patron = Patron
