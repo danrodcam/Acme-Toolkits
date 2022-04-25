@@ -30,12 +30,14 @@ master.menu.administrator.shut-down = Parar el sistema
 master.menu.inventor = Inventor
 master.menu.patron = Patron
 master.menu.inventor.component.list.own = Mis Componentes
-master.menu.inventor.patronage-report.list.own = Listar informes de patrocinio propios
+master.menu.inventor.patronage-report.list.own = Mis informes de patrocinio
 
 # master.menu.patron ##########################################################
 
 master.menu.patron = Patron
 master.menu.patron.dashboard = Panel de indicadores
+master.menu.patron.patronage.list.own = Mis patrocinios
+master.menu.patron.patronage-report.list.own = Mis informes de patrocinio
 
 # master.menu.consumer ##########################################################
 
