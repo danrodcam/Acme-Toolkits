@@ -20,7 +20,6 @@ import org.springframework.stereotype.Controller;
 import acme.entities.announcements.Announcement;
 import acme.framework.controllers.AbstractController;
 import acme.framework.roles.Authenticated;
-import acme.framework.services.AbstractService;
 
 @Controller
 public class AuthenticatedAnnouncementController extends AbstractController<Authenticated, Announcement> {

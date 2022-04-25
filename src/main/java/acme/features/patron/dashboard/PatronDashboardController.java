@@ -19,7 +19,6 @@ import org.springframework.stereotype.Controller;
 
 import acme.forms.Dashboard;
 import acme.framework.controllers.AbstractController;
-import acme.framework.roles.Administrator;
 import acme.roles.Patron;
 
 @Controller
