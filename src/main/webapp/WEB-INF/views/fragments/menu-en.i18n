@@ -34,12 +34,13 @@ master.menu.inventor.tool.list.own = My Tools
 master.menu.inventor.toolkit.list.own = My Toolkits
 master.menu.inventor.patronage.list.own = My Patronages
 master.menu.patron.patronage.list.own = My Patronages
-master.menu.inventor.patronage-report.list.own = List own patronage reports
+master.menu.inventor.patronage-report.list.own = My Patronage Reports
 
 # master.menu.patron ##########################################################
 
 master.menu.patron = Patron
 master.menu.patron.dashboard = Dashboard
+master.menu.patron.patronage-report.list.own = My Patronage Reports
 
 # master.menu.consumer ##########################################################
 
