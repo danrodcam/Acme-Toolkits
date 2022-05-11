@@ -9,6 +9,7 @@
 # they accept any liabilities with respect to them.
 
 
+inventor.toolkit.list.button.create = Create
 inventor.toolkit.list.label.code = Code
 inventor.toolkit.list.label.title = Title
 inventor.toolkit.list.label.description = Description
@@ -21,3 +22,10 @@ inventor.toolkit.form.label.link = Link
 inventor.toolkit.form.label.totalPrice = Total Price
 inventor.toolkit.form.button.components = Components
 inventor.toolkit.form.button.tools = Tools
+inventor.toolkit.form.button.update = Update
+inventor.toolkit.form.button.delete = Delete
+inventor.toolkit.form.button.publish = Publish
+inventor.toolkit.form.button.create = Create
+
+inventor.toolkit.form.error.code.regexp = Code must match the pattern '^[A-Z]{3}-[0-9]{3}(-[A-Z])?$'
+inventor.toolkit.form.error.code.unique = Code already exists
