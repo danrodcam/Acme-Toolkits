@@ -31,3 +31,5 @@ inventor.patronage.patron.form.label.statement = Statement:
 inventor.patronage.patron.form.label.optionalLink = Link:
 
 inventor.patronage.form.button.patron = Patron
+
+inventor.patronage.report.form.button.create = Create Report
