@@ -13,6 +13,7 @@
 package acme.features.inventor.patronagereport;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,8 +82,9 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-		
+		boolean confirmation;
+		confirmation = request.getModel().getBoolean("confirmation");
+		errors.state(request, confirmation, "confirmation", "inventor.patronage-report.form.error.confirmation");
 	}
 
 	@Override
@@ -104,8 +106,13 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 	}
 	
 	private String createAutomaticSequenceNumber(final Patronage patronage){
-		final String firstPart = "〈" + patronage.getCode() + "〉";
-		final String secondPart = "〈"+"0001"+"〉";
+		final String firstPart =  patronage.getCode();
+		String secondPart = "0001";
+		final List<PatronageReport> existingReports = this.repository.findManyPatronageReportByPatronageId(patronage.getId());
+		if (!existingReports.isEmpty()) {
+			final String[] lastSequence = existingReports.get(existingReports.size()-1).getAutomaticSequenceNumber().split(":");
+			secondPart = String.format("%04d", Integer.valueOf(lastSequence[1]) + 1);
+		}
 		
 		return firstPart + ":" + secondPart;
 	}

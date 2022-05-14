@@ -1,6 +1,7 @@
 package acme.features.inventor.patronagereport;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,5 +21,10 @@ public interface InventorPatronageReportRepository extends AbstractRepository {
 	
 	@Query("select patronage from Patronage patronage where patronage.id = :id")
 	Patronage findOnePatronageById(int id);
+	
+	@Query("select report from PatronageReport report where report.patronage.id = :patronageId order by report.automaticSequenceNumber")
+	List<PatronageReport> findManyPatronageReportByPatronageId(int patronageId);
+	
+	
 
 }
