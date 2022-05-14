@@ -10,37 +10,34 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.toolkit;
+package acme.features.any.itemToolkitSearch;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.toolkit.Toolkit;
+import acme.forms.ItemToolkitSearch;
 import acme.framework.controllers.AbstractController;
 import acme.framework.roles.Any;
 
 @Controller
-public class AnyToolkitController extends AbstractController<Any, Toolkit> {
+public class AnyItemToolkitSearchController extends AbstractController<Any, ItemToolkitSearch> {
 
 	// Internal state ---------------------------------------------------------
 
+	
+	
 	@Autowired
-	protected AnyToolkitListPublishedToolkitsService	listPublishedToolkitsService;
+	protected AnyItemToolkitSearchPerformService	searchService;
 
-	@Autowired
-	protected AnyToolkitShowService	showService;
-	
-	
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("list-published-toolkits", "list" ,this.listPublishedToolkitsService);
-		super.addCommand("show", this.showService);
-		
+
+		super.addCommand("perform", this.searchService);
 	}
 
 }
