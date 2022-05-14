@@ -24,6 +24,9 @@ inventor.patronage.form.label.optionalLink = Link:
 inventor.patronage.form.label.initialDate = Fecha Inicio:
 inventor.patronage.form.label.finalDate = Fecha fin:
 
+inventor.patronage.form.label.new-status = Cambiar estado a:
+inventor.patronage.form.button.update = Actualizar
+
 inventor.patronage.patron.form.label.name = Nombre del Patrón:
 inventor.patronage.patron.form.label.surname = Apellido del Patrón:
 inventor.patronage.patron.form.label.username = Usuario:
