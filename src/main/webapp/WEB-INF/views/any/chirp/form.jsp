@@ -21,4 +21,8 @@
 	<acme:input-textarea code="any.chirp.form.label.body" path="body"/>
 	<acme:input-email code="any.chirp.form.label.email" path="email"/>	
 	
+	<acme:input-checkbox code="any.chirp.form.label.confirm" path="confirm"/>
+	
+	<acme:submit code="any.chirp.form.button.create" action="/any/chirp/create"/>
+	
 </acme:form>

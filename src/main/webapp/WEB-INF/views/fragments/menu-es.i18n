@@ -63,7 +63,7 @@ master.menu.systemConfiguration= Configuracion Sistema
 
 master.menu.any = Cualquiera
 master.menu.any.userAccount = Patrones e Inventores
-master.menu.chirp.list = Chirps
+master.menu.any.chirp.list = Chirps
 master.menu.any.component.list.published = Lista de Componentes
 master.menu.any.tool.list.published = Lista de Herramientas
 master.menu.any.toolkit.list.published = Lista de Cajas de Herramientas

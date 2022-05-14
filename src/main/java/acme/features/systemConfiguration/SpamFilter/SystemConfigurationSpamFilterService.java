@@ -15,10 +15,6 @@ public class SystemConfigurationSpamFilterService {
 	@Autowired
 	protected SystemConfigurationSpamFilterRepository repository;
 	
-	private SystemConfigurationSpamFilterService(final SystemConfigurationSpamFilterRepository repository) {
-		this.repository = repository;
-	}
-	
 	private void initFilter() {
 		
 		final List<SystemConfiguration> Configurations = new ArrayList<>(this.repository.findAllConfigurations());
