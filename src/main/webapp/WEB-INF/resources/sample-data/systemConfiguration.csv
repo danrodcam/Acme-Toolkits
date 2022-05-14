@@ -1,2 +1,2 @@
 key,systemCurrency,acceptedCurrency,strongSpamTerms,weakSpamTerms,strongSpamThreshold,weakSpamThreshold
-system-configuration-001,"EUR","EUR USD GBP","sex  hard core  viagra  cialis  sexo",sexy  nigeria  you ve won  one million  has ganado  un millon,0.1,0.1  
+system-configuration-001,"EUR","EUR;USD;GBP","sex;hard core;viagra;cialis;sexo","sexy;nigeria;you've won;one million;has ganado;un millon",0.1,0.25  
