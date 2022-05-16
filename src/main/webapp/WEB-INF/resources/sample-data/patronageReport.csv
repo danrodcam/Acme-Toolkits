@@ -2,7 +2,7 @@ key,creation-moment,automaticSequenceNumber,memorandum,link,key:patronage
 patronage-report-01,2014/12/12 23:00,AAA-000:0001,Memorandum 1,http://www.patronageReport1.com,patronage-01
 patronage-report-02,2013/11/12 07:00,AAA-000:0002,Memorandum 2,http://www.patronageReport2.com,patronage-01
 patronage-report-03,2012/10/12 11:00,AAA-001:0001,Memorandum 3,http://www.patronageReport3.com,patronage-02
-patronage-report-04,2011/09/12 20:00,AAB-002:0001,Memorandum 4,http://www.patronageReport4.com,patronage-03
+patronage-report-04,2011/09/12 20:00,AAA-002:0001,Memorandum 4,http://www.patronageReport4.com,patronage-03
 patronage-report-05,2010/08/12 22:00,AAA-003:0001,Memorandum 5,http://www.patronageReport5.com,patronage-04
 patronage-report-06,2006/07/12 04:00,AAA-004:0001,Memorandum 6,http://www.patronageReport6.com,patronage-05
 patronage-report-07,2007/06/12 15:00,AAA-005:0001,Memorandum 7,http://www.patronageReport7.com,patronage-06
