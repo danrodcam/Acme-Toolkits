@@ -32,7 +32,7 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	Collection<Toolkit> findManyToolkitsByInventorId(int inventorId);
 	
 	@Query("select amount from Amount amount where amount.toolkit.id = :masterId")
-    Collection<Amount> findItemsByToolkit(int masterId);
+    Collection<Amount> findAmountsByToolkit(int masterId);
 	
 	@Query("select tk from Toolkit tk where tk.code = :code")
 	Toolkit findOneToolkitByCode(String code);

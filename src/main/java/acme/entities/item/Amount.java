@@ -22,7 +22,7 @@ public class Amount extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	
-	protected int				units;
+	protected Integer				units;
 	
 	
 	// Derived attributes -----------------------------------------------------

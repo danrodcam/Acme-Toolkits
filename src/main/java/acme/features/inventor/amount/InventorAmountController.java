@@ -10,39 +10,37 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.item;
+package acme.features.inventor.amount;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.item.Item;
+import acme.entities.item.Amount;
 import acme.framework.controllers.AbstractController;
-import acme.framework.roles.Any;
+import acme.roles.Inventor;
 
 @Controller
-public class AnyItemController extends AbstractController<Any, Item> {
+public class InventorAmountController extends AbstractController<Inventor, Amount> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyItemListPublishedComponentsService	listPublishedComponentsService;
-	
+	protected InventorAmountComponentCreateService	createComponentService;
+
 	@Autowired
-	protected AnyItemListPublishedToolsService	listPublishedToolsService;
+	protected InventorAmountToolCreateService	createToolService;
 	
-	@Autowired
-	protected AnyItemShowService	showService;
+	
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("list-published-components", "list" ,this.listPublishedComponentsService);
-		super.addCommand("list-published-tools", "list" ,this.listPublishedToolsService);
-		super.addCommand("show", this.showService);
+		super.addCommand("create-component","create", this.createComponentService);
+		super.addCommand("create-tool","create", this.createToolService);
 	}
 
 }

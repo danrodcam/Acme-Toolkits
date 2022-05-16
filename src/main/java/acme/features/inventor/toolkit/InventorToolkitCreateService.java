@@ -12,6 +12,8 @@
 
 package acme.features.inventor.toolkit;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +39,12 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
-
+		
+		
 		return true;
+		
+
+		
 	}
 
 	@Override
@@ -52,6 +58,13 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		result = new Toolkit();
 		result.setDraftMode(true);
 		result.setInventor(inventor);
+		String code = this.generateCode();
+		Toolkit existing = this.repository.findOneToolkitByCode(code);
+		while(existing != null) {
+			code = this.generateCode();
+			existing = this.repository.findOneToolkitByCode(code);
+		}
+		result.setCode(code);
 
 		return result;
 	}
@@ -62,7 +75,8 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code", "title", "description","assemblyNotes", "link", "totalPrice");
+		request.bind(entity, errors, "code","title", "description","assemblyNotes", "link", "totalPrice");
+		
 	}
 
 	@Override
@@ -105,4 +119,28 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		this.repository.save(entity);
 	}
 
+	
+	private String generateCode() {
+		String result;
+		String part1 = "";
+		String part2 = "";
+		String part3 = "";
+		final Random r = new Random();
+		for (int i = 0; i < 3; i++) {
+			final char c = (char)(r.nextInt(26) + 'A');
+			part1 = part1 + c;
+	    } 
+		
+		for (int i = 0; i < 3; i++) {
+			final char c = (char)(r.nextInt(10) + '0');
+			part2 = part2 + c;
+	    } 
+		
+		if(r.nextBoolean()) {
+			final char c = (char)(r.nextInt(26) + 'A');
+			part3 = "-" + c;
+		}
+		result = part1 + "-" + part2 + part3;
+		return result;
+	}
 }

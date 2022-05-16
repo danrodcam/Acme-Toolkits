@@ -10,21 +10,27 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.item;
+package acme.features.inventor.amount;
 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.item.Amount;
 import acme.entities.item.Item;
+import acme.entities.toolkit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
+import acme.roles.Inventor;
 
 @Repository
-public interface AnyItemRepository extends AbstractRepository {
+public interface InventorAmountRepository extends AbstractRepository {
 
-	@Query("select item from Item item where item.id = :id")
-	Item findOneComponentById(int id);
+	@Query("select tk from Toolkit tk where tk.id = :id")
+	Toolkit findOneToolkitById(int id);
+	
+	@Query("select i from Item i where i.id = :id")
+	Item findItemById(int id);
 	
 	@Query("select item from Item item where item.type = acme.entities.item.ItemType.COMPONENT and item.published = true")
 	Collection<Item> findManyPublishedComponents();
@@ -32,10 +38,12 @@ public interface AnyItemRepository extends AbstractRepository {
 	@Query("select item from Item item where item.type = acme.entities.item.ItemType.TOOL and item.published = true")
 	Collection<Item> findManyPublishedTools();
 	
-	@Query("select amount.item from Amount amount where amount.toolkit.id = :masterId and amount.item.type = acme.entities.item.ItemType.TOOL and amount.item.published = true")
-	Collection<Item> findManyToolsByToolkit(int masterId);
+	@Query("select amount from Amount amount where amount.toolkit.id = :masterId")
+    Collection<Amount> findAmountsByToolkit(int masterId);
 	
-	@Query("select amount.item from Amount amount where amount.toolkit.id = :masterId and amount.item.type = acme.entities.item.ItemType.COMPONENT and amount.item.published = true")
-	Collection<Item> findManyComponentssByToolkit(int masterId);
-
+	
+	@Query("select i from Inventor i where i.id = :id")
+	Inventor findOneInventorById(int id);
+	
+	
 }
