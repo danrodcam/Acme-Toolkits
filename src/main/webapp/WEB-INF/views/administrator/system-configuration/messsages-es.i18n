@@ -15,3 +15,5 @@ administrator.system-configuration.form.label.strong-spam-terms = Términos grav
 administrator.system-configuration.form.label.weak-spam-terms = Términos débiles de spam
 administrator.system-configuration.form.label.strong-spam-threshold = Cota de spam grave
 administrator.system-configuration.form.label.weak-spam-threshold = Cota spam fuerte
+
+administrator.system-configuration.form.button.update = Actualizar

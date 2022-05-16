@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.administrrator.systemConfiguration;
+package acme.features.administrator.systemConfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ import acme.systemConfiguration.SystemConfiguration;
 
 
 @Service
-public class AdministrratorSystemConfigurationShowService implements AbstractShowService<Administrator, SystemConfiguration> {
+public class AdministratorSystemConfigurationShowService implements AbstractShowService<Administrator, SystemConfiguration> {
 
 	// Internal state ---------------------------------------------------------
 
