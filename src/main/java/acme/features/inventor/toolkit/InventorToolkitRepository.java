@@ -16,9 +16,11 @@ import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
 import acme.entities.item.Amount;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
+import acme.roles.Inventor;
 
 @Repository
 public interface InventorToolkitRepository extends AbstractRepository {
@@ -26,10 +28,19 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	@Query("select tk from Toolkit tk where tk.id = :id")
 	Toolkit findOneToolkitById(int id);
 	
-	@Query("select tk from Toolkit tk where tk.draftMode = false and tk.inventor.id = :inventorId")
+	@Query("select tk from Toolkit tk where tk.inventor.id = :inventorId")
 	Collection<Toolkit> findManyToolkitsByInventorId(int inventorId);
 	
 	@Query("select amount from Amount amount where amount.toolkit.id = :masterId")
-    Collection<Amount> findItemsByToolkit(int masterId);
+    Collection<Amount> findAmountsByToolkit(int masterId);
+	
+	@Query("select tk from Toolkit tk where tk.code = :code")
+	Toolkit findOneToolkitByCode(String code);
+	
+	@Query("select i from Inventor i where i.id = :id")
+	Inventor findOneInventorById(int id);
+	
+	@Query("select sum(a.item.retailPrice.amount*a.units) from Amount a where a.toolkit.id = :toolkitId")
+	Double computePriceByToolkitId(int toolkitId);
 
 }
