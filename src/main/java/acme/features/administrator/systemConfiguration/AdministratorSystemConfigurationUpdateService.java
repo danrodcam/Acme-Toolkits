@@ -15,6 +15,7 @@ public class AdministratorSystemConfigurationUpdateService implements AbstractUp
 
 	// Internal state ---------------------------------------------------------
 
+	
 	@Autowired
 	protected AdministratorSystemConfigurationRepository repository;
 
