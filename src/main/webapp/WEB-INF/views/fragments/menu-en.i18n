@@ -62,5 +62,6 @@ master.menu.announcement.list = Announcements
 master.menu.any.component.list.published = List Components
 master.menu.any.tool.list.published = List Tools
 master.menu.any.toolkit.list.published = List Toolkits
+master.menu.any.toolkit.list.published.item-toolkit-search = Search toolkits by tool or component
 
 
