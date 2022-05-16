@@ -19,19 +19,13 @@
 	<acme:input-textbox code="any.item-toolkit-search.form.label.search" path="search"/>
 	<acme:submit code="any.item-toolkit-search.form.button.perform" action="/any/item-toolkit-search/perform"/>
 	<br>
-	<strong>
+	<h3>
 	<acme:message code="any.item-toolkit-search.form.toolkits"/>
-	</strong>
+	</h3>
 	<br>
 	<jstl:forEach var="toolkit" items="${toolkits}">
-		<th scope="row">
-			<acme:message code="any.item-toolkit-search.form.toolkits.code"/>
-			<acme:print value="${toolkit.code}"/>
-			<acme:message code="any.item-toolkit-search.form.toolkits.title"/>
-			<acme:print value="${toolkit.title}"/>
-			
+			<acme:button code="${toolkit.code}:${toolkit.title}" action="/any/toolkit/show?id=${toolkit.id}"/>
 			<br>
-		</th>	
 	</jstl:forEach>
 		
 	
