@@ -58,6 +58,13 @@ master.menu.inventor.tool.list.own = Mis Herramientas
 master.menu.authenticated = Autentificado
 master.menu.systemConfiguration= Configuracion Sistema
 
+master.menu.user-account = Cuenta
+master.menu.user-account.general-data = Datos generales
+master.menu.user-account.patron = Datos de patrón
+master.menu.user-account.become-patron = Convertirse en patrón
+master.menu.user-account.inventor = Datos de inventor
+master.menu.user-account.become-inventor = Convertirse en inventor
+
 
 # master.menu.any ####################################################
 
