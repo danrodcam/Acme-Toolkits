@@ -81,8 +81,14 @@ public class InventorAmountToolCreateService implements AbstractCreateService<In
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-
+		
+		if (!errors.hasErrors("units")) {
+			errors.state(request, entity.getUnits() == 1, "units", "inventor.amount.form.error.tool.unique");		
+		}
+		if (!errors.hasErrors("item")) {
+	
+			errors.state(request, !this.repository.findManyToolsByToolkit(entity.getToolkit().getId()).contains(entity.getItem()), "item", "inventor.amount.form.error.tool.existing");		
+		}
 		
 	}
 
@@ -92,7 +98,7 @@ public class InventorAmountToolCreateService implements AbstractCreateService<In
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "units", "item");
+		request.unbind(entity, model, "units");
 		
 		model.setAttribute("publishedItems", this.repository.findManyPublishedTools());
 		

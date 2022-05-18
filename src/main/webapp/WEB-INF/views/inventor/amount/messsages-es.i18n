@@ -14,3 +14,6 @@ inventor.amount.form.label.component = Componente
 inventor.amount.form.label.tool = Herramienta
 
 inventor.amount.form.button.create = Añadir
+
+inventor.amount.form.error.tool.unique = Un kit de herramientas solo puede tener una instancia de la misma herramienta
+inventor.amount.form.error.tool.existing = Este kit de herramientas ya contiene esta herramienta

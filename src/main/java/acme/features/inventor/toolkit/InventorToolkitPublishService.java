@@ -87,6 +87,10 @@ public class InventorToolkitPublishService implements AbstractUpdateService<Inve
 			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
 			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.toolkit.form.error.code.regexp");
 		}
+		
+		
+		errors.state(request, !this.repository.findAmountsByToolkit(entity.getId()).isEmpty(), "*", "inventor.toolkit.form.error.empty");		
+		
 	}
 
 	@Override

@@ -41,9 +41,16 @@ public interface InventorAmountRepository extends AbstractRepository {
 	@Query("select amount from Amount amount where amount.toolkit.id = :masterId")
     Collection<Amount> findAmountsByToolkit(int masterId);
 	
+	@Query("select amount from Amount amount where amount.toolkit.id = :toolkitId and amount.item.id = :itemId")
+	Amount findAmountByToolkitAndItem(int toolkitId, int itemId);
 	
 	@Query("select i from Inventor i where i.id = :id")
 	Inventor findOneInventorById(int id);
 	
+	@Query("select amount.item from Amount amount where amount.toolkit.id = :masterId and amount.item.type = acme.entities.item.ItemType.TOOL and amount.item.published = true")
+	Collection<Item> findManyToolsByToolkit(int masterId);
+	
+	@Query("select amount.item from Amount amount where amount.toolkit.id = :masterId and amount.item.type = acme.entities.item.ItemType.COMPONENT and amount.item.published = true")
+	Collection<Item> findManyComponentsByToolkit(int masterId);
 	
 }
