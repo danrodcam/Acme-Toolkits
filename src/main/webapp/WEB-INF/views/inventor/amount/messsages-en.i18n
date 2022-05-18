@@ -15,3 +15,5 @@ inventor.amount.form.label.tool = Tool
 
 inventor.amount.form.button.create = Add
 
+inventor.amount.form.error.tool.unique = A toolkit can only have one instance of the same tool
+inventor.amount.form.error.tool.existing = This toolkit already contains this tool

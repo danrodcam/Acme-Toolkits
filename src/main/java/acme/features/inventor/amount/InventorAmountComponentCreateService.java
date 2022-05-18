@@ -81,6 +81,7 @@ public class InventorAmountComponentCreateService implements AbstractCreateServi
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
 
 
 		
@@ -92,7 +93,7 @@ public class InventorAmountComponentCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "units", "item");
+		request.unbind(entity, model, "units");
 		
 		model.setAttribute("publishedItems", this.repository.findManyPublishedComponents());
 		
@@ -106,8 +107,15 @@ public class InventorAmountComponentCreateService implements AbstractCreateServi
 	public void create(final Request<Amount> request, final Amount entity) {
 		assert request != null;
 		assert entity != null;
-
-		this.repository.save(entity);
+		Amount amount;
+		
+		if(this.repository.findManyComponentsByToolkit(entity.getToolkit().getId()).contains(entity.getItem())){
+			amount = this.repository.findAmountByToolkitAndItem(entity.getToolkit().getId(), entity.getItem().getId());
+			amount.setUnits(amount.getUnits() + entity.getUnits());
+		} else {
+			amount = entity;
+		}
+		this.repository.save(amount);
 	}
 
 	
