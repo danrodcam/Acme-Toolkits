@@ -16,12 +16,13 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.entities.UserAccount;
 import acme.framework.roles.Any;
 import acme.framework.roles.UserRole;
 import acme.framework.services.AbstractListService;
-import acme.framework.entities.UserAccount;
 
 @Service
 public class AnyUserAccountListService implements AbstractListService<Any, UserAccount> {
@@ -59,15 +60,22 @@ public class AnyUserAccountListService implements AbstractListService<Any, UserA
 
 		request.unbind(entity, model, "username", "identity.name", "identity.surname");
 		
-		final Collection<UserRole> roles;
-		
-		roles = entity.getRoles();
-		String r = "";
-		for (final UserRole role : roles) {
-			r = role.getAuthorityName();
-		}
+		StringBuilder buffer;
+		Collection<UserRole> roles;
 
-		model.setAttribute("roleList", r);
+		roles = entity.getRoles();
+		buffer = new StringBuilder();
+		int i = 0;
+		for (final UserRole role : roles) {
+			if(!role.getAuthorityName().equals("Authenticated")) {
+				buffer.append(role.getAuthorityName());
+				if(i!=roles.size()-2) {
+					buffer.append(" | ");
+				}
+				i= i+1;
+			}
+		}
+		model.setAttribute("roleList", buffer.toString());
 	}
 
 }
