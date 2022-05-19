@@ -39,11 +39,15 @@ public class AnyChirpCreateService implements AbstractCreateService<Any, Chirp> 
 		
 		Chirp result;
 		
+		Date moment;
+		
+		moment = new Date(System.currentTimeMillis() -1);
+		
 		result = new Chirp();
 		result.setTitle("");
 		result.setAuthor("");
 		result.setBody("");
-		result.setCreationMoment(new Date());
+		result.setCreationMoment(moment);
 		result.setEmail("");
 		
 		return result;
@@ -64,10 +68,15 @@ public class AnyChirpCreateService implements AbstractCreateService<Any, Chirp> 
 		assert entity != null;
 		assert errors != null;
 		
-		
-		errors.state(request, !this.spamFilterService.isSpam(entity.getTitle()), "title", "any.chirp.form.error.spam");
-		errors.state(request, !this.spamFilterService.isSpam(entity.getAuthor()), "author", "any.chirp.form.error.spam");
-		errors.state(request, !this.spamFilterService.isSpam(entity.getBody()), "body", "any.chirp.form.error.spam");
+		if (!errors.hasErrors("title")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getTitle()), "title", "any.chirp.form.error.spam");
+		}
+		if (!errors.hasErrors("author")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getAuthor()), "author", "any.chirp.form.error.spam");
+		}
+		if (!errors.hasErrors("body")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getBody()), "body", "any.chirp.form.error.spam");
+		}
 		
 		errors.state(request, request.getModel().getBoolean("confirm"), "confirm", "any.chirp.form.error.must-confirm");
 	}

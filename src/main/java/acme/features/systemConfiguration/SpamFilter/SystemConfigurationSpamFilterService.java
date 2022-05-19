@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.systemConfiguration.SystemConfiguration;
-import spam_filter.SpamFilter;
-
+import Filtro.SpamFilter;
 @Service
 public class SystemConfigurationSpamFilterService {
 
