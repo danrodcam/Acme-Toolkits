@@ -50,6 +50,13 @@ master.menu.patron.patronage-report.list.own = My Patronage Reports
 master.menu.authenticated = Authenticated
 master.menu.systemConfiguration= System Configuration
 
+master.menu.user-account = Account
+master.menu.user-account.general-data = General data
+master.menu.user-account.patron = Patron data
+master.menu.user-account.become-patron = Become an patron
+master.menu.user-account.inventor = Inventor data
+master.menu.user-account.become-inventor = Become an inventor
+
 
 # master.menu.any ####################################################
 
@@ -60,5 +67,6 @@ master.menu.announcement.list = Announcements
 master.menu.any.component.list.published = List Components
 master.menu.any.tool.list.published = List Tools
 master.menu.any.toolkit.list.published = List Toolkits
+master.menu.any.toolkit.list.published.item-toolkit-search = Search toolkits by tool or component
 
 

@@ -63,7 +63,7 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "description","assemblyNotes", "link", "totalPrice");
+		request.unbind(entity, model, "code", "title", "description","assemblyNotes", "link", "totalPrice", "draftMode");
 	}
 
 
@@ -89,7 +89,7 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 
         final Money result = new Money();
 
-        final Collection<Amount> amounts = this.repository.findItemsByToolkit(masterId);
+        final Collection<Amount> amounts = this.repository.findAmountsByToolkit(masterId);
 
         for(final Amount amount:amounts) {
             final Item i = amount.getItem();

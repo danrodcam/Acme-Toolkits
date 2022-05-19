@@ -31,7 +31,8 @@ public class AnyToolkitController extends AbstractController<Any, Toolkit> {
 
 	@Autowired
 	protected AnyToolkitShowService	showService;
-
+	
+	
 	// Constructors -----------------------------------------------------------
 
 
@@ -39,6 +40,7 @@ public class AnyToolkitController extends AbstractController<Any, Toolkit> {
 	protected void initialise() {
 		super.addCommand("list-published-toolkits", "list" ,this.listPublishedToolkitsService);
 		super.addCommand("show", this.showService);
+		
 	}
 
 }
