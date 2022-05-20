@@ -28,5 +28,15 @@ patron.patronage.patron.form.label.username	= Usuario:
 patron.patronage.patron.form.label.company = Empresa:
 patron.patronage.patron.form.label.statement = Declaración:
 patron.patronage.patron.form.label.optionalLink = Enlace:
+
+patron.patronage.form.button.update = Editar Mecenazgo
+patron.patronage.form.button.delete = Eliminar Mecenazgo
+patron.patronage.form.button.create = Nuevo Mecenazgo
 		
 patron.patronage.form.button.patron = Patron
+
+patron.patronage.form.error.date.creation= La fecha inicial debe ser un mes posterior a la de creación
+patron.patronage.form.error.date.duration = La fecha final debe ser un mes posterior a la inicial
+patron.patronage.form.error.code.unique = El código debe ser único
+
+patron.patronage.form.label.inventor = Inventor

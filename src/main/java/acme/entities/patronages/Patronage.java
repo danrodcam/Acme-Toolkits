@@ -65,6 +65,9 @@ public class Patronage extends AbstractEntity {
 	
 	@NotNull
 	protected Date  				finalDate;
+	
+	@NotNull
+	protected boolean				isPublished;
 
 	// Derived attributes -----------------------------------------------------
 	
