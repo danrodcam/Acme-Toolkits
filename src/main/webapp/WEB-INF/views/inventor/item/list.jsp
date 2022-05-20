@@ -24,3 +24,7 @@
 
 
 </acme:list>
+
+<jstl:if test="${command == 'list-own-components'}">
+	<acme:button code="inventor.item.form.button.create" action="/inventor/item/create"/>
+</jstl:if>
