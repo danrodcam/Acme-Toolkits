@@ -25,3 +25,12 @@ inventor.item.form.label.technology = Technology
 inventor.item.form.label.description = Description
 inventor.item.form.label.link = Link
 inventor.item.form.label.price = Price
+
+inventor.item.form.button.components = Components
+inventor.item.form.button.update = Update
+inventor.item.form.button.delete = Delete
+inventor.item.form.button.publish = Publish
+inventor.item.form.button.create = Create
+
+inventor.item.form.error.code.regexp = Code must match the pattern '^[A-Z]{3}-[0-9]{3}(-[A-Z])?$'
+inventor.item.form.error.code.unique = Code already exists
