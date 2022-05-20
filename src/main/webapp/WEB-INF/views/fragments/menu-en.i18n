@@ -42,8 +42,6 @@ master.menu.patron = Patron
 master.menu.patron.dashboard = Dashboard
 master.menu.patron.patronage-report.list.own = My Patronage Reports
 
-# master.menu.consumer ##########################################################
-
 
 
 
@@ -64,7 +62,7 @@ master.menu.user-account.become-inventor = Become an inventor
 
 master.menu.any = Any
 master.menu.any.userAccount = Patrons & Inventors
-master.menu.chirp.list = Chirps
+master.menu.any.chirp.list = Chirps
 master.menu.announcement.list = Announcements
 master.menu.any.component.list.published = List Components
 master.menu.any.tool.list.published = List Tools

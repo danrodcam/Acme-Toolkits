@@ -59,8 +59,8 @@
       		<acme:menu-suboption code="master.menu.any.component.list.published" action="/any/item/list-published-components"/>
       		<acme:menu-suboption code="master.menu.any.tool.list.published" action="/any/item/list-published-tools"/>
       		<acme:menu-suboption code="master.menu.any.toolkit.list.published" action="/any/toolkit/list-published-toolkits"/>
+      		<acme:menu-suboption code="master.menu.any.chirp.list" action="/any/chirp/list-recent"/>
       		<acme:menu-suboption code="master.menu.any.toolkit.list.published.item-toolkit-search" action="/any/item-toolkit-search/perform"/>
-      		<acme:menu-suboption code="master.menu.chirp.list" action="/any/chirp/list"/>
       		
 		</acme:menu-option>
 		
