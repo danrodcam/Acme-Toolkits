@@ -63,7 +63,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		result.setPublished(false);
 		result.setPatron(patron);
 		result.setStatus(PatronageStatus.PROPOSED);
-		Date moment = new Date(System.currentTimeMillis() -1);
+		final Date moment = new Date(System.currentTimeMillis() -1);
 		result.setCreationMoment(moment);
 		result.setInitialDate(new Date());
 		result.setFinalDate(new Date());
@@ -86,7 +86,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "legalStuff", "budget", "optionalLink", "initialDate", "finalDate", "isPublished");
+		request.bind(entity, errors, "legalStuff", "budget", "optionalLink", "initialDate", "finalDate");
 	}
 
 	@Override
@@ -111,10 +111,10 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		}
 		
 		if (!errors.hasErrors("finalDate")) {
-			Calendar calendar = Calendar.getInstance();
+			final Calendar calendar = Calendar.getInstance();
 			calendar.setTime(entity.getInitialDate());
 			calendar.add(Calendar.MONTH, 1);
-			Date minimumDeadline = calendar.getTime();
+			final Date minimumDeadline = calendar.getTime();
 			
 			errors.state(request, entity.getFinalDate().after(minimumDeadline), "finalDate", "patron.patronage.form.error.date.duration");
 		}
@@ -125,9 +125,8 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		request.unbind(entity, model, "status", "legalStuff", "code", "budget", "creationMoment", "optionalLink", "initialDate", "finalDate","isPublished");
 		model.setAttribute("inventors", this.invRepository.findAllInventors());
-		model.setAttribute("masterId", entity.getId());
-		request.unbind(entity, model, "status", "legalStuff", "code", "budget", "creationMoment", "optionalLink", "initialDate", "finalDate", "isPublished");
 	}
 
 	@Override

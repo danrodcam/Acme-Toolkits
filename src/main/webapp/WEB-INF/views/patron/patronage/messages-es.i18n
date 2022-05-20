@@ -29,9 +29,9 @@ patron.patronage.patron.form.label.company = Empresa:
 patron.patronage.patron.form.label.statement = Declaración:
 patron.patronage.patron.form.label.optionalLink = Enlace:
 
-patron.patronage.form.button.update = Editar Mecenazgo
+patron.patronage.form.button.update = Actualizar Mecenazgo
 patron.patronage.form.button.delete = Eliminar Mecenazgo
-patron.patronage.form.button.create = Nuevo Mecenazgo
+patron.patronage.form.button.create = Crear Mecenazgo
 		
 patron.patronage.form.button.patron = Patron
 

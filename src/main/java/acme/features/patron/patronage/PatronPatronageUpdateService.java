@@ -47,7 +47,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 
 		patronageId = request.getModel().getInteger("id");
 		patronage = this.repository.findOnePatronageById(patronageId);
-		result = (patronage != null && patronage.isPublished() && request.isPrincipal(patronage.getPatron()));
+		result = (patronage != null && !patronage.isPublished() && request.isPrincipal(patronage.getPatron()));
 
 		return result;
 	}
@@ -70,8 +70,8 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "status", "legalStuff", "code", "budget", "creationMoment", "optionalLink", 
-				"initialDate", "finalDate", "isPublished");
+		request.bind(entity, errors, "status", "legalStuff", "code", "budget", "optionalLink", 
+				"initialDate", "finalDate");
 	}
 
 	@Override
@@ -96,10 +96,10 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		}
 		
 		if (!errors.hasErrors("finalDate")) {
-			Calendar calendar = Calendar.getInstance();
+			final Calendar calendar = Calendar.getInstance();
 			calendar.setTime(entity.getInitialDate());
 			calendar.add(Calendar.MONTH, 1);
-			Date minimumDeadline = calendar.getTime();
+			final Date minimumDeadline = calendar.getTime();
 			
 			errors.state(request, entity.getFinalDate().after(minimumDeadline), "finalDate", "patron.patronage.form.error.date.duration");
 		}
@@ -114,8 +114,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 
 		request.unbind(entity, model, "status", "legalStuff", "code", "budget", "creationMoment", "optionalLink", "initialDate", "finalDate", "isPublished");
 		model.setAttribute("masterId", entity.getId());
-		model.setAttribute("isPublished", entity.isPublished());
-	}
+		}
 
 	@Override
 	public void update(final Request<Patronage> request, final Patronage entity) {

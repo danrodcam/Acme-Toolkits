@@ -30,9 +30,9 @@ patron.patronage.patron.form.label.company = Inventor's Company:
 patron.patronage.patron.form.label.statement = Inventor's Statement:
 patron.patronage.patron.form.label.optionalLink = Inventor's OptionalLink:
 
-patron.patronage.form.button.update = Edit Patronage
+patron.patronage.form.button.update = Update Patronage
 patron.patronage.form.button.delete = Delete Patronage
-patron.patronage.form.button.create = New Patronage
+patron.patronage.form.button.create = Create Patronage
 
 patron.patronage.form.button.patron = Patron
 
