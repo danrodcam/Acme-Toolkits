@@ -18,9 +18,9 @@
 <acme:list>
 	<acme:list-column code="inventor.item.list.label.name" path="name" width="60%"/>
 	<acme:list-column code="inventor.item.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="inventor.item.list.label.type" path="type" width="10%"/>
 	<acme:list-column code="inventor.item.list.label.technology" path="technology" width="10%"/>
 	<acme:list-column code="inventor.item.list.label.price" path="retailPrice" width="10%"/>
+	<acme:list-column code="inventor.item.list.label.published" path="published" width="10%"/>
 
 
 </acme:list>

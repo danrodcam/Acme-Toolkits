@@ -14,6 +14,7 @@ inventor.item.list.label.code = Código
 inventor.item.list.label.type = Tipo
 inventor.item.list.label.technology = Tecnología
 inventor.item.list.label.price = Precio
+inventor.item.list.label.published = Publicado
 
 inventor.item.form.label.name = Nombre
 inventor.item.form.label.code = Código
