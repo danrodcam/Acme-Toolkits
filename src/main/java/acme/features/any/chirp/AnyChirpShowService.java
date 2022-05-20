@@ -20,6 +20,7 @@ public class AnyChirpShowService implements AbstractShowService<Any, Chirp>{
 		@Autowired
 		protected AnyChirpRepository repository;
 
+		
 		// AbstractShowService<Any, Chirp> interface --------------
 
 	@Override

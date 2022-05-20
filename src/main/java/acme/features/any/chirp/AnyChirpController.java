@@ -19,14 +19,18 @@ public class AnyChirpController extends AbstractController<Any, Chirp> {
 
 		@Autowired
 		protected AnyChirpShowService	showService;
+		
+		@Autowired
+		protected AnyChirpCreateService createService;
 
 		// Constructors -----------------------------------------------------------
 
 
 		@PostConstruct
 		protected void initialise() {
-			super.addCommand("list", this.listRecentService);
+			super.addCommand("list-recent", "list", this.listRecentService);
 			super.addCommand("show", this.showService);
+			super.addCommand("create", this.createService);
 		}
 
 }
