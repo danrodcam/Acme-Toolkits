@@ -59,8 +59,14 @@ public class AnyItemListPublishedComponentsService implements AbstractListServic
 		assert request != null;
 		
 		Collection<Item> result;
-
-		result = this.repository.findManyPublishedComponents();
+		if(request.getModel().hasAttribute("masterId")){
+			final int toolkitId = request.getModel().getInteger("masterId");
+			result = this.repository.findManyComponentssByToolkit(toolkitId);
+		} else {
+			result = this.repository.findManyPublishedComponents();
+		}
+		
+		
 		return result;
 	}	
 
