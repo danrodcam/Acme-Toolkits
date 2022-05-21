@@ -52,16 +52,15 @@
 		
 
 
-		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
-			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>	
-		</acme:menu-option>
+		
 		
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.userAccount" action="/any/user-account/list"/>
       		<acme:menu-suboption code="master.menu.any.component.list.published" action="/any/item/list-published-components"/>
       		<acme:menu-suboption code="master.menu.any.tool.list.published" action="/any/item/list-published-tools"/>
       		<acme:menu-suboption code="master.menu.any.toolkit.list.published" action="/any/toolkit/list-published-toolkits"/>
-      		<acme:menu-suboption code="master.menu.chirp.list" action="/any/chirp/list"/>
+      		<acme:menu-suboption code="master.menu.any.chirp.list" action="/any/chirp/list-recent"/>
+      		<acme:menu-suboption code="master.menu.any.toolkit.list.published.item-toolkit-search" action="/any/item-toolkit-search/perform"/>
       		
 		</acme:menu-option>
 		
@@ -72,6 +71,14 @@
 	<acme:menu-right>
 		<acme:menu-option code="master.menu.sign-up" action="/anonymous/user-account/create" access="isAnonymous()"/>
 		<acme:menu-option code="master.menu.sign-in" action="/master/sign-in" access="isAnonymous()"/>
+		
+		<acme:menu-option code="master.menu.user-account" access="isAuthenticated">
+			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update"/>
+			<acme:menu-suboption code="master.menu.user-account.become-patron" action="/authenticated/patron/create" access="!hasRole('Patron')"/>
+			<acme:menu-suboption code="master.menu.user-account.patron" action="/authenticated/patron/update" access="hasRole('Patron')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-inventor" action="/authenticated/inventor/create" access="!hasRole('Inventor')"/>
+			<acme:menu-suboption code="master.menu.user-account.inventor" action="/authenticated/inventor/update" access="hasRole('Inventor')"/>
+		</acme:menu-option>
 
 		
 		

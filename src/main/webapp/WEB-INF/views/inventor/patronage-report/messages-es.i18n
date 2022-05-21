@@ -15,3 +15,7 @@ inventor.patronage-report.form.label.creationMoment = Momento de creación:
 inventor.patronage-report.form.label.automaticSequenceNumber = Número de secuencia automático:
 inventor.patronage-report.form.label.memorandum = Memorándum:
 inventor.patronage-report.form.label.link = Enlace:
+inventor.patronage-report.form.label.confirmation = Confirmación
+inventor.patronage-report.form.error.confirmation = La creación debe ser confirmada
+
+inventor.patronage-report.form.button.create = Crear

@@ -16,6 +16,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import acme.entities.toolkit.Toolkit;
 import acme.framework.controllers.AbstractController;
 import acme.roles.Inventor;
@@ -31,6 +32,18 @@ public class InventorToolkitController extends AbstractController<Inventor, Tool
 	@Autowired
 	protected InventorToolkitShowService	showService;
 	
+	@Autowired
+	protected InventorToolkitUpdateService	updateService;
+	
+	@Autowired
+	protected InventorToolkitCreateService	createService;
+	
+	@Autowired
+	protected InventorToolkitDeleteService	deleteService;
+	
+	@Autowired
+	protected InventorToolkitPublishService	publishService;
+	
 	
 
 	// Constructors -----------------------------------------------------------
@@ -40,6 +53,10 @@ public class InventorToolkitController extends AbstractController<Inventor, Tool
 	protected void initialise() {
 		super.addCommand("list-own", "list" ,this.listOwnToolkitService);
 		super.addCommand("show", this.showService);
+		super.addCommand("update", this.updateService);
+		super.addCommand("delete", this.deleteService);
+		super.addCommand("create", this.createService);
+		super.addCommand("publish", "update" ,this.publishService);
 	}
 
 }

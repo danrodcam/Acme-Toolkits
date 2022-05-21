@@ -16,12 +16,13 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.entities.UserAccount;
 import acme.framework.roles.Any;
 import acme.framework.roles.UserRole;
 import acme.framework.services.AbstractShowService;
-import acme.framework.entities.UserAccount;
 
 @Service
 public class AnyUserAccountShowService implements AbstractShowService<Any, UserAccount> {
@@ -54,9 +55,15 @@ public class AnyUserAccountShowService implements AbstractShowService<Any, UserA
 
 		roles = entity.getRoles();
 		buffer = new StringBuilder();
+		int i = 0;
 		for (final UserRole role : roles) {
-			buffer.append(role.getAuthorityName());
-			buffer.append(" | ");
+			if(!role.getAuthorityName().equals("Authenticated")) {
+				buffer.append(role.getAuthorityName());
+				if(i!=roles.size()-2) {
+					buffer.append(" | ");
+				}
+				i= i+1;
+			}
 		}
 		model.setAttribute("roleList", buffer.toString());
 	}
