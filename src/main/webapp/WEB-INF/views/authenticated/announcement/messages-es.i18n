@@ -11,7 +11,7 @@
 authenticated.announcement.form.label.creationMoment = Momento de creación:
 authenticated.announcement.form.label.title = Titulo:
 authenticated.announcement.form.label.body = Cuerpo:
-authenticated.announcement.form.label.isCritical = Es crítico:
+authenticated.announcement.form.label.critical = Crítico:
 authenticated.announcement.form.label.info = Información:
 
 authenticated.announcement.list.label.creationMoment = Momento de creación
