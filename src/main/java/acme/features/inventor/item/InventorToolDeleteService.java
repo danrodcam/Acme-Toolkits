@@ -7,11 +7,11 @@ import acme.entities.item.Item;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.services.AbstractUpdateService;
+import acme.framework.services.AbstractDeleteService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentUpdateService implements AbstractUpdateService<Inventor, Item> {
+public class InventorToolDeleteService implements AbstractDeleteService<Inventor, Item> {
 	
 	// Internal state ---------------------------------------------------------
 
@@ -75,26 +75,17 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-		if (!errors.hasErrors("code")) {
-			Item existing;
-
-			existing = this.repository.findOneComponentByCode(entity.getCode());
-			errors.state(request, existing == null || existing.getId()==entity.getId(), "code", "inventor.item.form.error.code.unique");
-			
-			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
-			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.item.form.error.code.regexp");
-		}
 		
 	}
 
 	@Override
-	public void update(final Request<Item> request, final Item entity) {
+	public void delete(final Request<Item> request, final Item entity) {
 		assert request != null;
 		assert entity != null;
 		
-		this.repository.save(entity);
-		
+		this.repository.delete(entity);	
 	}
+	
+	
 
 }

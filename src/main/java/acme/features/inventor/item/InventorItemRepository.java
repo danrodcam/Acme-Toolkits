@@ -25,7 +25,7 @@ import acme.roles.Inventor;
 public interface InventorItemRepository extends AbstractRepository {
 
 	@Query("select item from Item item where item.id = :id")
-	Item findOneComponentById(int id);
+	Item findOneItemById(int id);
 
 	@Query("select item from Item item where item.type = acme.entities.item.ItemType.COMPONENT and item.inventor.id = :inventorId")
 	Collection<Item> findManyComponentsByInventorId(int inventorId);
@@ -44,6 +44,9 @@ public interface InventorItemRepository extends AbstractRepository {
 
 	@Query("select it from Item it where it.type = acme.entities.item.ItemType.COMPONENT and it.code = :code")
 	Item findOneComponentByCode(String code);
+	
+	@Query("select it from Item it where it.type = acme.entities.item.ItemType.TOOL and it.code = :code")
+	Item findOneToolByCode(String code);
 
 
 }

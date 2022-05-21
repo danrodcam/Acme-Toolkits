@@ -35,3 +35,5 @@ inventor.item.form.button.create = Create
 
 inventor.item.form.error.code.regexp = Code must match the pattern '^[A-Z]{3}-[0-9]{3}(-[A-Z])?$'
 inventor.item.form.error.code.unique = Code already exists
+inventor.create.item.null.price = Fill this field
+inventor.create.item.price.positive = The retail price must be zero or positive

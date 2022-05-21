@@ -30,7 +30,7 @@ public class InventorComponentDeleteService implements AbstractDeleteService<Inv
 		Inventor inventor;
 
 		masterId = request.getModel().getInteger("id");
-		item = this.repository.findOneComponentById(masterId);
+		item = this.repository.findOneItemById(masterId);
 		inventor = item.getInventor();
 		result = (!item.getPublished()) && request.isPrincipal(inventor);
 
@@ -65,7 +65,7 @@ public class InventorComponentDeleteService implements AbstractDeleteService<Inv
 		int id;
 
 		id = request.getModel().getInteger("id");
-		result = this.repository.findOneComponentById(id);
+		result = this.repository.findOneItemById(id);
 
 		return result;
 	}

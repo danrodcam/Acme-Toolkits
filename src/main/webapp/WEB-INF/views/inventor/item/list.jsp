@@ -26,5 +26,8 @@
 </acme:list>
 
 <jstl:if test="${command == 'list-own-components'}">
-	<acme:button code="inventor.item.form.button.create" action="/inventor/item/create"/>
+	<acme:button code="inventor.item.form.button.create" action="/inventor/item/create-component"/>
+</jstl:if>
+<jstl:if test="${command == 'list-own-tools'}">
+	<acme:button code="inventor.item.form.button.create" action="/inventor/item/create-tool"/>
 </jstl:if>

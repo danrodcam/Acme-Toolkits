@@ -14,7 +14,7 @@ import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentCreateService implements AbstractCreateService<Inventor, Item>{
+public class InventorToolCreateService implements AbstractCreateService<Inventor, Item>{
 
 	// Internal state ---------------------------------------------------------
 
@@ -61,16 +61,16 @@ public class InventorComponentCreateService implements AbstractCreateService<Inv
 		inventor = this.repository.findOneInventorById(request.getPrincipal().getActiveRoleId());
 		result = new Item();
 		result.setName("");
-		result.setType(ItemType.COMPONENT);
+		result.setType(ItemType.TOOL);
 		result.setTechnology("");
 		result.setDescription("");
 		result.setPublished(false);
 		result.setInventor(inventor);
 		String code = this.generateCode();
-		Item existing = this.repository.findOneComponentByCode(code);
+		Item existing = this.repository.findOneToolByCode(code);
 		while(existing != null) {
 			code = this.generateCode();
-			existing = this.repository.findOneComponentByCode(code);
+			existing = this.repository.findOneToolByCode(code);
 		}
 		result.setCode(code);
 
@@ -86,7 +86,7 @@ public class InventorComponentCreateService implements AbstractCreateService<Inv
 		if (!errors.hasErrors("code")) {
 			Item existing;
 
-			existing = this.repository.findOneComponentByCode(entity.getCode());
+			existing = this.repository.findOneToolByCode(entity.getCode());
 			errors.state(request, existing == null, "code", "inventor.item.form.error.code.unique");
 			
 			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
@@ -100,7 +100,6 @@ public class InventorComponentCreateService implements AbstractCreateService<Inv
 		if (!errors.hasErrors("retailPrice")) {
 			errors.state(request, !(entity.getRetailPrice().getAmount() < 0), "retailPrice", "inventor.create.item.price.positive");
 		}
-		
 	}
 
 	@Override
