@@ -14,7 +14,6 @@ package acme.features.patron.patronage;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +23,7 @@ import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractUpdateService;
+import acme.roles.Inventor;
 import acme.roles.Patron;
 
 @Service
@@ -72,6 +72,10 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 
 		request.bind(entity, errors, "status", "legalStuff", "code", "budget", "optionalLink", 
 				"initialDate", "finalDate");
+		
+		final Inventor inventor = this.repository.findInventorById(request.getModel().getInteger("inventor"));
+		
+		entity.setInventor(inventor);
 	}
 
 	@Override
@@ -89,7 +93,8 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 			Calendar calendar;
 			Date minimumDeadline;
 
-			calendar = new GregorianCalendar();
+			calendar = Calendar.getInstance();
+			calendar.setTime(entity.getCreationMoment());
 			calendar.add(Calendar.MONTH, 1);
 			minimumDeadline = calendar.getTime();
 			errors.state(request, entity.getInitialDate().after(minimumDeadline), "initialDate", "patron.patronage.form.error.date.creation");

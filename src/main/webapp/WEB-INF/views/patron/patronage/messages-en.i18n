@@ -12,6 +12,7 @@ patron.patronage.list.label.status = Status
 patron.patronage.list.label.legalStuff = Legal Stuff
 patron.patronage.list.label.budget = Budget
 patron.patronage.list.label.creationMoment = Creation Moment
+patron.patronage.list.label.isPublished = Published
 
 
 patron.patronage.form.label.status = Status:
@@ -33,6 +34,7 @@ patron.patronage.patron.form.label.optionalLink = Inventor's OptionalLink:
 patron.patronage.form.button.update = Update Patronage
 patron.patronage.form.button.delete = Delete Patronage
 patron.patronage.form.button.create = Create Patronage
+patron.patronage.form.button.publish = Publish Patronage
 
 patron.patronage.form.button.patron = Patron
 

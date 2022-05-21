@@ -84,6 +84,9 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert errors != null;
 
 		request.bind(entity, errors, "legalStuff", "budget", "optionalLink", "initialDate", "finalDate");
+		final Inventor inventor = this.repository.findInventorById(request.getModel().getInteger("inventor"));
+		
+		entity.setInventor(inventor);
 	}
 
 	@Override
