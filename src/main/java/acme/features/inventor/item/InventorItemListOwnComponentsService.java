@@ -49,7 +49,7 @@ public class InventorItemListOwnComponentsService implements AbstractListService
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "code", "type", "technology","description", "retailPrice", "link");
+		request.unbind(entity, model, "name", "code", "type", "technology","description", "retailPrice", "link","published");
 	}
 
 
@@ -62,7 +62,12 @@ public class InventorItemListOwnComponentsService implements AbstractListService
 		int inventorId;
 		
 		inventorId = request.getPrincipal().getActiveRoleId();
-		result = this.repository.findManyComponentsByInventorId(inventorId);
+		if(request.getModel().hasAttribute("masterId")){
+			final int toolkitId = request.getModel().getInteger("masterId");
+			result = this.repository.findManyComponentsByToolkit(toolkitId);
+		} else {
+			result = this.repository.findManyComponentsByInventorId(inventorId);
+		}
 		return result;
 	}
 

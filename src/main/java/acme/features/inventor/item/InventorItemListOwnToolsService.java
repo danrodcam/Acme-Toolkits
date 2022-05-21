@@ -36,7 +36,12 @@ public class InventorItemListOwnToolsService implements AbstractListService<Inve
 		int inventorId;
 		
 		inventorId = request.getPrincipal().getActiveRoleId();
-		result = this.repository.findManyToolsByInventorId(inventorId);
+		if(request.getModel().hasAttribute("masterId")){
+			final int toolkitId = request.getModel().getInteger("masterId");
+			result = this.repository.findManyToolsByToolkit(toolkitId);
+		} else {
+			result = this.repository.findManyToolsByInventorId(inventorId);
+		}
 		return result;
 	}
 
@@ -46,7 +51,7 @@ public class InventorItemListOwnToolsService implements AbstractListService<Inve
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "code", "type", "technology","description", "retailPrice", "link");
+		request.unbind(entity, model, "name", "code", "type", "technology","description", "retailPrice", "link","published");
 		
 	}
 

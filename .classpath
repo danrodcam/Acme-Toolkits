@@ -40,6 +40,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="src/main/resources/lib/Filtro.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Acme-Framework-22.5"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

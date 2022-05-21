@@ -61,7 +61,12 @@ public class AnyItemListPublishedToolsService implements AbstractListService<Any
 		
 		Collection<Item> result;
 
-		result = this.repository.findManyPublishedTools();
+		if(request.getModel().hasAttribute("masterId")){
+			final int toolkitId = request.getModel().getInteger("masterId");
+			result = this.repository.findManyToolsByToolkit(toolkitId);
+		} else {
+			result = this.repository.findManyPublishedTools();
+		}
 		return result;
 	}
 	
