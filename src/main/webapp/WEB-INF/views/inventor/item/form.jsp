@@ -19,7 +19,7 @@
 	<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
 	<acme:input-textbox readonly= "true" code="inventor.item.form.label.code" path="code"/>
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
-	<acme:input-textbox code="inventor.item.form.label.description" path="description"/>
+	<acme:input-textarea code="inventor.item.form.label.description" path="description"/>
 	<acme:input-url code="inventor.item.form.label.link" path="link"/>
 	<acme:input-money code="inventor.item.form.label.price" path="retailPrice"/>
 	
