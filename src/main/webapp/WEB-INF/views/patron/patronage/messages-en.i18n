@@ -41,3 +41,4 @@ patron.patronage.form.error.date.duration = The final date must be one month lat
 patron.patronage.form.error.code.unique = The patronage's code must be unique
 
 patron.patronage.form.label.inventor = Inventor
+patron.patronage.create.button = New Patronage

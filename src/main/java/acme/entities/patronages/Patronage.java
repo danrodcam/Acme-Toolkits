@@ -50,6 +50,7 @@ public class Patronage extends AbstractEntity {
 
 
 	@Valid
+	@NotNull
 	protected Money					budget;
 	
 	@Temporal(TemporalType.TIMESTAMP)

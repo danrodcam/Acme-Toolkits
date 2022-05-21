@@ -20,10 +20,8 @@
 	<acme:list-column code="patron.patronage.list.label.legalStuff" path="legalStuff" width="25%"/>
 	<acme:list-column code="patron.patronage.list.label.budget" path="budget" width="25%"/>
 	<acme:list-column code="patron.patronage.list.label.creationMoment" path="creationMoment" width="25%"/>
-	<acme:list-column code="patron.patronage.list.label.isPublished" path="isPublished" width="25%"/>
-	
 </acme:list>
-<acme:button code="Create" action="/patron/patronage/create"/>
+<acme:button code="patron.patronage.create.button" action="/patron/patronage/create"/>
 
 		
 	

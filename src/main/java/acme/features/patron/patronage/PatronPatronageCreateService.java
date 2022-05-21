@@ -65,9 +65,6 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		result.setStatus(PatronageStatus.PROPOSED);
 		final Date moment = new Date(System.currentTimeMillis() -1);
 		result.setCreationMoment(moment);
-		result.setInitialDate(new Date());
-		result.setFinalDate(new Date());
-		result.setInventor(new Inventor());
 		
 		String code = this.generateCode();
 		Patronage existing = this.repository.findOnePatronageByCode(code);

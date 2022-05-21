@@ -40,3 +40,4 @@ patron.patronage.form.error.date.duration = La fecha final debe ser un mes poste
 patron.patronage.form.error.code.unique = El código debe ser único
 
 patron.patronage.form.label.inventor = Inventor
+patron.patronage.create.button = Nuevo Patrocinio

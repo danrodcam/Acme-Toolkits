@@ -1,6 +1,6 @@
 key,status,legal-stuff,code,budget,creation-moment,optional-link,initial-date,final-date,key:inventor,key:patron,isPublished
-patronage-01,PROPOSED,LegalStuff 1,AAA-000,10.0EUR,2002/12/12 23:00,http://www.patronage1.com,2020/12/11 23:00,2020/12/12 23:00,inventor-01,patron-01,true
-patronage-02,ACCEPTED,LegalStuff 2,AAA-001,11.0EUR,2017/10/10 22:00,http://www.patronage2.com,2017/12/12 23:00,2018/03/03 23:00,inventor-02,patron-01,false
+patronage-01,PROPOSED,LegalStuff 1,AAA-000,10.0EUR,2002/12/12 23:00,http://www.patronage1.com,2020/12/11 23:00,2020/12/12 23:00,inventor-01,patron-01,false
+patronage-02,ACCEPTED,LegalStuff 2,AAA-001,11.0EUR,2017/10/10 22:00,http://www.patronage2.com,2017/12/12 23:00,2018/03/03 23:00,inventor-02,patron-01,true
 patronage-03,DENIED,LegalStuff 3,AAA-002,12.0USD,2004/12/12 22:00,http://www.patronage3.com,2019/12/11 23:00,2019/12/12 23:00,inventor-01,patron-02,true
 patronage-04,PROPOSED,LegalStuff 4,AAA-003,13.5USD,2005/12/12 21:00,null,2020/12/11 23:00,2020/12/12 23:00,inventor-02,patron-02,false
 patronage-05,ACCEPTED,LegalStuff 5,AAA-004,14.25USD,2006/12/12 20:00,http://www.patronage5.com,2017/12/11 23:00,2017/12/12 23:00,inventor-02,patron-03,false
