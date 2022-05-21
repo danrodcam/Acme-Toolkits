@@ -44,7 +44,7 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		
 		principalId = request.getPrincipal().getAccountId();
 		itemId = request.getModel().getInteger("id");
-		item = this.repository.findOneComponentById(itemId);
+		item = this.repository.findOneItemById(itemId);
 		result = item.getInventor().getUserAccount().getId()==principalId; 
 
 		return result;
@@ -70,7 +70,7 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		int id;
 		
 		id = request.getModel().getInteger("id");
-		result = this.repository.findOneComponentById(id);
+		result = this.repository.findOneItemById(id);
 		return result;
 	}
 

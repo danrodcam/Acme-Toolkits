@@ -32,3 +32,6 @@ inventor.item.form.button.create = Crear
 
 inventor.item.form.error.code.regexp = El código debe coincidir con el patrón '^[A-Z]{3}-[0-9]{3}(-[A-Z])?$'
 inventor.item.form.error.code.unique = El código ya existe
+
+inventor.create.item.null.price = Rellene este campo
+inventor.create.item.price.positive = El precio debe ser cero o positivo

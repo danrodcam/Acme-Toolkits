@@ -25,14 +25,24 @@
 	
 	
 <jstl:choose>	 
-		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && published == false }">
-			<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>	
-			<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update"/>
-			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>	
+		<jstl:when test="${acme:anyOf(command, 'show-component, update-component, delete-component, publish-component') && published == false }">
+			<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete-component"/>	
+			<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update-component"/>
+			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish-component"/>	
+		</jstl:when>
+		
+		<jstl:when test="${acme:anyOf(command, 'show, update-tool, delete-tool, publish-tool') && published == false }">
+			<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete-tool"/>	
+			<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update-tool"/>
+			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish-tool"/>	
 		</jstl:when>
 
-		<jstl:when test="${command == 'create'}">
-			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create"/>
+		<jstl:when test="${command == 'create-component'}">
+			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-component"/>
+		</jstl:when>
+		
+		<jstl:when test="${command == 'create-tool'}">
+			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-tool"/>
 		</jstl:when>		
 	</jstl:choose>
 	

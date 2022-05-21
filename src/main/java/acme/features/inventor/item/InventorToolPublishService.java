@@ -11,7 +11,7 @@ import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentPublishService implements AbstractUpdateService<Inventor, Item>{
+public class InventorToolPublishService implements AbstractUpdateService<Inventor, Item>{
 
 		// Internal state ---------------------------------------------------------
 
@@ -79,7 +79,7 @@ public class InventorComponentPublishService implements AbstractUpdateService<In
 			if (!errors.hasErrors("code")) {
 				Item existing;
 
-				existing = this.repository.findOneComponentByCode(entity.getCode());
+				existing = this.repository.findOneToolByCode(entity.getCode());
 				errors.state(request, existing == null || existing.getId()==entity.getId(), "code", "inventor.item.form.error.code.unique");
 				
 				final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
