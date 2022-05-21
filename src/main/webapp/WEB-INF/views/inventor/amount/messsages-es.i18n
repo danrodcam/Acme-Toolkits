@@ -12,6 +12,15 @@
 inventor.amount.form.label.units = Unidades
 inventor.amount.form.label.component = Componente
 inventor.amount.form.label.tool = Herramienta
+inventor.amount.form.button.item.show = Mostrar detalles
+inventor.amount.form.button.delete = Quitar
+inventor.amount.form.button.add.component = Añadir componente
+inventor.amount.form.button.add.tool = Añadir herramienta
+inventor.amount.list.label.units = Unidades
+inventor.amount.list.label.name = Nombre
+inventor.amount.list.label.code = Codigo
+inventor.amount.list.label.technology = Tecnología
+inventor.amount.list.label.price = Precio
 
 inventor.amount.form.button.create = Añadir
 

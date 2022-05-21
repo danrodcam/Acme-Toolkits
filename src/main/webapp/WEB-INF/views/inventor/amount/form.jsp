@@ -27,7 +27,17 @@
 	
 	
     
-    
-	<acme:submit code="inventor.amount.form.button.create" action="/inventor/amount/create-${type}?masterId=${masterId}"/>
+    <jstl:choose>	 
+		<jstl:when test="${command == 'show' && draftMode == false}">
+			<acme:button code="inventor.amount.form.button.item.show" action="/any/item/show?id=${itemId}"/>	
+		</jstl:when>
+		<jstl:when test="${acme:anyOf(command, 'show, delete') && draftMode == true}">
+			<acme:button code="inventor.amount.form.button.item.show" action="/any/item/show?id=${itemId}"/>
+			<acme:submit code="inventor.amount.form.button.delete" action="/inventor/amount/delete"/>
+		</jstl:when>
+		<jstl:when test="${acme:anyOf(command, 'create-tool, create-component') }">
+			<acme:submit code="inventor.amount.form.button.create" action="/inventor/amount/create-${type}?masterId=${masterId}"/>
+		</jstl:when>		
+	</jstl:choose>
 </acme:form>
 

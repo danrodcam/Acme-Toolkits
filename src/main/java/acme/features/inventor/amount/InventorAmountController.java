@@ -32,6 +32,17 @@ public class InventorAmountController extends AbstractController<Inventor, Amoun
 	@Autowired
 	protected InventorAmountToolCreateService	createToolService;
 	
+	@Autowired
+	protected InventorAmountListComponentsService	listAmountComponentsService;
+	
+	@Autowired
+	protected InventorAmountListToolsService	listAmountToolsService;
+	
+	@Autowired
+	protected InventorAmountDeleteService	deleteService;
+	
+	@Autowired
+	protected InventorAmountShowService	showService;
 	
 
 	// Constructors -----------------------------------------------------------
@@ -41,6 +52,10 @@ public class InventorAmountController extends AbstractController<Inventor, Amoun
 	protected void initialise() {
 		super.addCommand("create-component","create", this.createComponentService);
 		super.addCommand("create-tool","create", this.createToolService);
+		super.addCommand("list-amount-components", "list" ,this.listAmountComponentsService);
+		super.addCommand("list-amount-tools", "list" ,this.listAmountToolsService);
+		super.addCommand("show" ,this.showService);
+		super.addCommand("delete" ,this.deleteService);
 	}
 
 }

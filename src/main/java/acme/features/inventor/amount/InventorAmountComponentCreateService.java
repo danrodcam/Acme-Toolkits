@@ -93,12 +93,14 @@ public class InventorAmountComponentCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "units");
+		request.unbind(entity, model, "units", "item");
 		
 		model.setAttribute("publishedItems", this.repository.findManyPublishedComponents());
 		
 		model.setAttribute("masterId", request.getModel().getAttribute("masterId"));
 		model.setAttribute("type", "component");
+		
+		model.setAttribute("draftMode", entity.getToolkit().getDraftMode());
 		
 		
 	}

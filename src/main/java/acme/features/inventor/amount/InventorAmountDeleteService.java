@@ -1,5 +1,5 @@
 /*
- * InventorAmountCreateService.java
+ * InventorToolkitDeleteService.java
  *
  * Copyright (C) 2012-2022 Rafael Corchuelo.
  *
@@ -20,18 +20,18 @@ import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.services.AbstractDeleteService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorAmountToolCreateService implements AbstractCreateService<Inventor, Amount> {
+public class InventorAmountDeleteService implements AbstractDeleteService<Inventor, Amount> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected InventorAmountRepository repository;
 
-	// AbstractCreateService<Inventor, Amount> interface -------------------------
+	// AbstractDeleteService<Inventor, Toolkit> interface -------------------------
 
 
 	@Override
@@ -39,30 +39,16 @@ public class InventorAmountToolCreateService implements AbstractCreateService<In
 		assert request != null;
 
 		boolean result;
-		int toolkitId;
+		int amountId;
 		Toolkit toolkit;
-		int principalId;  
-		
-		principalId = request.getPrincipal().getAccountId();
-		toolkitId = request.getModel().getInteger("masterId");
-		toolkit = this.repository.findOneToolkitById(toolkitId);
-		result = toolkit.getInventor().getUserAccount().getId()==principalId; 
-		
-		
-		return result;
-	}
+		Inventor inventor;
 
-	@Override
-	public Amount instantiate(final Request<Amount> request) {
-		assert request != null;
+		amountId = request.getModel().getInteger("id");
+		final Amount amount = this.repository.findOneAmountById(amountId);
+		toolkit = this.repository.findOneToolkitById(amount.getToolkit().getId());
+		inventor = toolkit.getInventor();
+		result = toolkit.getDraftMode() && request.isPrincipal(inventor);
 
-		Amount result;
-		Toolkit toolkit;
-		final int toolkitId = request.getModel().getInteger("masterId");
-		toolkit = this.repository.findOneToolkitById(toolkitId);
-		result = new Amount();
-		result.setToolkit(toolkit);
-		
 		return result;
 	}
 
@@ -73,22 +59,6 @@ public class InventorAmountToolCreateService implements AbstractCreateService<In
 		assert errors != null;
 
 		request.bind(entity, errors, "units");
-		entity.setItem(this.repository.findItemById(request.getModel().getInteger("item")));
-	}
-
-	@Override
-	public void validate(final Request<Amount> request, final Amount entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
-		
-		if (!errors.hasErrors("units")) {
-			errors.state(request, entity.getUnits() == 1, "units", "inventor.amount.form.error.tool.unique");		
-		}
-		if (!errors.hasErrors("item")) {
-	
-			errors.state(request, !this.repository.findManyToolsByToolkit(entity.getToolkit().getId()).contains(entity.getItem()), "item", "inventor.amount.form.error.tool.existing");		
-		}
 		
 	}
 
@@ -99,25 +69,36 @@ public class InventorAmountToolCreateService implements AbstractCreateService<In
 		assert model != null;
 
 		request.unbind(entity, model, "units", "item");
-		
 		model.setAttribute("publishedItems", this.repository.findManyPublishedTools());
-		
-		model.setAttribute("masterId", request.getModel().getAttribute("masterId"));
 		model.setAttribute("type", "tool");
-		
-		model.setAttribute("draftMode", entity.getToolkit().getDraftMode());
-		
-		
 	}
 
 	@Override
-	public void create(final Request<Amount> request, final Amount entity) {
+	public Amount findOne(final Request<Amount> request) {
 		assert request != null;
-		assert entity != null;
 
-		this.repository.save(entity);
+		Amount result;
+		int id;
+
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneAmountById(id);
+
+		return result;
 	}
 
-	
-	
+	@Override
+	public void validate(final Request<Amount> request, final Amount entity, final Errors errors) {
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+	}
+
+	@Override
+	public void delete(final Request<Amount> request, final Amount entity) {
+		assert request != null;
+		assert entity != null;
+		
+		this.repository.delete(entity);
+	}
+
 }
