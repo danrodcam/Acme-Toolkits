@@ -8,10 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-patron.patronage.form.label.status = Estado
-patron.patronage.form.label.legalStuff = Asuntos Legales
-patron.patronage.form.label.budget = Presupuesto
-patron.patronage.form.label.creationMoment = Momento de Creacion
+patron.patronage.list.label.status = Estado
+patron.patronage.list.label.legalStuff = Asuntos Legales
+patron.patronage.list.label.budget = Presupuesto
+patron.patronage.list.label.creationMoment = Momento de Creacion
+patron.patronage.list.label.isPublished = Publicado
+
 
 
 patron.patronage.form.label.status = Estado:
@@ -28,5 +30,17 @@ patron.patronage.patron.form.label.username	= Usuario:
 patron.patronage.patron.form.label.company = Empresa:
 patron.patronage.patron.form.label.statement = Declaración:
 patron.patronage.patron.form.label.optionalLink = Enlace:
+
+patron.patronage.form.button.update = Actualizar Mecenazgo
+patron.patronage.form.button.delete = Eliminar Mecenazgo
+patron.patronage.form.button.create = Crear Mecenazgo
+patron.patronage.form.button.publish = Publicar Mecenazgo
 		
 patron.patronage.form.button.patron = Patron
+
+patron.patronage.form.error.date.creation= La fecha inicial debe ser un mes posterior a la de creación
+patron.patronage.form.error.date.duration = La fecha final debe ser un mes posterior a la inicial
+patron.patronage.form.error.code.unique = El código debe ser único
+
+patron.patronage.form.label.inventor = Inventor
+patron.patronage.create.button = Nuevo Patrocinio

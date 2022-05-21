@@ -12,6 +12,7 @@ patron.patronage.list.label.status = Status
 patron.patronage.list.label.legalStuff = Legal Stuff
 patron.patronage.list.label.budget = Budget
 patron.patronage.list.label.creationMoment = Creation Moment
+patron.patronage.list.label.isPublished = Published
 
 
 patron.patronage.form.label.status = Status:
@@ -30,4 +31,16 @@ patron.patronage.patron.form.label.company = Inventor's Company:
 patron.patronage.patron.form.label.statement = Inventor's Statement:
 patron.patronage.patron.form.label.optionalLink = Inventor's OptionalLink:
 
+patron.patronage.form.button.update = Update Patronage
+patron.patronage.form.button.delete = Delete Patronage
+patron.patronage.form.button.create = Create Patronage
+patron.patronage.form.button.publish = Publish Patronage
+
 patron.patronage.form.button.patron = Patron
+
+patron.patronage.form.error.date.creation= The initial date must be one month later the patronage's creation
+patron.patronage.form.error.date.duration = The final date must be one month later than the initial date
+patron.patronage.form.error.code.unique = The patronage's code must be unique
+
+patron.patronage.form.label.inventor = Inventor
+patron.patronage.create.button = New Patronage
