@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.patronages.Patronage;
+import acme.features.any.userAccount.AnyUserAccountRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractShowService;
+import acme.roles.Inventor;
 import acme.roles.Patron;
 
 @Service
@@ -16,6 +18,9 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 
 		@Autowired
 		protected PatronPatronageRepository repository;
+		
+		@Autowired
+		protected AnyUserAccountRepository invRepository;
 
 		// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -55,10 +60,12 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 		assert model != null;
 
 		request.unbind(entity, model, "status", "legalStuff", "code", "budget", "creationMoment", "optionalLink", 
-				"initialDate", "finalDate", "inventor.userAccount.identity.name", 
-				"inventor.userAccount.identity.surname", "inventor.userAccount.username", "inventor.company", 
-				"inventor.statement", "inventor.optionalLink");
+				"initialDate", "finalDate", "isPublished", "inventor.userAccount.identity.name", "inventor.userAccount.identity.surname",
+				"inventor.userAccount.username", "inventor.company", "inventor.statement", "inventor.optionalLink");
 		
+		final Inventor inventor = entity.getInventor();
+		model.setAttribute("inventor", inventor);
+		model.setAttribute("inventors", this.invRepository.findAllInventors());		
 	}
 
 }

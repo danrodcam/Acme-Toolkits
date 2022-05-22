@@ -50,6 +50,7 @@ public class Patronage extends AbstractEntity {
 
 
 	@Valid
+	@NotNull
 	protected Money					budget;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -65,6 +66,9 @@ public class Patronage extends AbstractEntity {
 	
 	@NotNull
 	protected Date  				finalDate;
+	
+	@NotNull
+	protected boolean				isPublished;
 
 	// Derived attributes -----------------------------------------------------
 	

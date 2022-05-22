@@ -18,7 +18,7 @@
 <acme:form readonly="true">
 	<acme:input-textbox code="administrator.announcement.form.label.title" path="title"/>
 	<acme:input-textarea code="administrator.announcement.form.label.body" path="body"/>
-	<acme:input-textbox code="administrator.announcement.form.label.isCritical" path="isCritical"/>
+	<acme:input-checkbox code="administrator.announcement.form.label.critical" path="critical"/>
 	<acme:input-url code="administrator.announcement.form.label.info" path="info"/>
 	
 </acme:form>

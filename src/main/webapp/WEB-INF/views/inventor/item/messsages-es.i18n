@@ -14,6 +14,7 @@ inventor.item.list.label.code = Código
 inventor.item.list.label.type = Tipo
 inventor.item.list.label.technology = Tecnología
 inventor.item.list.label.price = Precio
+inventor.item.list.label.published = Publicado
 
 inventor.item.form.label.name = Nombre
 inventor.item.form.label.code = Código
@@ -22,3 +23,15 @@ inventor.item.form.label.technology = Tecnología
 inventor.item.form.label.description = Descripción
 inventor.item.form.label.link = Enlace
 inventor.item.form.label.price = Precio
+
+inventor.item.form.button.components = Componentes
+inventor.item.form.button.update = Actualizar
+inventor.item.form.button.delete = Eliminar
+inventor.item.form.button.publish = Publicar
+inventor.item.form.button.create = Crear
+
+inventor.item.form.error.code.regexp = El código debe coincidir con el patrón '^[A-Z]{3}-[0-9]{3}(-[A-Z])?$'
+inventor.item.form.error.code.unique = El código ya existe
+
+inventor.create.item.null.price = Rellene este campo
+inventor.create.item.price.positive = El precio debe ser cero o positivo
