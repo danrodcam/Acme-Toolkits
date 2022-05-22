@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.inventor.amount;
+package acme.features.any.amount;
 
 import java.util.Collection;
 
@@ -24,7 +24,7 @@ import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
 
 @Repository
-public interface InventorAmountRepository extends AbstractRepository {
+public interface AnyAmountRepository extends AbstractRepository {
 
 	@Query("select tk from Toolkit tk where tk.id = :id")
 	Toolkit findOneToolkitById(int id);

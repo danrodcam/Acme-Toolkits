@@ -98,12 +98,14 @@ public class InventorAmountToolCreateService implements AbstractCreateService<In
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "units");
+		request.unbind(entity, model, "units", "item");
 		
 		model.setAttribute("publishedItems", this.repository.findManyPublishedTools());
 		
 		model.setAttribute("masterId", request.getModel().getAttribute("masterId"));
 		model.setAttribute("type", "tool");
+		
+		model.setAttribute("draftMode", entity.getToolkit().getDraftMode());
 		
 		
 	}

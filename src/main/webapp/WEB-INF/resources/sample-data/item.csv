@@ -1,8 +1,8 @@
 key,name,code,technology,description,retail-price,link,type,published,key:inventor
 item-01,Item 1,AAB-000,Technology 1,Description 1,1.0EUR,http://www.item1.com,COMPONENT,true,inventor-01
 item-02,Item 2,AAB-001,Technology 2,Description 2,2.0EUR,http://www.item2.com,TOOL,true,inventor-01
-item-03,Item 3,AAB-002,Technology 1,Description 3,3.0EUR,http://www.item3.com,COMPONENT,false,inventor-01
-item-04,Item 4,AAB-003,Technology 4,Description 4,1.0USD,http://www.item4.com,COMPONENT,false,inventor-02
+item-03,Item 3,AAB-002,Technology 1,Description 3,3.0EUR,http://www.item3.com,COMPONENT,true,inventor-01
+item-04,Item 4,AAB-003,Technology 4,Description 4,1.0USD,http://www.item4.com,COMPONENT,true,inventor-02
 item-05,Item 5,AAB-004,Technology 5,Description 5,2.0GBP,http://www.item5.com,TOOL,true,inventor-03
 item-06,Item 6,AAB-005,Technology 6,Description 6,3.0GBP,null,COMPONENT,false,inventor-03
 item-07,Item 7,AAB-006,Technology 7,Description 7,1.0GBP,http://www.item7.com,COMPONENT,false,inventor-03

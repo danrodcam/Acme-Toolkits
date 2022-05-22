@@ -12,8 +12,18 @@
 inventor.amount.form.label.units = Units
 inventor.amount.form.label.component = Component
 inventor.amount.form.label.tool = Tool
+inventor.amount.form.button.item.show = Show details
+inventor.amount.form.button.delete = Remove
+inventor.amount.form.button.add.component = Add Component
+inventor.amount.form.button.add.tool = Add Tool
+inventor.amount.list.label.units = Units
+inventor.amount.list.label.name = Name
+inventor.amount.list.label.code = Code
+inventor.amount.list.label.technology = Technology
+inventor.amount.list.label.price = Price
 
 inventor.amount.form.button.create = Add
+inventor.amount.form.button.update = Update
 
 inventor.amount.form.error.tool.unique = A toolkit can only have one instance of the same tool
 inventor.amount.form.error.tool.existing = This toolkit already contains this tool

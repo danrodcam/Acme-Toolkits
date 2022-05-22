@@ -16,12 +16,12 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:list>
-	<acme:list-column code="inventor.toolkit.list.label.code" path="code" width="30%"/>
-	<acme:list-column code="inventor.toolkit.list.label.title" path="title" width="30%"/>
-	<acme:list-column code="inventor.toolkit.list.label.draft" path="draftMode" width="10%"/>
-	<acme:list-column code="inventor.toolkit.list.label.description" path="description" width="30%"/>
-</acme:list>
+	<acme:list-column code="any.amount.list.label.units" path="units" width="10%"/>
+	<acme:list-column code="any.amount.list.label.name" path="item.name" width="60%"/>
+	<acme:list-column code="any.amount.list.label.code" path="item.code" width="10%"/>
+	<acme:list-column code="any.amount.list.label.technology" path="item.technology" width="10%"/>
+	<acme:list-column code="any.amount.list.label.price" path="item.retailPrice" width="10%"/>
 
-<jstl:if test="${command == 'list-own'}">
-	<acme:button code="inventor.toolkit.list.button.create" action="/inventor/toolkit/create"/>
-</jstl:if>
+
+</acme:list>
+			
