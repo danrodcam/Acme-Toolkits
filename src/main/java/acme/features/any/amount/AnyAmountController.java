@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.inventor.amount;
+package acme.features.any.amount;
 
 import javax.annotation.PostConstruct;
 
@@ -19,46 +19,34 @@ import org.springframework.stereotype.Controller;
 
 import acme.entities.item.Amount;
 import acme.framework.controllers.AbstractController;
-import acme.roles.Inventor;
+import acme.framework.roles.Any;
+
 
 @Controller
-public class InventorAmountController extends AbstractController<Inventor, Amount> {
+public class AnyAmountController extends AbstractController<Any, Amount> {
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	protected InventorAmountComponentCreateService	createComponentService;
-
-	@Autowired
-	protected InventorAmountToolCreateService	createToolService;
 	
 	@Autowired
-	protected InventorAmountListComponentsService	listAmountComponentsService;
+	protected AnyAmountListComponentsService	listAmountComponentsService;
 	
 	@Autowired
-	protected InventorAmountListToolsService	listAmountToolsService;
+	protected AnyAmountListToolsService	listAmountToolsService;
 	
 	@Autowired
-	protected InventorAmountDeleteService	deleteService;
+	protected AnyAmountShowService	showService;
 	
-	@Autowired
-	protected InventorAmountShowService	showService;
-	
-	@Autowired
-	protected InventorAmountUpdateService	updateService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("create-component","create", this.createComponentService);
-		super.addCommand("create-tool","create", this.createToolService);
 		super.addCommand("list-amount-components", "list" ,this.listAmountComponentsService);
 		super.addCommand("list-amount-tools", "list" ,this.listAmountToolsService);
 		super.addCommand("show" ,this.showService);
-		super.addCommand("delete" ,this.deleteService);
-		super.addCommand("update" ,this.updateService);
+
 	}
 
 }

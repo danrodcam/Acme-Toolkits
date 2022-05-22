@@ -24,6 +24,11 @@
 
 
 </acme:list>
+
+	<jstl:if test="${type == 'component'}">
 	<acme:button test="${showCreate}" code="inventor.amount.form.button.add.component" action="/inventor/amount/create-component?masterId=${masterId}"/>
+	</jstl:if>
+	<jstl:if test="${type == 'tool'}">
 	<acme:button test="${showCreate}" code="inventor.amount.form.button.add.tool" action="/inventor/amount/create-tool?masterId=${masterId}"/>
+	</jstl:if>
 			

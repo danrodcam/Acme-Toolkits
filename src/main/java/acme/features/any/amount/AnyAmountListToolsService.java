@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.inventor.amount;
+package acme.features.any.amount;
 
 import java.util.Collection;
 
@@ -18,21 +18,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Amount;
-import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.helpers.CollectionHelper;
+import acme.framework.roles.Any;
 import acme.framework.services.AbstractListService;
-import acme.roles.Inventor;
+
 
 
 @Service
-public class InventorAmountListComponentsService implements AbstractListService<Inventor, Amount> {
+public class AnyAmountListToolsService implements AbstractListService<Any, Amount> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorAmountRepository repository;
+	protected AnyAmountRepository repository;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -40,11 +40,12 @@ public class InventorAmountListComponentsService implements AbstractListService<
 	@Override
 	public boolean authorise(final Request<Amount> request) {
 		assert request != null;
-		final int inventorId = request.getPrincipal().getActiveRoleId();
+		
 		final int toolkitId = request.getModel().getInteger("masterId");
-		return inventorId == this.repository.findOneToolkitById(toolkitId).getInventor().getId();
+		return !this.repository.findOneToolkitById(toolkitId).getDraftMode();
 	}
-	
+
+
 	@Override
 	public void unbind(final Request<Amount> request, final Collection<Amount> entities, final Model model) {
 		assert request != null;
@@ -52,18 +53,13 @@ public class InventorAmountListComponentsService implements AbstractListService<
 		assert model != null;
 
 		int masterId;
-		Toolkit toolkit;
-		final boolean showCreate;
 
 		masterId = request.getModel().getInteger("masterId");
-		toolkit = this.repository.findOneToolkitById(masterId);
-		showCreate = (toolkit.getDraftMode() && request.isPrincipal(toolkit.getInventor()));
 
 		model.setAttribute("masterId", masterId);
-		model.setAttribute("showCreate", showCreate);
-		model.setAttribute("type", "component");
+		model.setAttribute("type", "tool");
 	}
-
+	
 	@Override
 	public void unbind(final Request<Amount> request, final Amount entity, final Model model) {
 		assert request != null;
@@ -71,7 +67,6 @@ public class InventorAmountListComponentsService implements AbstractListService<
 		assert model != null;
 
 		request.unbind(entity, model, "item.name", "item.code", "units", "item.technology","item.description", "item.retailPrice");
-		
 	}
 
 
@@ -83,7 +78,7 @@ public class InventorAmountListComponentsService implements AbstractListService<
 		Collection<Amount> result;
 	
 		final int toolkitId = request.getModel().getInteger("masterId");
-		result = this.repository.findComponentAmountsByToolkit(toolkitId);
+		result = this.repository.findToolAmountsByToolkit(toolkitId);
 		
 		
 		return result;

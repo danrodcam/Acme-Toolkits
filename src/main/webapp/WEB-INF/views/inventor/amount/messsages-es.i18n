@@ -23,6 +23,7 @@ inventor.amount.list.label.technology = Tecnología
 inventor.amount.list.label.price = Precio
 
 inventor.amount.form.button.create = Añadir
+inventor.amount.form.button.update = Actualizar
 
 inventor.amount.form.error.tool.unique = Un kit de herramientas solo puede tener una instancia de la misma herramienta
 inventor.amount.form.error.tool.existing = Este kit de herramientas ya contiene esta herramienta

@@ -12,6 +12,7 @@
 inventor.toolkit.list.button.create = Create
 inventor.toolkit.list.label.code = Code
 inventor.toolkit.list.label.title = Title
+inventor.toolkit.list.label.draft = Draft
 inventor.toolkit.list.label.description = Description
 
 inventor.toolkit.form.label.code = Code

@@ -23,6 +23,7 @@ inventor.amount.list.label.technology = Technology
 inventor.amount.list.label.price = Price
 
 inventor.amount.form.button.create = Add
+inventor.amount.form.button.update = Update
 
 inventor.amount.form.error.tool.unique = A toolkit can only have one instance of the same tool
 inventor.amount.form.error.tool.existing = This toolkit already contains this tool

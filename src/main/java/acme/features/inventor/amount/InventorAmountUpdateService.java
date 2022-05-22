@@ -1,5 +1,5 @@
 /*
- * InventorToolkitDeleteService.java
+ * InventorToolkitUpdateService.java
  *
  * Copyright (C) 2012-2022 Rafael Corchuelo.
  *
@@ -12,44 +12,51 @@
 
 package acme.features.inventor.amount;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Amount;
-import acme.entities.toolkit.Toolkit;
+import acme.entities.item.ItemType;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.services.AbstractDeleteService;
+import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorAmountDeleteService implements AbstractDeleteService<Inventor, Amount> {
+public class InventorAmountUpdateService implements AbstractUpdateService<Inventor, Amount> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected InventorAmountRepository repository;
 
-	// AbstractDeleteService<Inventor, Toolkit> interface -------------------------
+	// AbstractUpdateService<Inventor, Toolkit> -------------------------------------
 
 
 	@Override
 	public boolean authorise(final Request<Amount> request) {
 		assert request != null;
 
-		boolean result;
-		int amountId;
-		Toolkit toolkit;
-		Inventor inventor;
-
-		amountId = request.getModel().getInteger("id");
+		final int inventorId = request.getPrincipal().getActiveRoleId();
+		final int amountId = request.getModel().getInteger("id");
 		final Amount amount = this.repository.findOneAmountById(amountId);
-		toolkit = this.repository.findOneToolkitById(amount.getToolkit().getId());
-		inventor = toolkit.getInventor();
-		result = toolkit.getDraftMode() && request.isPrincipal(inventor);
+		return inventorId == amount.getToolkit().getInventor().getId();
 
-		return result;
+		
+	}
+
+	@Override
+	public void validate(final Request<Amount> request, final Amount entity, final Errors errors) {
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+
+		if (!errors.hasErrors("units") && entity.getItem().getType().equals(ItemType.TOOL)) {
+			errors.state(request, entity.getUnits() == 1, "units", "inventor.amount.form.error.tool.unique");		
+		}
 	}
 
 	@Override
@@ -58,8 +65,7 @@ public class InventorAmountDeleteService implements AbstractDeleteService<Invent
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "units");
-		
+		request.bind(entity, errors, "units", "item.code");
 	}
 
 	@Override
@@ -68,9 +74,16 @@ public class InventorAmountDeleteService implements AbstractDeleteService<Invent
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "units", "item.code");
-		model.setAttribute("publishedItems", this.repository.findManyPublishedTools());
-		model.setAttribute("type", "tool");
+		request.unbind(entity, model, "units", "item", "item.code");
+		if (entity.getItem().getType()==ItemType.COMPONENT) {
+			model.setAttribute("type", "component");
+		}
+		if (entity.getItem().getType()==ItemType.TOOL) {
+			model.setAttribute("type", "tool");
+		}
+		model.setAttribute("masterId", entity.getToolkit().getId());
+		model.setAttribute("itemId", entity.getItem().getId());
+		model.setAttribute("draftMode", entity.getToolkit().getDraftMode());
 	}
 
 	@Override
@@ -87,18 +100,11 @@ public class InventorAmountDeleteService implements AbstractDeleteService<Invent
 	}
 
 	@Override
-	public void validate(final Request<Amount> request, final Amount entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
-	}
-
-	@Override
-	public void delete(final Request<Amount> request, final Amount entity) {
+	public void update(final Request<Amount> request, final Amount entity) {
 		assert request != null;
 		assert entity != null;
 		
-		this.repository.delete(entity);
+		this.repository.save(entity);
 	}
 
 }

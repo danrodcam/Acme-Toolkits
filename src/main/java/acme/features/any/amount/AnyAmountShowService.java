@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.inventor.amount;
+package acme.features.any.amount;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,17 +18,17 @@ import org.springframework.stereotype.Service;
 import acme.entities.item.Amount;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
-import acme.roles.Inventor;
 
 
 @Service
-public class InventorAmountShowService implements AbstractShowService<Inventor, Amount> {
+public class AnyAmountShowService implements AbstractShowService<Any, Amount> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorAmountRepository repository;
+	protected AnyAmountRepository repository;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -37,10 +37,9 @@ public class InventorAmountShowService implements AbstractShowService<Inventor, 
 	public boolean authorise(final Request<Amount> request) {
 		assert request != null;
 
-		final int inventorId = request.getPrincipal().getActiveRoleId();
 		final int amountId = request.getModel().getInteger("id");
 		final Amount amount = this.repository.findOneAmountById(amountId);
-		return inventorId == amount.getToolkit().getInventor().getId();
+		return !amount.getToolkit().getDraftMode();
 	}
 
 

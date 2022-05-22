@@ -62,6 +62,7 @@ public class InventorAmountListToolsService implements AbstractListService<Inven
 
 		model.setAttribute("masterId", masterId);
 		model.setAttribute("showCreate", showCreate);
+		model.setAttribute("type", "tool");
 	}
 	
 	@Override
