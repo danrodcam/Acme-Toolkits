@@ -16,12 +16,11 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form>
-	<acme:input-textbox code="any.item.form.label.name" path="name"/>
-	<acme:input-textbox code="any.item.form.label.code" path="code"/>
-	<acme:input-textbox code="any.item.form.label.technology" path="technology"/>
-	<acme:input-textbox code="any.item.form.label.description" path="description"/>
-	<acme:input-url code="any.item.form.label.link" path="link"/>
-	<acme:input-money code="any.item.form.label.price" path="retailPrice"/>
-	<acme:input-money code="any.item.form.label.exchange" path="exchange"/>
+	<acme:input-money code="authenticated.money-exchange.form.label.source" path="source"/>
+	<acme:input-textbox code="authenticated.money-exchange.form.label.target-currency" path="targetCurrency" placeholder="EUR, USD, GBP, ..."/>
 	
+	<acme:input-money code="authenticated.money-exchange.form.label.date" path="date" readonly="true" placeholder=""/>
+	<acme:input-money code="authenticated.money-exchange.form.label.target" path="target" readonly="true" placeholder=""/>
+		
+	<acme:submit code="authenticated.money-exchange.form.button.perform" action="/authenticated/money-exchange/perform"/>
 </acme:form>

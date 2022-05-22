@@ -12,14 +12,21 @@
 
 package acme.features.any.item;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
+import acme.systemConfiguration.SystemConfiguration;
 
 
 
@@ -30,6 +37,12 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
 
 	@Autowired
 	protected AnyItemRepository repository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
+	
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -55,8 +68,10 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		model.setAttribute("exchange", this.moneyExchange(request));
 
-		request.unbind(entity, model, "name", "code", "technology","description", "retailPrice", "link");
+		request.unbind(entity, model, "name", "code", "technology","description", "retailPrice", "link", "exchange");
 	}
 
 
@@ -72,6 +87,27 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
 		result = this.repository.findOneComponentById(id);
 		return result;
 	}
+	
+	
+	
+	
+	private MoneyExchange moneyExchange(final Request<Item> request) {
+		int masterId;
+        masterId = request.getModel().getInteger("id");
+        final Item it = this.repository.findOneComponentById(masterId);
+        
+        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+        
+        final String sysCurr = sys.getSystemCurrency(); 
+        
+        final Money moneda = it.getRetailPrice();
+        
+        final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
+        
+        return monEx;
+
+
+    }
 
 	
 
