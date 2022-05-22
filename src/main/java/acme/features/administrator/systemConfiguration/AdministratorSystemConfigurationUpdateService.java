@@ -27,6 +27,55 @@ public class AdministratorSystemConfigurationUpdateService implements AbstractUp
 
 		return true;
 	}
+	
+	
+	@Override
+	public void validate(final Request<SystemConfiguration> request, final SystemConfiguration entity, final Errors errors) {
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+		
+		
+		Boolean r1 = false;
+		
+		Boolean r2 = true;
+	
+			
+		final String systemCurrency = entity.getSystemCurrency();
+		
+		final String regexp = "^[A-Z]{3}?$";
+		
+		errors.state(request, systemCurrency.matches(regexp), "systemCurrency", "administrator.system-configuration.form.error.systemCurrency");
+			
+		final String acceptedCurrency = entity.getAcceptedCurrency();
+			
+			
+		final String[]currencys = acceptedCurrency.split(";");
+			
+		for(int i=0;i<currencys.length;i++) {
+			if(currencys[i].equals(systemCurrency)) {
+				r1 = true;
+			}else if(!currencys[i].matches(regexp)) {
+				r2 = false;
+				
+				
+			}
+		}
+		
+		errors.state(request, r1.equals(true), "acceptedCurrency", "administrator.system-configuration.form.error.acceptedCurrency");
+		
+		errors.state(request, r2.equals(true), "acceptedCurrency", "administrator.system-configuration.form.error.acceptedCurrency2");
+		
+		
+			
+		
+		
+		
+		
+				
+		}
+			
+		
 
 	@Override
 	public void bind(final Request<SystemConfiguration> request, final SystemConfiguration entity, final Errors errors) {
@@ -60,12 +109,8 @@ public class AdministratorSystemConfigurationUpdateService implements AbstractUp
 		return result;
 	}
 
-	@Override
-	public void validate(final Request<SystemConfiguration> request, final SystemConfiguration entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
-	}
+	
+	
 
 	@Override
 	public void update(final Request<SystemConfiguration> request, final SystemConfiguration entity) {

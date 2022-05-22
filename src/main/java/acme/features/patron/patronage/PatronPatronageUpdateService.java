@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.patronages.Patronage;
+import acme.features.any.userAccount.AnyUserAccountRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -33,6 +34,9 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 
 	@Autowired
 	protected PatronPatronageRepository repository;
+	
+	@Autowired
+	protected AnyUserAccountRepository invRepository;
 
 	// AbstractUpdateService<Employer, Duty> -------------------------------------
 
@@ -119,6 +123,9 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 
 		request.unbind(entity, model, "status", "legalStuff", "code", "budget", "creationMoment", "optionalLink", "initialDate", "finalDate", "isPublished");
 		model.setAttribute("masterId", entity.getId());
+		model.setAttribute("inventors", this.invRepository.findAllInventors());
+		final Inventor inventor = entity.getInventor();
+		model.setAttribute("inventor", inventor);
 		}
 
 	@Override

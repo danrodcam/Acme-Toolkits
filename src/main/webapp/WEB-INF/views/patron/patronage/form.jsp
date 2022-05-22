@@ -37,7 +37,7 @@
 		
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && isPublished == false }">	
 		
-		<jstl:if test="${command == 'show' }">
+		<jstl:if test="${acme:anyOf(command, 'show, update') }">
 			<acme:input-select code="patron.patronage.form.label.inventor" path="inventor">
 				<jstl:forEach var="i" items="${inventors}">
 					<jstl:if test="${i.id == inventor.id }">
