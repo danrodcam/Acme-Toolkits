@@ -32,6 +32,7 @@ inventor.patronage.patron.form.label.username = Username:
 inventor.patronage.patron.form.label.company = Patron's Company:
 inventor.patronage.patron.form.label.statement = Statement:
 inventor.patronage.patron.form.label.optionalLink = Link:
+inventor.patronage.form.label.exchange = Exchange:
 
 inventor.patronage.form.button.patron = Patron
 

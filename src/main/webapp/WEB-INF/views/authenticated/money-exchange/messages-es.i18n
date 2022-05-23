@@ -1,4 +1,4 @@
-# i18n-en.i18n
+# i18n-es.i18n
 #
 # Copyright (C) 2012-2022 Rafael Corchuelo.
 #
@@ -8,19 +8,11 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
+authenticated.money-exchange.form.label.source = Cantidad origen:
+authenticated.money-exchange.form.label.target-currency = Moneda destino:
+authenticated.money-exchange.form.label.date = Fecha del cambio:
+authenticated.money-exchange.form.label.target = Cantidad destino:
+	
+authenticated.money-exchange.form.button.perform = Realizar cambio
 
-any.item.list.label.name = Name
-any.item.list.label.code = Code
-any.item.list.label.technology = Technology
-any.item.list.label.price = Price
-
-
-
-
-any.item.form.label.name = Name
-any.item.form.label.code = Code
-any.item.form.label.technology = Technology
-any.item.form.label.description = Description
-any.item.form.label.link = Link
-any.item.form.label.price = Price
-any.item.form.label.exchange = Exchange
+authenticated.money-exchange.form.label.api-error = Lo sentimos, no se pudo hacer este cambio

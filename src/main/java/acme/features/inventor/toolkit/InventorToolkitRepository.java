@@ -13,6 +13,7 @@
 package acme.features.inventor.toolkit;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -32,7 +33,12 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	Collection<Toolkit> findManyToolkitsByInventorId(int inventorId);
 	
 	@Query("select amount from Amount amount where amount.toolkit.id = :masterId")
-    Collection<Amount> findAmountsByToolkit(int masterId);
+  Collection<Amount> findAmountsByToolkit(int masterId);
+	
+	@Query("select sum(a.item.retailPrice.amount*a.units), a.item.retailPrice.currency from Amount a where a.toolkit.id = :toolkitId group by a.item.retailPrice.currency")
+	List<List<Object>> getPricesByToolkitId(int toolkitId);
+
+    
 	
 	@Query("select tk from Toolkit tk where tk.code = :code")
 	Toolkit findOneToolkitByCode(String code);

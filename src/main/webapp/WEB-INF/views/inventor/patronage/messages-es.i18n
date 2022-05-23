@@ -23,6 +23,7 @@ inventor.patronage.form.label.creationMoment = Momento Creación:
 inventor.patronage.form.label.optionalLink = Link:
 inventor.patronage.form.label.initialDate = Fecha Inicio:
 inventor.patronage.form.label.finalDate = Fecha fin:
+inventor.patronage.form.label.exchange = Cambio de moneda:
 
 inventor.patronage.form.label.new-status = Cambiar estado a:
 inventor.patronage.form.button.update = Actualizar

@@ -16,6 +16,22 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form> 
+	<acme:input-textbox code="inventor.patronage.form.label.status" path="status"/>
+	<acme:input-textbox code="inventor.patronage.form.label.legalStuff" path="legalStuff"/>
+	<acme:input-textbox code="inventor.patronage.form.label.code" path="code"/>
+	<acme:input-double code="inventor.patronage.form.label.budget" path="budget"/>
+	<acme:input-money code="inventor.patronage.form.label.exchange" path="exchange"/>
+	<acme:input-moment code="inventor.patronage.form.label.creationMoment" path="creationMoment"/>
+	<acme:input-url code="inventor.patronage.form.label.optionalLink" path="optionalLink"/>
+	<acme:input-moment code="inventor.patronage.form.label.initialDate" path="initialDate"/>
+	<acme:input-moment code="inventor.patronage.form.label.finalDate" path="finalDate"/>
+	<acme:input-textbox code="inventor.patronage.patron.form.label.name" path="patron.userAccount.identity.name"/>
+	<acme:input-textbox code="inventor.patronage.patron.form.label.surname" path="patron.userAccount.identity.surname"/>
+	<acme:input-textbox code="inventor.patronage.patron.form.label.username" path="patron.userAccount.username"/>
+	<acme:input-textbox code="inventor.patronage.patron.form.label.company" path="patron.company"/>
+	<acme:input-textbox code="inventor.patronage.patron.form.label.statement" path="patron.statement"/>
+	<acme:input-url code="inventor.patronage.patron.form.label.optionalLink" path="patron.optionalLink"/>
+  
 	<jstl:if test="${status != 'PROPOSED'}">
 		<acme:input-textbox code="inventor.patronage.form.label.status" path="status" readonly="true"/>
 	</jstl:if>
