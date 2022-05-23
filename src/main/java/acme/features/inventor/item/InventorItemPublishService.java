@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+
 import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -18,9 +19,11 @@ public class InventorItemPublishService implements AbstractUpdateService<Invento
 
 		@Autowired
 		protected InventorItemRepository repository;
+
 		
 		@Autowired
 		protected SystemConfigurationSpamFilterService spamFilterService;
+
 
 		// AbstractCreateService<Inventor, Item> interface -------------------------
 
@@ -90,6 +93,7 @@ public class InventorItemPublishService implements AbstractUpdateService<Invento
 				errors.state(request, entity.getCode().matches(regexp), "code", "inventor.item.form.error.code.regexp");
 			}
 			
+
 			
 			if (!errors.hasErrors("name")) {
 				errors.state(request, !this.spamFilterService.isSpam(entity.getName()), "name", "inventor.item.form.error.spam");
@@ -118,4 +122,5 @@ public class InventorItemPublishService implements AbstractUpdateService<Invento
 			this.repository.save(entity);
 			
 		}
+
 }

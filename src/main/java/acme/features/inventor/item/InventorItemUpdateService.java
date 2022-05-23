@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.item.Item;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+
 import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
 import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
@@ -29,6 +30,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 	
 	@Autowired
 	protected AuthenticatedMoneyExchangePerformService exchangeService;
+
 	
 	@Autowired
 	protected SystemConfigurationSpamFilterService spamFilterService;
@@ -102,6 +104,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.item.form.error.code.regexp");
 		}
 		
+
 		if (!errors.hasErrors("name")) {
 			errors.state(request, !this.spamFilterService.isSpam(entity.getName()), "name", "inventor.item.form.error.spam");
 		}
@@ -146,5 +149,6 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 
 
     }
+
 
 }

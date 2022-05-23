@@ -20,12 +20,17 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.patronages.Patronage;
 import acme.features.any.userAccount.AnyUserAccountRepository;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 import acme.roles.Patron;
+import acme.systemConfiguration.SystemConfiguration;
 
 @Service
 public class PatronPatronageUpdateService implements AbstractUpdateService<Patron, Patronage> {
@@ -37,6 +42,12 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 	
 	@Autowired
 	protected AnyUserAccountRepository invRepository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
+	
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
 	// AbstractUpdateService<Employer, Duty> -------------------------------------
 
@@ -123,6 +134,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 
 		request.unbind(entity, model, "status", "legalStuff", "code", "budget", "creationMoment", "optionalLink", "initialDate", "finalDate", "isPublished");
 		model.setAttribute("masterId", entity.getId());
+		model.setAttribute("exchange", this.moneyExchange(request));
 		model.setAttribute("inventors", this.invRepository.findAllInventors());
 		final Inventor inventor = entity.getInventor();
 		model.setAttribute("inventor", inventor);
@@ -136,5 +148,23 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		this.repository.save(entity);
 
 	}
+	
+	private Money moneyExchange(final Request<Patronage> request) {
+		int masterId;
+        masterId = request.getModel().getInteger("id");
+        final Patronage p = this.repository.findOnePatronageById(masterId);
+        
+        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+        
+        final String sysCurr = sys.getSystemCurrency(); 
+        
+        final Money moneda = p.getBudget();
+        
+        final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
+        
+        return monEx.getTarget();
+
+
+    }
 
 }
