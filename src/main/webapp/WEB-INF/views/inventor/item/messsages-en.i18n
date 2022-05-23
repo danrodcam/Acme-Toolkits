@@ -25,3 +25,4 @@ inventor.item.form.label.technology = Technology
 inventor.item.form.label.description = Description
 inventor.item.form.label.link = Link
 inventor.item.form.label.price = Price
+inventor.item.form.label.exchange = Exchange

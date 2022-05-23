@@ -20,6 +20,7 @@
 	<acme:input-textbox code="inventor.patronage.form.label.legalStuff" path="legalStuff"/>
 	<acme:input-textbox code="inventor.patronage.form.label.code" path="code"/>
 	<acme:input-double code="inventor.patronage.form.label.budget" path="budget"/>
+	<acme:input-money code="inventor.patronage.form.label.exchange" path="exchange"/>
 	<acme:input-moment code="inventor.patronage.form.label.creationMoment" path="creationMoment"/>
 	<acme:input-url code="inventor.patronage.form.label.optionalLink" path="optionalLink"/>
 	<acme:input-moment code="inventor.patronage.form.label.initialDate" path="initialDate"/>

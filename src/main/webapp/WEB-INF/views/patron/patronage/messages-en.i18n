@@ -18,6 +18,7 @@ patron.patronage.form.label.status = Status:
 patron.patronage.form.label.legalStuff = Legal Stuff:
 patron.patronage.form.label.code = Code:
 patron.patronage.form.label.budget = Budget:
+patron.patronage.form.label.exchange = Exchange:
 patron.patronage.form.label.creationMoment = Creation Moment:
 patron.patronage.form.label.optionalLink = Optional Link:
 patron.patronage.form.label.initialDate = initial Date:

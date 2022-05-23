@@ -20,6 +20,7 @@
 	<acme:input-textbox code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
 	<acme:input-textbox code="patron.patronage.form.label.code" path="code"/>
 	<acme:input-double code="patron.patronage.form.label.budget" path="budget"/>
+	<acme:input-money code="patron.patronage.form.label.exchange" path="exchange"/>
 	<acme:input-moment code="patron.patronage.form.label.creationMoment" path="creationMoment"/>
 	<acme:input-url code="patron.patronage.form.label.optionalLink" path="optionalLink"/>
 	<acme:input-moment code="patron.patronage.form.label.initialDate" path="initialDate"/>

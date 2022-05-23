@@ -23,5 +23,6 @@
 	<acme:input-textbox code="inventor.item.form.label.description" path="description"/>
 	<acme:input-url code="inventor.item.form.label.link" path="link"/>
 	<acme:input-money code="inventor.item.form.label.price" path="retailPrice"/>
+	<acme:input-money code="inventor.item.form.label.exchange" path="exchange"/>
 	
 </acme:form>

@@ -23,7 +23,6 @@ any.toolkit.form.label.assemblyNotes = Notas Montaje
 any.toolkit.form.label.description = Descripción
 any.toolkit.form.label.link = Link
 any.toolkit.form.label.price = Precio
-any.toolkit.form.label.exchange = Cambio de Moneda
 
 any.toolkit.form.button.components = Componentes
 any.toolkit.form.button.tools = Herramientas
