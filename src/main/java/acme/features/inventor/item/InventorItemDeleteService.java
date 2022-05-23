@@ -88,4 +88,6 @@ public class InventorItemDeleteService implements AbstractDeleteService<Inventor
 	
 	
 
+
 }
+

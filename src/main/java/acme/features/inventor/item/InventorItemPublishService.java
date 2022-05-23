@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+
+import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -17,6 +19,11 @@ public class InventorItemPublishService implements AbstractUpdateService<Invento
 
 		@Autowired
 		protected InventorItemRepository repository;
+
+		
+		@Autowired
+		protected SystemConfigurationSpamFilterService spamFilterService;
+
 
 		// AbstractCreateService<Inventor, Item> interface -------------------------
 
@@ -86,6 +93,24 @@ public class InventorItemPublishService implements AbstractUpdateService<Invento
 				errors.state(request, entity.getCode().matches(regexp), "code", "inventor.item.form.error.code.regexp");
 			}
 			
+
+			
+			if (!errors.hasErrors("name")) {
+				errors.state(request, !this.spamFilterService.isSpam(entity.getName()), "name", "inventor.item.form.error.spam");
+			}
+			
+			if (!errors.hasErrors("technology")) {
+				errors.state(request, !this.spamFilterService.isSpam(entity.getTechnology()), "technology", "inventor.item.form.error.spam");
+			}
+			
+			if (!errors.hasErrors("description")) {
+				errors.state(request, !this.spamFilterService.isSpam(entity.getDescription()), "description", "inventor.item.form.error.spam");
+			}
+			
+			if (!errors.hasErrors("retailPrice")) {
+				errors.state(request, !(entity.getRetailPrice().getAmount() < 0), "retailPrice", "inventor.create.item.price.positive");
+			}
+			
 		}
 
 		@Override
@@ -97,4 +122,5 @@ public class InventorItemPublishService implements AbstractUpdateService<Invento
 			this.repository.save(entity);
 			
 		}
+
 }

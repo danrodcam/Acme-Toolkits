@@ -42,7 +42,7 @@ public interface InventorItemRepository extends AbstractRepository {
 	@Query("select i from Inventor i where i.id = :id")
 	Inventor findOneInventorById(int id);
 
-	
+
 	@Query("select it from Item it where it.code = :code")
 	Item findOneItemByCode(String code);
 

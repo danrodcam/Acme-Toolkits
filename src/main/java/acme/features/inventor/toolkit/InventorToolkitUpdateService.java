@@ -22,7 +22,9 @@ import org.springframework.stereotype.Service;
 import acme.entities.toolkit.Toolkit;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+
 import acme.forms.MoneyExchange;
+import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -45,6 +47,9 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 	@Autowired
 	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
+	@Autowired
+	protected SystemConfigurationSpamFilterService spamFilterService;
+	
 	// AbstractUpdateService<Inventor, Toolkit> -------------------------------------
 
 
@@ -79,6 +84,16 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 			
 			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
 			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.toolkit.form.error.code.regexp");
+		}
+		
+		if (!errors.hasErrors("title")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getTitle()), "title", "inventor.toolkit.form.error.spam");
+		}
+		if (!errors.hasErrors("description")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getDescription()), "description", "inventor.toolkit.form.error.spam");
+		}
+		if (!errors.hasErrors("assemblyNotes")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getAssemblyNotes()), "assemblyNotes", "inventor.toolkit.form.error.spam");
 		}
 	}
 

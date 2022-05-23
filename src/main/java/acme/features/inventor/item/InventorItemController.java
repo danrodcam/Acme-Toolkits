@@ -40,7 +40,7 @@ public class InventorItemController extends AbstractController<Inventor, Item> {
 	
 	@Autowired
 	protected InventorToolCreateService 		createToolService;
-	
+
 	@Autowired
 	protected InventorItemPublishService 		publishItemService;
 	
@@ -63,9 +63,9 @@ public class InventorItemController extends AbstractController<Inventor, Item> {
 		super.addCommand("delete", this.deleteItemService);
 		super.addCommand("create-tool", "create", this.createToolService);
 		super.addCommand("publish", "update", this.publishItemService);
-		
-		super.addCommand("create-component", "create", this.createComponentService);
-		
+  
+    super.addCommand("create-component", "create", this.createComponentService);
+
 	}
 
 }

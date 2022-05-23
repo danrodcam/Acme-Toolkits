@@ -15,3 +15,4 @@ administrator.announcement.form.label.critical = Crítico
 
 administrator.announcement.form.label.confirmation = Confirmar que el anuncio es correcto
 administrator.announcement.form.button.create = Crear
+administrator.announcement.form.error.spam = Este campo contiene spam

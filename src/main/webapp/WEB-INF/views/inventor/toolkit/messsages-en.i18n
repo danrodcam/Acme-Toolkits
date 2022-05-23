@@ -33,3 +33,4 @@ inventor.toolkit.form.button.add.tool = Add Tool
 inventor.toolkit.form.error.code.regexp = Code must match the pattern '^[A-Z]{3}-[0-9]{3}(-[A-Z])?$'
 inventor.toolkit.form.error.code.unique = Code already exists
 inventor.toolkit.form.error.empty = Toolkit can't be published unless it contains at least one tool or component
+inventor.toolkit.form.error.spam = This field has spam
