@@ -18,5 +18,10 @@
 <acme:list>
 	<acme:list-column code="inventor.toolkit.list.label.code" path="code" width="30%"/>
 	<acme:list-column code="inventor.toolkit.list.label.title" path="title" width="30%"/>
-	<acme:list-column code="inventor.toolkit.list.label.description" path="description" width="40%"/>
+	<acme:list-column code="inventor.toolkit.list.label.draft" path="draftMode" width="10%"/>
+	<acme:list-column code="inventor.toolkit.list.label.description" path="description" width="30%"/>
 </acme:list>
+
+<jstl:if test="${command == 'list-own'}">
+	<acme:button code="inventor.toolkit.list.button.create" action="/inventor/toolkit/create"/>
+</jstl:if>

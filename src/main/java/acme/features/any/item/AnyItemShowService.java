@@ -57,7 +57,7 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
 		
 		itemId = request.getModel().getInteger("id");
 		item = this.repository.findOneComponentById(itemId);
-		result = item.isPublished(); 
+		result = item.getPublished(); 
 
 		return result;
 	}

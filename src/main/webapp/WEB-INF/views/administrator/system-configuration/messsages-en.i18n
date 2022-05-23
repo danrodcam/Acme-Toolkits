@@ -9,8 +9,16 @@
 # they accept any liabilities with respect to them.
 
 administrator.system-configuration.form.label.system-currency = System Currency
-administrator.system-configuration.form.label.accepted-currency = Accepted Currncy
+administrator.system-configuration.form.label.accepted-currency = Accepted Currency
 administrator.system-configuration.form.label.strong-spam-terms = Strong Spam Terms
 administrator.system-configuration.form.label.weak-spam-terms = Weak Spam Terms
 administrator.system-configuration.form.label.strong-spam-threshold = Strong Spam Threshold
 administrator.system-configuration.form.label.weak-spam-threshold = Weak Spam Threshold
+
+administrator.system-configuration.form.button.update = Update
+
+administrator.system-configuration.form.error.systemCurrency = System currency should only be one and with 3 alphabetic characters
+
+administrator.system-configuration.form.error.acceptedCurrency = The system currency must be in the accepted currencies
+administrator.system-configuration.form.error.acceptedCurrency2 = Accepted currencies must be composed of 3 alphabetic characters
+

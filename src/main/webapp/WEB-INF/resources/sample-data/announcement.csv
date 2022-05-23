@@ -1,4 +1,4 @@
-key,creation-moment,title,body,isCritical,info
+key,creation-moment,title,body,critical,info
 announcement-01,2000/01/01 00:00,INFO,Very old announcement,false,null
 announcement-02,2001/02/01 00:00,INFO,Prueba 2,true,http://www.example.com
 announcement-03,2002/05/01 00:00,INFO,Prueba 3,false,null

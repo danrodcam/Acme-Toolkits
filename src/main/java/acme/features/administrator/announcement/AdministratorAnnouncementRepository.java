@@ -1,5 +1,5 @@
 /*
- * AuthenticatedProviderRepository.java
+ * AuthenticatedAnnouncementRepository.java
  *
  * Copyright (C) 2012-2022 Rafael Corchuelo.
  *
@@ -10,20 +10,18 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.administrrator.systemConfiguration;
+package acme.features.administrator.announcement;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.announcements.Announcement;
 import acme.framework.repositories.AbstractRepository;
-import acme.systemConfiguration.SystemConfiguration;
 
 @Repository
-public interface AdministratorSystemConfigurationRepository extends AbstractRepository {
+public interface AdministratorAnnouncementRepository extends AbstractRepository {
 
-	@Query("select c from SystemConfiguration c")
-	SystemConfiguration findSystemConfiguration();
-	
-	
+	@Query("select a from Announcement a where a.id = :id")
+	Announcement findOneAnnouncementById(int id);
 
 }
