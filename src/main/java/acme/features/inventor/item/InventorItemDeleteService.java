@@ -11,7 +11,7 @@ import acme.framework.services.AbstractDeleteService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentDeleteService implements AbstractDeleteService<Inventor, Item> {
+public class InventorItemDeleteService implements AbstractDeleteService<Inventor, Item> {
 	
 	// Internal state ---------------------------------------------------------
 

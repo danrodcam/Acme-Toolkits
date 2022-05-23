@@ -17,7 +17,7 @@ import acme.roles.Inventor;
 import acme.systemConfiguration.SystemConfiguration;
 
 @Service
-public class InventorComponentUpdateService implements AbstractUpdateService<Inventor, Item> {
+public class InventorItemUpdateService implements AbstractUpdateService<Inventor, Item> {
 	
 	// Internal state ---------------------------------------------------------
 
@@ -29,10 +29,10 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 	
 	@Autowired
 	protected AuthenticatedMoneyExchangePerformService exchangeService;
-
+	
 	@Autowired
 	protected SystemConfigurationSpamFilterService spamFilterService;
-	
+
 	// AbstractCreateService<Inventor, Item> interface -------------------------
 
 	@Override
@@ -72,24 +72,6 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 		model.setAttribute("exchange", this.moneyExchange(request));
 		
 	}
-	
-	private Money moneyExchange(final Request<Item> request) {
-		int masterId;
-        masterId = request.getModel().getInteger("id");
-        final Item it = this.repository.findOneItemById(masterId);
-        
-        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
-        
-        final String sysCurr = sys.getSystemCurrency(); 
-        
-        final Money moneda = it.getRetailPrice();
-        
-        final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
-        
-        return monEx.getTarget();
-
-
-    }
 
 	@Override
 	public Item findOne(final Request<Item> request) {
@@ -110,18 +92,18 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 		assert entity != null;
 		assert errors != null;
 
-		if (!errors.hasErrors("name")) {
-			errors.state(request, !this.spamFilterService.isSpam(entity.getName()), "name", "inventor.item.form.error.spam");
-		}
-		
 		if (!errors.hasErrors("code")) {
 			Item existing;
 
-			existing = this.repository.findOneComponentByCode(entity.getCode());
+			existing = this.repository.findOneItemByCode(entity.getCode());
 			errors.state(request, existing == null || existing.getId()==entity.getId(), "code", "inventor.item.form.error.code.unique");
 			
 			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
 			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.item.form.error.code.regexp");
+		}
+		
+		if (!errors.hasErrors("name")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getName()), "name", "inventor.item.form.error.spam");
 		}
 		
 		if (!errors.hasErrors("technology")) {
@@ -130,6 +112,10 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 		
 		if (!errors.hasErrors("description")) {
 			errors.state(request, !this.spamFilterService.isSpam(entity.getDescription()), "description", "inventor.item.form.error.spam");
+		}
+		
+		if (!errors.hasErrors("retailPrice")) {
+			errors.state(request, !(entity.getRetailPrice().getAmount() < 0), "retailPrice", "inventor.create.item.price.positive");
 		}
 		
 	}
@@ -142,5 +128,23 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 		this.repository.save(entity);
 		
 	}
+	
+	private Money moneyExchange(final Request<Item> request) {
+		int masterId;
+        masterId = request.getModel().getInteger("id");
+        final Item it = this.repository.findOneItemById(masterId);
+        
+        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+        
+        final String sysCurr = sys.getSystemCurrency(); 
+        
+        final Money moneda = it.getRetailPrice();
+        
+        final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
+        
+        return monEx.getTarget();
+
+
+    }
 
 }

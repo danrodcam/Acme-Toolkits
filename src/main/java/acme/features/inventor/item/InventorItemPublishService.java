@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -11,12 +12,15 @@ import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentPublishService implements AbstractUpdateService<Inventor, Item>{
+public class InventorItemPublishService implements AbstractUpdateService<Inventor, Item>{
 
 		// Internal state ---------------------------------------------------------
 
 		@Autowired
 		protected InventorItemRepository repository;
+		
+		@Autowired
+		protected SystemConfigurationSpamFilterService spamFilterService;
 
 		// AbstractCreateService<Inventor, Item> interface -------------------------
 
@@ -79,11 +83,28 @@ public class InventorComponentPublishService implements AbstractUpdateService<In
 			if (!errors.hasErrors("code")) {
 				Item existing;
 
-				existing = this.repository.findOneComponentByCode(entity.getCode());
+				existing = this.repository.findOneItemByCode(entity.getCode());
 				errors.state(request, existing == null || existing.getId()==entity.getId(), "code", "inventor.item.form.error.code.unique");
 				
 				final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
 				errors.state(request, entity.getCode().matches(regexp), "code", "inventor.item.form.error.code.regexp");
+			}
+			
+			
+			if (!errors.hasErrors("name")) {
+				errors.state(request, !this.spamFilterService.isSpam(entity.getName()), "name", "inventor.item.form.error.spam");
+			}
+			
+			if (!errors.hasErrors("technology")) {
+				errors.state(request, !this.spamFilterService.isSpam(entity.getTechnology()), "technology", "inventor.item.form.error.spam");
+			}
+			
+			if (!errors.hasErrors("description")) {
+				errors.state(request, !this.spamFilterService.isSpam(entity.getDescription()), "description", "inventor.item.form.error.spam");
+			}
+			
+			if (!errors.hasErrors("retailPrice")) {
+				errors.state(request, !(entity.getRetailPrice().getAmount() < 0), "retailPrice", "inventor.create.item.price.positive");
 			}
 			
 		}

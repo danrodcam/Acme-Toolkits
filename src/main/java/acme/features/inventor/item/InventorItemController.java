@@ -36,30 +36,21 @@ public class InventorItemController extends AbstractController<Inventor, Item> {
 	protected InventorItemShowService	showService;
 	
 	
-	@Autowired
-	protected InventorComponentUpdateService	updateService;
 	
 	@Autowired
-	protected InventorComponentCreateService	createService;
-
-	
-	@Autowired
-	protected InventorComponentDeleteService	deleteService;
-	
-	@Autowired
-	protected InventorComponentPublishService	publishService;
+	protected InventorComponentCreateService	createComponentService;
 	
 	@Autowired
 	protected InventorToolCreateService 		createToolService;
+
+	@Autowired
+	protected InventorItemPublishService 		publishItemService;
 	
 	@Autowired
-	protected InventorToolPublishService 		publishToolService;
+	protected InventorItemUpdateService 		updateItemService;
 	
 	@Autowired
-	protected InventorToolUpdateService 		updateToolService;
-	
-	@Autowired
-	protected InventorToolDeleteService 		deleteToolService;
+	protected InventorItemDeleteService 		deleteItemService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -70,15 +61,12 @@ public class InventorItemController extends AbstractController<Inventor, Item> {
 		super.addCommand("list-own-tools", "list" ,this.listOwnToolsService);
 		super.addCommand("show", this.showService);
 		
-		super.addCommand("update-tool", "update", this.updateToolService);
-		super.addCommand("delete-tool", "delete", this.deleteToolService);
+		super.addCommand("update", this.updateItemService);
+		super.addCommand("delete", this.deleteItemService);
 		super.addCommand("create-tool", "create", this.createToolService);
-		super.addCommand("publish-tool", "update", this.publishToolService);
+		super.addCommand("publish", "update", this.publishItemService);
 		
-		super.addCommand("update-component", "update", this.updateService);
-		super.addCommand("delete-component", "delete", this.deleteService);
-		super.addCommand("create-component", "create", this.createService);
-		super.addCommand("publish-component", "update" ,this.publishService);
+		super.addCommand("create-component", "create", this.createComponentService);
 	}
 
 }
