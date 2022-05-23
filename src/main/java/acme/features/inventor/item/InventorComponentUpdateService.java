@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.item.Item;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
 import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -29,6 +30,9 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 	@Autowired
 	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
+	@Autowired
+	protected SystemConfigurationSpamFilterService spamFilterService;
+	
 	// AbstractCreateService<Inventor, Item> interface -------------------------
 
 	@Override
@@ -106,6 +110,10 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 		assert entity != null;
 		assert errors != null;
 
+		if (!errors.hasErrors("name")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getName()), "name", "inventor.item.form.error.spam");
+		}
+		
 		if (!errors.hasErrors("code")) {
 			Item existing;
 
@@ -114,6 +122,14 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 			
 			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
 			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.item.form.error.code.regexp");
+		}
+		
+		if (!errors.hasErrors("technology")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getTechnology()), "technology", "inventor.item.form.error.spam");
+		}
+		
+		if (!errors.hasErrors("description")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getDescription()), "description", "inventor.item.form.error.spam");
 		}
 		
 	}
