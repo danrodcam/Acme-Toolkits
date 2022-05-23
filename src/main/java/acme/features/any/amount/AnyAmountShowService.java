@@ -10,63 +10,66 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.administrrator.systemConfiguration;
+package acme.features.any.amount;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.Amount;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.roles.Administrator;
+import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
-import acme.systemConfiguration.SystemConfiguration;
 
 
 @Service
-public class AdministrratorSystemConfigurationShowService implements AbstractShowService<Administrator, SystemConfiguration> {
+public class AnyAmountShowService implements AbstractShowService<Any, Amount> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AdministratorSystemConfigurationRepository authenticatedSystemConfigurationRepository;
+	protected AnyAmountRepository repository;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
 
 	@Override
-	public boolean authorise(final Request<SystemConfiguration> request) {
+	public boolean authorise(final Request<Amount> request) {
 		assert request != null;
 
-		
-		return true;
-		
-		
+		final int amountId = request.getModel().getInteger("id");
+		final Amount amount = this.repository.findOneAmountById(amountId);
+		return !amount.getToolkit().getDraftMode();
 	}
 
 
 	@Override
-	public void unbind(final Request<SystemConfiguration> request, final SystemConfiguration entity, final Model model) {
+	public void unbind(final Request<Amount> request, final Amount entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "systemCurrency", "acceptedCurrency", "strongSpamTerms","weakSpamTerms", "strongSpamThreshold", "weakSpamThreshold");
+		request.unbind(entity, model, "units", "item.code");
+		model.setAttribute("publishedItems", this.repository.findManyPublishedTools());
+		model.setAttribute("type", "tool");
+		model.setAttribute("masterId", entity.getToolkit().getId());
+		model.setAttribute("itemId", entity.getItem().getId());
+		model.setAttribute("draftMode", entity.getToolkit().getDraftMode());
 	}
+
 
 
 	@Override
-	public SystemConfiguration findOne(final Request<SystemConfiguration> request) {
+	public Amount findOne(final Request<Amount> request) {
 		assert request != null;
-
-		SystemConfiguration result;
-		result = this.authenticatedSystemConfigurationRepository.findSystemConfiguration();
 		
+		Amount result;
+		int id;
+		
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneAmountById(id);
 		return result;
 	}
-
-
-
-	
 
 	
 

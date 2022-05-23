@@ -7,10 +7,12 @@ import acme.entities.patronages.Patronage;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.forms.MoneyExchange;
+import acme.features.any.userAccount.AnyUserAccountRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractShowService;
+import acme.roles.Inventor;
 import acme.roles.Patron;
 import acme.systemConfiguration.SystemConfiguration;
 
@@ -27,6 +29,8 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 		
 		@Autowired
 		protected AuthenticatedMoneyExchangePerformService exchangeService;
+
+		protected AnyUserAccountRepository invRepository;
 
 		// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -66,11 +70,14 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 		assert model != null;
 
 		request.unbind(entity, model, "status", "legalStuff", "code", "budget", "creationMoment", "optionalLink", 
-				"initialDate", "finalDate", "inventor.userAccount.identity.name", 
-				"inventor.userAccount.identity.surname", "inventor.userAccount.username", "inventor.company", 
-				"inventor.statement", "inventor.optionalLink");
+				"initialDate", "finalDate", "isPublished", "inventor.userAccount.identity.name", "inventor.userAccount.identity.surname",
+				"inventor.userAccount.username", "inventor.company", "inventor.statement", "inventor.optionalLink");
 		model.setAttribute("exchange", this.moneyExchange(request));
+
 		
+		final Inventor inventor = entity.getInventor();
+		model.setAttribute("inventor", inventor);
+		model.setAttribute("inventors", this.invRepository.findAllInventors());		
 	}
 	
 	private Money moneyExchange(final Request<Patronage> request) {

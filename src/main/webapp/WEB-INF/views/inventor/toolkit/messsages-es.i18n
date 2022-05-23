@@ -9,15 +9,27 @@
 # they accept any liabilities with respect to them.
 
 
+inventor.toolkit.list.button.create = Crear
 inventor.toolkit.list.label.code = Código
 inventor.toolkit.list.label.title = Título
+nventor.toolkit.list.label.draft = Borrador
 inventor.toolkit.list.label.description = Descripción
 
 inventor.toolkit.form.label.code = Código
-inventor.toolkit.form.label.title = Títutlo
+inventor.toolkit.form.label.title = Título
 inventor.toolkit.form.label.description = Descripción
 inventor.toolkit.form.label.assemblyNotes = Notas de montaje
 inventor.toolkit.form.label.link = Enlace
 inventor.toolkit.form.label.totalPrice = Precio total
 inventor.toolkit.form.button.components = Componentes
 inventor.toolkit.form.button.tools = Herramientas
+inventor.toolkit.form.button.update = Actualizar
+inventor.toolkit.form.button.delete = Eliminar
+inventor.toolkit.form.button.publish = Publicar
+inventor.toolkit.form.button.create = Crear
+inventor.toolkit.form.button.add.component = Añadir Componente
+inventor.toolkit.form.button.add.tool = Añadir Herramienta
+
+inventor.toolkit.form.error.code.regexp = El código debe cumplir con el patrón '^[A-Z]{3}-[0-9]{3}(-[A-Z])?$'
+inventor.toolkit.form.error.code.unique = El código ya existe
+inventor.toolkit.form.error.empty = El kit de herramientas no puede publicarse si no contiene un componente o una herramienta

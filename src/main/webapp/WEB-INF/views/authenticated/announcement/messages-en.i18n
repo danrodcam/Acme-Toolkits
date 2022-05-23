@@ -11,7 +11,7 @@
 administrator.announcement.form.label.creationMoment = CreationMoment:
 administrator.announcement.form.label.title = Title:
 administrator.announcement.form.label.body = Body:
-administrator.announcement.form.label.isCritical = IsCritical:
+administrator.announcement.form.label.critical = Critical:
 administrator.announcement.form.label.info = Info:
 
 authenticated.announcement.list.label.creationMoment = CreationMoment

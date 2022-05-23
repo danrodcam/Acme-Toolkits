@@ -17,7 +17,6 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.item.Amount;
 import acme.entities.item.Item;
 import acme.framework.repositories.AbstractRepository;
 
@@ -33,7 +32,10 @@ public interface AnyItemRepository extends AbstractRepository {
 	@Query("select item from Item item where item.type = acme.entities.item.ItemType.TOOL and item.published = true")
 	Collection<Item> findManyPublishedTools();
 	
-	@Query("select amount from Amount amount where amount.toolkit.id = :masterId")
-	Collection<Amount> findManyAmountByMasterId(int masterId);
+	@Query("select amount.item from Amount amount where amount.toolkit.id = :masterId and amount.item.type = acme.entities.item.ItemType.TOOL and amount.item.published = true")
+	Collection<Item> findManyToolsByToolkit(int masterId);
+	
+	@Query("select amount.item from Amount amount where amount.toolkit.id = :masterId and amount.item.type = acme.entities.item.ItemType.COMPONENT and amount.item.published = true")
+	Collection<Item> findManyComponentssByToolkit(int masterId);
 
 }
