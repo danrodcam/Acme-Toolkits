@@ -67,10 +67,10 @@ public class InventorToolCreateService implements AbstractCreateService<Inventor
 		result.setPublished(false);
 		result.setInventor(inventor);
 		String code = this.generateCode();
-		Item existing = this.repository.findOneToolByCode(code);
+		Item existing = this.repository.findOneItemByCode(code);
 		while(existing != null) {
 			code = this.generateCode();
-			existing = this.repository.findOneToolByCode(code);
+			existing = this.repository.findOneItemByCode(code);
 		}
 		result.setCode(code);
 
@@ -86,7 +86,7 @@ public class InventorToolCreateService implements AbstractCreateService<Inventor
 		if (!errors.hasErrors("code")) {
 			Item existing;
 
-			existing = this.repository.findOneToolByCode(entity.getCode());
+			existing = this.repository.findOneItemByCode(entity.getCode());
 			errors.state(request, existing == null, "code", "inventor.item.form.error.code.unique");
 			
 			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";

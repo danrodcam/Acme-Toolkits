@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.patronages.Patronage;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -29,6 +31,10 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 
 	@Autowired
 	protected PatronPatronageRepository repository;
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
 	// AbstractUpdateService<Employer, Job> interface ---------------------------
 

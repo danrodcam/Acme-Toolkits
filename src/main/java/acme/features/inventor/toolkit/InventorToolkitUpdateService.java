@@ -14,17 +14,22 @@ package acme.features.inventor.toolkit;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.toolkit.Toolkit;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
+import acme.systemConfiguration.SystemConfiguration;
 
 @Service
 public class InventorToolkitUpdateService implements AbstractUpdateService<Inventor, Toolkit> {
@@ -105,6 +110,7 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneToolkitById(id);
+		result.setTotalPrice(this.calcularPrecioTotal(request));
 		
 
 		return result;
@@ -122,5 +128,39 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		
 		this.repository.save(entity);
 	}
+	
+	private Money calcularPrecioTotal(final Request<Toolkit> request) {
+        int masterId;
+        masterId = request.getModel().getInteger("id");
+        Double cantidad = 0.;
+
+        final Money result = new Money();
+
+        final List<List<Object>> amounts = this.repository.getPricesByToolkitId(masterId);
+        
+        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+        final String sysCurr = sys.getSystemCurrency(); 
+
+        for (final List<Object>l:amounts) {
+			final Double amount = (Double) l.get(0);
+			final String currency = (String) l.get(1);
+			if (currency==sysCurr) {
+				cantidad = cantidad + amount;
+			}else {
+				final Money moneda = new Money();
+				moneda.setAmount(amount);
+				moneda.setCurrency(currency);
+				final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
+				cantidad = cantidad + monEx.getTarget().getAmount();
+			}
+        }
+
+        result.setAmount(cantidad);
+        result.setCurrency(sysCurr);
+
+        return result;
+
+
+    }
 
 }

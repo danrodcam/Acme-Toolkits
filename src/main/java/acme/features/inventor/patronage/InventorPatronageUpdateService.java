@@ -5,11 +5,16 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.patronages.Patronage;
 import acme.entities.patronages.PatronageStatus;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
+import acme.systemConfiguration.SystemConfiguration;
 
 @Service
 public class InventorPatronageUpdateService implements AbstractUpdateService<Inventor, Patronage> {
@@ -19,6 +24,11 @@ public class InventorPatronageUpdateService implements AbstractUpdateService<Inv
 	@Autowired
 	protected InventorPatronageRepository repository;
 
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
+	
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
 
 	@Override
@@ -73,6 +83,7 @@ public class InventorPatronageUpdateService implements AbstractUpdateService<Inv
 			"patron.userAccount.username", "patron.company", "patron.statement", "patron.optionalLink");
 		
 		model.setAttribute("masterId", entity.getId());
+		model.setAttribute("exchange", this.moneyExchange(request));
 	}
 
 	@Override
@@ -89,5 +100,23 @@ public class InventorPatronageUpdateService implements AbstractUpdateService<Inv
 
 		this.repository.save(entity);
 	}
+	
+	private Money moneyExchange(final Request<Patronage> request) {
+		int masterId;
+        masterId = request.getModel().getInteger("id");
+        final Patronage p = this.repository.findOnePatronageById(masterId);
+        
+        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+        
+        final String sysCurr = sys.getSystemCurrency(); 
+        
+        final Money moneda = p.getBudget();
+        
+        final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
+        
+        return monEx.getTarget();
+
+
+    }
 
 }

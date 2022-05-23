@@ -42,11 +42,9 @@ public interface InventorItemRepository extends AbstractRepository {
 	@Query("select i from Inventor i where i.id = :id")
 	Inventor findOneInventorById(int id);
 
-	@Query("select it from Item it where it.type = acme.entities.item.ItemType.COMPONENT and it.code = :code")
-	Item findOneComponentByCode(String code);
 	
-	@Query("select it from Item it where it.type = acme.entities.item.ItemType.TOOL and it.code = :code")
-	Item findOneToolByCode(String code);
+	@Query("select it from Item it where it.code = :code")
+	Item findOneItemByCode(String code);
 
 
 }
