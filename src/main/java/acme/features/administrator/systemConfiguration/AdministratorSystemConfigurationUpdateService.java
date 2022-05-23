@@ -68,6 +68,7 @@ public class AdministratorSystemConfigurationUpdateService implements AbstractUp
 		
 		
 		errors.state(request, entity.getWeakSpamThreshold()>0.0, "weakSpamThreshold","administrator.system-configuration.form.error.weakSpamThreshold");
+		errors.state(request, entity.getStrongSpamThreshold()>0.0, "strongSpamThreshold","administrator.system-configuration.form.error.strongSpamThreshold");
 			
 		
 		

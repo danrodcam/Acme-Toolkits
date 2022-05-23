@@ -23,4 +23,6 @@ administrator.system-configuration.form.error.acceptedCurrency = The system curr
 administrator.system-configuration.form.error.acceptedCurrency2 = Accepted currencies must be composed of 3 alphabetic characters
 
 administrator.system-configuration.form.error.weakSpamThreshold = Must be greater than 0
+administrator.system-configuration.form.error.strongSpamThreshold = Must be greater than 0
+
 
