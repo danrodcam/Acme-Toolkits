@@ -20,11 +20,15 @@ import org.springframework.stereotype.Service;
 import acme.entities.item.Amount;
 import acme.entities.item.Item;
 import acme.entities.toolkit.Toolkit;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.datatypes.Money;
 import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
+import acme.systemConfiguration.SystemConfiguration;
 
 
 
@@ -35,6 +39,12 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 
 	@Autowired
 	protected AnyToolkitRepository repository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
+	
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -62,6 +72,7 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 		assert model != null;
 
 		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "link","totalPrice");
+		model.setAttribute("exchange", this.moneyExchange(request));
 	}
 
 
@@ -103,6 +114,23 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 
 
 	    }
+	 
+	 private Money moneyExchange(final Request<Toolkit> request) {
+			int masterId;
+	        masterId = request.getModel().getInteger("id");
+	        final Toolkit tool = this.repository.findOneToolkitById(masterId);
+	        
+	        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+	        
+	        final String sysCurr = sys.getSystemCurrency(); 
+	        
+	        final Money moneda = tool.getTotalPrice();
+	        
+	        final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
+	        
+	        return monEx.getTarget();
+	        
+	 }
 
 
 

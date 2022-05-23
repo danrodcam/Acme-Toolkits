@@ -69,9 +69,11 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
 		assert entity != null;
 		assert model != null;
 		
-		model.setAttribute("exchange", this.moneyExchange(request));
 
-		request.unbind(entity, model, "name", "code", "technology","description", "retailPrice", "link", "exchange");
+
+		request.unbind(entity, model, "name", "code", "technology","description", "retailPrice", "link");
+		
+		model.setAttribute("exchange", this.moneyExchange(request));
 	}
 
 
@@ -91,7 +93,7 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
 	
 	
 	
-	private MoneyExchange moneyExchange(final Request<Item> request) {
+	private Money moneyExchange(final Request<Item> request) {
 		int masterId;
         masterId = request.getModel().getInteger("id");
         final Item it = this.repository.findOneComponentById(masterId);
@@ -104,7 +106,7 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
         
         final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
         
-        return monEx;
+        return monEx.getTarget();
 
 
     }

@@ -23,6 +23,7 @@ any.toolkit.form.label.assemblyNotes = Assembly Notes
 any.toolkit.form.label.description = Description
 any.toolkit.form.label.link = Link
 any.toolkit.form.label.price = Price
+any.toolkit.form.label.exchange = Exchange
 
 any.toolkit.form.button.components = Components
 any.toolkit.form.button.tools = Tools
