@@ -70,7 +70,7 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 
 
 		request.unbind(entity, model, "name", "code", "type", "technology","description", "retailPrice", "link","published");
-    model.setAttribute("exchange", this.moneyExchange(request));
+		model.setAttribute("exchange", this.moneyExchange(request));
 	}
 
 
@@ -90,7 +90,7 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 	private Money moneyExchange(final Request<Item> request) {
 		int masterId;
         masterId = request.getModel().getInteger("id");
-        final Item it = this.repository.findOneComponentById(masterId);
+        final Item it = this.repository.findOneItemById(masterId);
         
         final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
         

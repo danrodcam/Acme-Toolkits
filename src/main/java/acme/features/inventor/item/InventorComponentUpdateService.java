@@ -4,11 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
+import acme.systemConfiguration.SystemConfiguration;
 
 @Service
 public class InventorComponentUpdateService implements AbstractUpdateService<Inventor, Item> {
@@ -17,6 +22,12 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 
 	@Autowired
 	protected InventorItemRepository repository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
+	
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
 	// AbstractCreateService<Inventor, Item> interface -------------------------
 
@@ -54,8 +65,27 @@ public class InventorComponentUpdateService implements AbstractUpdateService<Inv
 		assert model != null;
 
 		request.unbind(entity, model, "name", "code", "technology", "description","retailPrice", "link", "type", "published");
+		model.setAttribute("exchange", this.moneyExchange(request));
 		
 	}
+	
+	private Money moneyExchange(final Request<Item> request) {
+		int masterId;
+        masterId = request.getModel().getInteger("id");
+        final Item it = this.repository.findOneItemById(masterId);
+        
+        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+        
+        final String sysCurr = sys.getSystemCurrency(); 
+        
+        final Money moneda = it.getRetailPrice();
+        
+        final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
+        
+        return monEx.getTarget();
+
+
+    }
 
 	@Override
 	public Item findOne(final Request<Item> request) {

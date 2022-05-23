@@ -18,12 +18,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.toolkit.Toolkit;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
+import acme.systemConfiguration.SystemConfiguration;
 
 @Service
 public class InventorToolkitCreateService implements AbstractCreateService<Inventor, Toolkit> {
@@ -32,6 +34,9 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 
 	@Autowired
 	protected InventorToolkitRepository repository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
 
 	// AbstractCreateService<Inventor, Toolkit> interface -------------------------
 
@@ -113,8 +118,10 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 
 		final Money price = new Money();
-		price.setAmount(this.repository.computePriceByToolkitId(entity.getId()));
-		price.setCurrency("EUR");
+		final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+        final String sysCurr = sys.getSystemCurrency(); 
+		price.setAmount(0.00);
+		price.setCurrency(sysCurr);
 		entity.setTotalPrice(price);
 		this.repository.save(entity);
 	}

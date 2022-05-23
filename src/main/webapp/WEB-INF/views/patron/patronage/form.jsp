@@ -16,17 +16,15 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form> 
-	<acme:input-textbox code="patron.patronage.form.label.status" path="status"/>
-	<acme:input-textbox code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
-	<acme:input-textbox code="patron.patronage.form.label.code" path="code"/>
-	<acme:input-double code="patron.patronage.form.label.budget" path="budget"/>
-	<acme:input-money code="patron.patronage.form.label.exchange" path="exchange"/>
-	<acme:input-moment code="patron.patronage.form.label.creationMoment" path="creationMoment"/>
+
+	<acme:input-moment readonly = "true" code="patron.patronage.form.label.creationMoment" path="creationMoment"/>
 
 	<acme:input-textbox readonly="true" code="patron.patronage.form.label.status" path="status"/>
 	<acme:input-textarea code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
 	<acme:input-textbox readonly="true" code="patron.patronage.form.label.code" path="code"/>
 	<acme:input-money code="patron.patronage.form.label.budget" path="budget"/>
+	<acme:input-money readonly= "true" code="patron.patronage.form.label.exchange" path="exchange"/>
+	
 	<acme:input-url code="patron.patronage.form.label.optionalLink" path="optionalLink"/>
 	<acme:input-moment code="patron.patronage.form.label.initialDate" path="initialDate"/>
 	<acme:input-moment code="patron.patronage.form.label.finalDate" path="finalDate"/>

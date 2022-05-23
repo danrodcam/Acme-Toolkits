@@ -18,10 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.toolkit.Toolkit;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 
@@ -32,6 +33,12 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 
 	@Autowired
 	protected InventorToolkitRepository repository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
+	
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
 	// AbstractUpdateService<Inventor, Toolkit> -------------------------------------
 
@@ -76,7 +83,8 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code", "title", "description","assemblyNotes", "link");
+		request.bind(entity, errors, "code", "title", "description","assemblyNotes", "link","totalPrice");
+		
 	}
 
 	@Override
@@ -97,19 +105,20 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneToolkitById(id);
+		
 
 		return result;
 	}
+	
+	
+	
+
 
 	@Override
 	public void update(final Request<Toolkit> request, final Toolkit entity) {
 		assert request != null;
 		assert entity != null;
 
-		final Money price = new Money();
-		price.setAmount(this.repository.computePriceByToolkitId(entity.getId()));
-		price.setCurrency("EUR");
-		entity.setTotalPrice(price);
 		
 		this.repository.save(entity);
 	}
