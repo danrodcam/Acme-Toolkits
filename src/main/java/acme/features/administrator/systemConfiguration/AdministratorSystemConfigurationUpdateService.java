@@ -67,6 +67,7 @@ public class AdministratorSystemConfigurationUpdateService implements AbstractUp
 		errors.state(request, r2.equals(true), "acceptedCurrency", "administrator.system-configuration.form.error.acceptedCurrency2");
 		
 		
+		errors.state(request, entity.getWeakSpamThreshold()>0.0, "weakSpamThreshold","administrator.system-configuration.form.error.weakSpamThreshold");
 			
 		
 		

@@ -21,5 +21,6 @@ administrator.system-configuration.form.button.update = Actualizar
 administrator.system-configuration.form.error.systemCurrency = La moneda del sistema solo debe ser una y con 3 caracteres alfabéticos
 
 administrator.system-configuration.form.error.acceptedCurrency = La moneda del sistema debe estar en las monedas aceptadas
-
 administrator.system-configuration.form.error.acceptedCurrency2 = Las monedas aceptadas deben estar compuestas de 3 caracteres alfabéticos
+
+administrator.system-configuration.form.error.weakSpamThreshold = Debe ser mayor que 0
