@@ -10,8 +10,17 @@
 
 
 administrator.system-configuration.form.label.system-currency = Moneda del Sistema
-administrator.system-configuration.form.label.accepted-currency = Moneda aceptada
+administrator.system-configuration.form.label.accepted-currency = Monedas aceptada
 administrator.system-configuration.form.label.strong-spam-terms = Términos graves de spam
 administrator.system-configuration.form.label.weak-spam-terms = Términos débiles de spam
 administrator.system-configuration.form.label.strong-spam-threshold = Cota de spam grave
 administrator.system-configuration.form.label.weak-spam-threshold = Cota spam fuerte
+
+administrator.system-configuration.form.button.update = Actualizar
+
+administrator.system-configuration.form.error.systemCurrency = La moneda del sistema solo debe ser una y con 3 caracteres alfabéticos
+
+administrator.system-configuration.form.error.acceptedCurrency = La moneda del sistema debe estar en las monedas aceptadas
+administrator.system-configuration.form.error.acceptedCurrency2 = Las monedas aceptadas deben estar compuestas de 3 caracteres alfabéticos
+
+administrator.system-configuration.form.error.weakSpamThreshold = Debe ser mayor que 0

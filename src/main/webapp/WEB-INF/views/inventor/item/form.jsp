@@ -17,11 +17,28 @@
 
 <acme:form>
 	<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
-	<acme:input-textbox code="inventor.item.form.label.code" path="code"/>
-	<acme:input-textbox code="inventor.item.form.label.type" path="type"/>
+	<acme:input-textbox readonly= "true" code="inventor.item.form.label.code" path="code"/>
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
-	<acme:input-textbox code="inventor.item.form.label.description" path="description"/>
+	<acme:input-textarea code="inventor.item.form.label.description" path="description"/>
 	<acme:input-url code="inventor.item.form.label.link" path="link"/>
 	<acme:input-money code="inventor.item.form.label.price" path="retailPrice"/>
+	<acme:input-money readonly = "true" code="inventor.item.form.label.exchange" path="exchange"/>
+	
+	
+<jstl:choose>	 
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && published == false }">
+			<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>	
+			<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update"/>
+			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>	
+		</jstl:when>
+
+		<jstl:when test="${command == 'create-component'}">
+			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-component"/>
+		</jstl:when>
+		
+		<jstl:when test="${command == 'create-tool'}">
+			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-tool"/>
+		</jstl:when>		
+	</jstl:choose>
 	
 </acme:form>

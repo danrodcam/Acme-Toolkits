@@ -62,7 +62,7 @@ public class InventorPatronageListOwnPatronageService implements AbstractListSer
 		int patronageId;
 		
 		patronageId = request.getPrincipal().getActiveRoleId();
-		result = this.repository.findManyPatronageByInventorId(patronageId);
+		result = this.repository.findManyPatronagePublishedByInventorId(patronageId);
 		return result;
 	}
 

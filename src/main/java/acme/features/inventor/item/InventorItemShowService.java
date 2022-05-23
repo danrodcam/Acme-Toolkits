@@ -16,10 +16,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractShowService;
 import acme.roles.Inventor;
+import acme.systemConfiguration.SystemConfiguration;
 
 
 @Service
@@ -29,6 +34,12 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 
 	@Autowired
 	protected InventorItemRepository repository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
+	
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -44,7 +55,7 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		
 		principalId = request.getPrincipal().getAccountId();
 		itemId = request.getModel().getInteger("id");
-		item = this.repository.findOneComponentById(itemId);
+		item = this.repository.findOneItemById(itemId);
 		result = item.getInventor().getUserAccount().getId()==principalId; 
 
 		return result;
@@ -57,7 +68,9 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "code", "type", "technology","description", "retailPrice", "link");
+
+		request.unbind(entity, model, "name", "code", "type", "technology","description", "retailPrice", "link","published");
+		model.setAttribute("exchange", this.moneyExchange(request));
 	}
 
 
@@ -70,9 +83,27 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		int id;
 		
 		id = request.getModel().getInteger("id");
-		result = this.repository.findOneComponentById(id);
+		result = this.repository.findOneItemById(id);
 		return result;
 	}
+	
+	private Money moneyExchange(final Request<Item> request) {
+		int masterId;
+        masterId = request.getModel().getInteger("id");
+        final Item it = this.repository.findOneItemById(masterId);
+        
+        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+        
+        final String sysCurr = sys.getSystemCurrency(); 
+        
+        final Money moneda = it.getRetailPrice();
+        
+        final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
+        
+        return monEx.getTarget();
+
+
+    }
 
 	
 

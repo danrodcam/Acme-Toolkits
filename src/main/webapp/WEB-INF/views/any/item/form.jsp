@@ -22,5 +22,6 @@
 	<acme:input-textbox code="any.item.form.label.description" path="description"/>
 	<acme:input-url code="any.item.form.label.link" path="link"/>
 	<acme:input-money code="any.item.form.label.price" path="retailPrice"/>
+	<acme:input-money code="any.item.form.label.exchange" path="exchange"/>
 	
 </acme:form>

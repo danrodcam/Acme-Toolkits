@@ -43,7 +43,7 @@
 		</th>	
 	</jstl:forEach>
 	<jstl:forEach var="map" items="${entry.value}">
-		<th>
+		<th scope="row">
 			<acme:print value="${map.key}"/>
 		</th>
 		<td>
@@ -70,7 +70,7 @@
 			<strong><acme:print value="${entry.key}"/></strong>
 		</th>	
 	<jstl:forEach var="map" items="${entry.value}">
-		<th>
+		<th scope="row">
 			<acme:print value="${map.key}"/>
 		</th>
 		<td>
@@ -89,7 +89,7 @@
 			<strong><acme:print value="${entry.key}"/></strong>
 		</th>	
 	<jstl:forEach var="map" items="${entry.value}">
-		<th>
+		<th scope="row">
 			<acme:print value="${map.key}"/>
 		</th>
 		<td>

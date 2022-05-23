@@ -52,7 +52,7 @@ public class Item extends AbstractEntity {
 	@NotNull
 	protected ItemType 				type;
 	
-	protected boolean				published;
+	protected Boolean				published;
 	
 	// Derived attributes -----------------------------------------------------
 	

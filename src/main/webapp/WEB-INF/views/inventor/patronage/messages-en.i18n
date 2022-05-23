@@ -23,11 +23,17 @@ inventor.patronage.form.label.optionalLink = Link:
 inventor.patronage.form.label.initialDate = initial Date:
 inventor.patronage.form.label.finalDate = Final Date:
 
+inventor.patronage.form.label.new-status = Change status to:
+inventor.patronage.form.button.update = Update
+
 inventor.patronage.patron.form.label.name = Patron's Name:
 inventor.patronage.patron.form.label.surname = Patron's Surname:
 inventor.patronage.patron.form.label.username = Username:
 inventor.patronage.patron.form.label.company = Patron's Company:
 inventor.patronage.patron.form.label.statement = Statement:
 inventor.patronage.patron.form.label.optionalLink = Link:
+inventor.patronage.form.label.exchange = Exchange:
 
 inventor.patronage.form.button.patron = Patron
+
+inventor.patronage.report.form.button.create = Create Report

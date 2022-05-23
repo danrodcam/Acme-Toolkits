@@ -12,19 +12,21 @@
 
 package acme.features.any.toolkit;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.item.Amount;
-import acme.entities.item.Item;
 import acme.entities.toolkit.Toolkit;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.datatypes.Money;
 import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
+import acme.systemConfiguration.SystemConfiguration;
 
 
 
@@ -35,6 +37,12 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 
 	@Autowired
 	protected AnyToolkitRepository repository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository repositorySC;
+	
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService exchangeService;
 
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
@@ -84,25 +92,37 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 	        int masterId;
 	        masterId = request.getModel().getInteger("id");
 	        Double cantidad = 0.;
-	        String moneda = "";
 
 	        final Money result = new Money();
 
-	        final Collection<Amount> amounts = this.repository.findManyAmountByMasterId(masterId);
+	        final List<List<Object>> amounts = this.repository.getPricesByToolkitId(masterId);
+	        
+	        final SystemConfiguration sys = this.repositorySC.findSystemConfiguration();
+	        final String sysCurr = sys.getSystemCurrency(); 
 
-	        for(final Amount amount:amounts) {
-	            final Item i = amount.getItem();
-	            cantidad =  cantidad + i.getRetailPrice().getAmount() * amount.getUnits();
-	            moneda = i.getRetailPrice().getCurrency();
+	        for (final List<Object>l:amounts) {
+				final Double amount = (Double) l.get(0);
+				final String currency = (String) l.get(1);
+				if (currency.equals(sysCurr)) {
+					cantidad = cantidad + amount;
+				}else {
+					final Money moneda = new Money();
+					moneda.setAmount(amount);
+					moneda.setCurrency(currency);
+					final MoneyExchange monEx = this.exchangeService.computeMoneyExchange(moneda, sysCurr);
+					cantidad = cantidad + monEx.getTarget().getAmount();
+				}
 	        }
 
 	        result.setAmount(cantidad);
-	        result.setCurrency(moneda);
+	        result.setCurrency(sysCurr);
 
 	        return result;
 
 
 	    }
+	 
+
 
 
 

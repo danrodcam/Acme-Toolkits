@@ -1,0 +1,29 @@
+# i18n-es.i18n
+#
+# Copyright (C) 2012-2022 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+any.amount.form.label.units = Unidades
+any.amount.form.label.component = Componente
+any.amount.form.label.tool = Herramienta
+any.amount.form.button.item.show = Mostrar detalles
+any.amount.form.button.delete = Quitar
+any.amount.form.button.add.component = Añadir componente
+any.amount.form.button.add.tool = Añadir herramienta
+any.amount.list.label.units = Unidades
+any.amount.list.label.name = Nombre
+any.amount.list.label.code = Codigo
+any.amount.list.label.technology = Tecnología
+any.amount.list.label.price = Precio
+
+any.amount.form.button.create = Añadir
+any.amount.form.button.update = Actualizar
+
+any.amount.form.error.tool.unique = Un kit de herramientas solo puede tener una instancia de la misma herramienta
+any.amount.form.error.tool.existing = Este kit de herramientas ya contiene esta herramienta
