@@ -118,7 +118,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		}
 		
 		if (!errors.hasErrors("retailPrice")) {
-			errors.state(request, !(entity.getRetailPrice().getAmount() < 0), "retailPrice", "inventor.create.item.price.positive");
+			errors.state(request, entity.getRetailPrice().getAmount() >= 0, "retailPrice", "inventor.create.item.price.positive");
 		}
 		
 	}

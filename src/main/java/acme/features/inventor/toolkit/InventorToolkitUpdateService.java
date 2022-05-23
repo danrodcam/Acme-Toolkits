@@ -159,7 +159,7 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
         for (final List<Object>l:amounts) {
 			final Double amount = (Double) l.get(0);
 			final String currency = (String) l.get(1);
-			if (currency==sysCurr) {
+			if (currency.equals(sysCurr)) {
 				cantidad = cantidad + amount;
 			}else {
 				final Money moneda = new Money();
