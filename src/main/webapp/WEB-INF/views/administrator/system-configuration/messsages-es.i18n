@@ -24,3 +24,4 @@ administrator.system-configuration.form.error.acceptedCurrency = La moneda del s
 administrator.system-configuration.form.error.acceptedCurrency2 = Las monedas aceptadas deben estar compuestas de 3 caracteres alfabéticos
 
 administrator.system-configuration.form.error.weakSpamThreshold = Debe ser mayor que 0
+administrator.system-configuration.form.error.strongSpamThreshold = Debe ser mayor que 0
