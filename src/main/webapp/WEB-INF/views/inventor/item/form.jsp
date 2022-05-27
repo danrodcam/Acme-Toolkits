@@ -41,4 +41,7 @@
 		</jstl:when>		
 	</jstl:choose>
 	
+	
+	<acme:button code="inventor.item.form.button.chimpum" action="/inventor/chimpum/list-chimpum-tools?masterId=${id}"/>
+	
 </acme:form>
