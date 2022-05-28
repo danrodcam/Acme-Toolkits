@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.chimpum.Chimpum;
-import acme.entities.item.ItemType;
+import acme.entities.item.Item;
+import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractShowService;
@@ -17,6 +18,9 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 
 	@Autowired
 	protected InventorChimpumRepository repository;
+	
+	@Autowired
+	protected InventorItemRepository itemRepository;
 	// AbstractCreateService<Authenticated, Provider> interface ---------------
 
 
@@ -24,17 +28,15 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 	public boolean authorise(final Request<Chimpum> request) {
 		assert request != null;
 		
-		boolean result;
+		final boolean result;
 		
-		Chimpum chimpum;
-		int chimpumId;
+		int principalId;
 		
-		chimpumId = request.getModel().getInteger("id");
-		chimpum = this.repository.findOneChimpumById(chimpumId);
+		final Item item = this.itemRepository.findOneItemById(request.getModel().getInteger("masterId"));
 		
-		result = chimpum.getItem().getType()==ItemType.TOOL;
+		principalId = request.getPrincipal().getAccountId();
 		
-		
+		result = item.getInventor().getUserAccount().getId()==principalId;
 		
 		return result;
 	}
@@ -56,11 +58,13 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 	public Chimpum findOne(final Request<Chimpum> request) {
 		assert request != null;
 		
-		Chimpum result;
+		final Chimpum result;
 		int id;
 		
-		id = request.getModel().getInteger("id");
-		result = this.repository.findOneChimpumById(id);
+		id = request.getModel().getInteger("masterId");
+		final Item item = this.itemRepository.findOneItemById(id);
+		
+		result = item.getChimpum();
 		return result;
 	}
 

@@ -13,12 +13,19 @@ import acme.roles.Inventor;
 public class InventorChimpumController extends AbstractController<Inventor, Chimpum> {
 	// Internal state ---------------------------------------------------------
 
-		@Autowired
-		protected InventorChimpumListService	listChimpumToolsService;
 		
 
 		@Autowired
 		protected InventorChimpumShowService	showService;
+		
+		@Autowired
+		protected InventorChimpumCreateService   createService;
+		
+		@Autowired
+		protected InventorChimpumDeleteService   deleteService;
+		
+		@Autowired
+		protected InventorChimpumUpdateService   updateService;
 		
 		
 
@@ -27,8 +34,10 @@ public class InventorChimpumController extends AbstractController<Inventor, Chim
 
 		@PostConstruct
 		protected void initialise() {
-			super.addCommand("list-chimpum-tools", "list" ,this.listChimpumToolsService);
 			super.addCommand("show", this.showService);
+			super.addCommand("create-chimpum","create", this.createService);
+			super.addCommand("delete", this.deleteService);
+			super.addCommand("update", this.updateService);
 			
 			
 

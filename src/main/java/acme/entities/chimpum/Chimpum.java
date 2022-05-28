@@ -3,7 +3,6 @@ package acme.entities.chimpum;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -15,7 +14,6 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.entities.item.Item;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
@@ -69,8 +67,7 @@ public class Chimpum extends AbstractEntity {
 
 		// Relationships ----------------------------------------------------------
 		
-		@Valid
-		@OneToOne(optional=true)
-		protected Item               item;
+		
+
 
 }

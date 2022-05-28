@@ -29,7 +29,10 @@
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && published == false }">
 			<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>	
 			<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update"/>
-			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>	
+			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>
+		
+		
+		
 		</jstl:when>
 
 		<jstl:when test="${command == 'create-component'}">
@@ -41,7 +44,21 @@
 		</jstl:when>		
 	</jstl:choose>
 	
+	<jstl:if test="${type == 'TOOL'}">
 	
-	<acme:button code="inventor.item.form.button.chimpum" action="/inventor/chimpum/list-chimpum-tools?masterId=${id}"/>
+			<jstl:if test="${chimpum!=null}">
+	
+				<acme:button code="inventor.item.form.button.chimpum" action="/inventor/chimpum/show?masterId=${id}"/>
+			</jstl:if>
+		
+			<jstl:if test="${chimpum==null }">
+			
+				<acme:button code="inventor.item.form.button.create-chimpum" action="/inventor/chimpum/create-chimpum?masterId=${id}"/>
+		
+			</jstl:if>
+    
+    	 </jstl:if>	
+	
+	
 	
 </acme:form>

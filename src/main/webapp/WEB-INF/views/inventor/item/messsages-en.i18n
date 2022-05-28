@@ -39,3 +39,7 @@ inventor.item.form.error.code.unique = Code already exists
 inventor.create.item.null.price = Fill this field
 inventor.create.item.price.positive = The retail price must be zero or positive
 inventor.item.form.error.spam = This field is spam
+
+
+inventor.item.form.button.chimpum = Show Chimpum
+inventor.item.form.button.create-chimpum = Create Chimpum
