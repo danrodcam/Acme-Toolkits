@@ -31,20 +31,25 @@
 			<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update"/>
 			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>
 		
-		
-		
-		</jstl:when>
-
-		<jstl:when test="${command == 'create-component'}">
-			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-component"/>
-		</jstl:when>
-		
-		<jstl:when test="${command == 'create-tool'}">
-			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-tool"/>
-		</jstl:when>		
-	</jstl:choose>
+			<jstl:if test="${type == 'TOOL'}">
 	
-	<jstl:if test="${type == 'TOOL'}">
+			<jstl:if test="${chimpum!=null}">
+	
+				<acme:button code="inventor.item.form.button.chimpum" action="/inventor/chimpum/show?masterId=${id}"/>
+			</jstl:if>
+		
+			<jstl:if test="${chimpum==null }">
+			
+				<acme:button code="inventor.item.form.button.create-chimpum" action="/inventor/chimpum/create-chimpum?masterId=${id}"/>
+		
+			</jstl:if>
+		   </jstl:if>
+		
+		</jstl:when>
+		
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') }">
+		
+			<jstl:if test="${type == 'TOOL'}">
 	
 			<jstl:if test="${chimpum!=null}">
 	
@@ -58,6 +63,18 @@
 			</jstl:if>
     
     	 </jstl:if>	
+    	</jstl:when>
+
+		<jstl:when test="${command == 'create-component'}">
+			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-component"/>
+		</jstl:when>
+		
+		<jstl:when test="${command == 'create-tool'}">
+			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-tool"/>
+		</jstl:when>		
+	</jstl:choose>
+	
+	
 	
 	
 	
