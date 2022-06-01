@@ -35,7 +35,7 @@
 	
 			<jstl:if test="${chimpum!=null}">
 	
-				<acme:button code="inventor.item.form.button.chimpum" action="/inventor/chimpum/show?masterId=${id}"/>
+				<acme:button code="inventor.item.form.button.chimpum" action="/inventor/chimpum/show?id=${id}"/>
 			</jstl:if>
 		
 			<jstl:if test="${chimpum==null }">
@@ -53,16 +53,12 @@
 	
 			<jstl:if test="${chimpum!=null}">
 	
-				<acme:button code="inventor.item.form.button.chimpum" action="/inventor/chimpum/show?masterId=${id}"/>
+				<acme:button code="inventor.item.form.button.chimpum" action="/inventor/chimpum/show?id=${id}"/>
 			</jstl:if>
 		
-			<jstl:if test="${chimpum==null }">
-			
-				<acme:button code="inventor.item.form.button.create-chimpum" action="/inventor/chimpum/create-chimpum?masterId=${id}"/>
-		
-			</jstl:if>
     
     	 </jstl:if>	
+    	
     	</jstl:when>
 
 		<jstl:when test="${command == 'create-component'}">

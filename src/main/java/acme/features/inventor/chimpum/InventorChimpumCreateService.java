@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.chimpum.Chimpum;
 import acme.entities.item.Item;
+import acme.entities.item.ItemType;
 import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -37,8 +38,15 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	public boolean authorise(final Request<Chimpum> request) {
 		assert request != null;
 		
+		boolean result;
 		
-		return true;
+		final Item item = this.itemRepository.findOneItemById(request.getModel().getInteger("masterId"));
+		
+		result = item.getInventor().getUserAccount().getId() == request.getPrincipal().getAccountId() && 
+			item.getType()==ItemType.TOOL;
+		
+		
+		return result;
 	}
 	
 	
@@ -70,7 +78,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code", "creationMoment", "title","description", "initialDate","finalDate","budget","link");
+		request.bind(entity, errors, "code", "title","description", "initialDate","finalDate","budget","link");
 	}
 
 	@Override
@@ -79,7 +87,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "creationMoment", "title","description", "initialDate","finalDate","budget","link");
+		request.unbind(entity, model, "code", "title","description", "initialDate","finalDate","budget","link");
 		model.setAttribute("item", this.itemRepository.findOneItemById(request.getModel().getInteger("masterId")));
 		
 	}
@@ -93,9 +101,9 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert errors != null;
 
 		if (!errors.hasErrors("code")) {
-			
+	
 			final String regexp = "^[0-9]{2}-[0-9]{2}-[0-9]{2}$";
-			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.chimpum.form.error.code.regexp");
+			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.Chimpum.form.error.code.regexp");
 		}
 		
 		if (!errors.hasErrors("initialDate")) {
@@ -105,7 +113,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			calendar = new GregorianCalendar();
 			calendar.add(Calendar.MONTH, 1);
 			minimumDeadline = calendar.getTime();
-			errors.state(request, entity.getInitialDate().after(minimumDeadline), "initialDate", "inventor.chimpum.form.error.initialDate");
+			errors.state(request, entity.getInitialDate().after(minimumDeadline), "initialDate", "inventor.Chimpum.form.error.initialDate");
 		}
 		
 		if (!errors.hasErrors("finalDate")) {
@@ -114,11 +122,11 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			calendar.add(Calendar.WEEK_OF_YEAR, 1);
 			final Date minimumDeadline = calendar.getTime();
 			
-			errors.state(request, entity.getFinalDate().after(minimumDeadline), "finalDate", "inventor.chimpum.form.error.finalDate");
+			errors.state(request, entity.getFinalDate().after(minimumDeadline), "finalDate", "inventor.Chimpum.form.error.finalDate");
 		}
 		
 		if (!errors.hasErrors("budget")) {
-			errors.state(request, entity.getBudget().getAmount() > 0, "budget", "inventor.chimpum.form.error.positivePrice");
+			errors.state(request, entity.getBudget().getAmount() > 0, "budget", "inventor.Chimpum.form.error.positivePrice");
 		}
 		
 	}

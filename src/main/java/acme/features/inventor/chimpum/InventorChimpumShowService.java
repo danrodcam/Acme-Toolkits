@@ -28,15 +28,32 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 	public boolean authorise(final Request<Chimpum> request) {
 		assert request != null;
 		
-		final boolean result;
-		
 		int principalId;
 		
-		final Item item = this.itemRepository.findOneItemById(request.getModel().getInteger("masterId"));
+		final boolean result;
+		
+		int id;
 		
 		principalId = request.getPrincipal().getAccountId();
 		
-		result = item.getInventor().getUserAccount().getId()==principalId;
+		
+		id = request.getModel().getInteger("id");
+		final Item item = this.itemRepository.findOneItemById(id);
+		
+		if(item!=null) {
+			result = item.getInventor().getUserAccount().getId()==principalId;
+		}else {
+			
+			final Chimpum chimpum = this.repository.findOneChimpumById(id);
+				
+			final Item item2 = this.itemRepository.findOneItemByChimpumId(chimpum.getId());
+			
+			result = item2.getInventor().getUserAccount().getId()==principalId;
+			
+			
+		}
+			
+		
 		
 		return result;
 	}
@@ -48,7 +65,9 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "creationMoment", "title", "description","initialDate", "finalDate", "budget","link");
+		request.unbind(entity, model, "code", "title", "description","initialDate", "finalDate", "budget","link");
+		final Item item = this.itemRepository.findOneItemByChimpumId(entity.getId());
+		model.setAttribute("published", item.getPublished());
 		
 	}
 
@@ -61,10 +80,24 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 		final Chimpum result;
 		int id;
 		
-		id = request.getModel().getInteger("masterId");
+		
+		id = request.getModel().getInteger("id");
 		final Item item = this.itemRepository.findOneItemById(id);
 		
-		result = item.getChimpum();
+		if(item!=null) {
+			result = item.getChimpum();
+		}else {
+			
+			final Chimpum chimpum = this.repository.findOneChimpumById(id);
+				
+			result = chimpum;
+		}
+			
+		
+		
+		
+		
+		
 		return result;
 	}
 

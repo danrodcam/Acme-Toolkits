@@ -17,7 +17,6 @@
 
 <acme:form>
 	<acme:input-textbox code="inventor.chimpum.form.label.title" path="title"/>
-	<acme:input-moment readonly= "true" code="inventor.chimpum.form.label.creationMoment" path="creationMoment"/>
 	<acme:input-textbox readonly= "true" code="inventor.chimpum.form.label.code" path="code"/>
 	<acme:input-textarea code="inventor.chimpum.form.label.description" path="description"/>
 	<acme:input-moment code="inventor.chimpum.form.label.initialDate" path="initialDate"/>
@@ -26,7 +25,7 @@
 	<acme:input-url code="inventor.chimpum.form.label.link" path="link"/>
 	
 	<jstl:choose>	 
-		<jstl:when test="${acme:anyOf(command, 'show, update, delete')}">
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete') && published == false}">
 			<acme:submit code="inventor.chimpum.form.button.update" action="/inventor/chimpum/update"/>
 			<acme:submit code="inventor.chimpum.form.button.delete" action="/inventor/chimpum/delete"/>	
 		</jstl:when>
