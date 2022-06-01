@@ -43,7 +43,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		final Item item = this.itemRepository.findOneItemById(request.getModel().getInteger("masterId"));
 		
 		result = item.getInventor().getUserAccount().getId() == request.getPrincipal().getAccountId() && 
-			item.getType()==ItemType.TOOL;
+			item.getType()==ItemType.TOOL && item.getPublished()==false;
 		
 		
 		return result;
@@ -148,12 +148,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		
 		this.repository.save(entity);
 				
-		
-		
-		
-		
-		
-
+	
 		
 		
 	}
