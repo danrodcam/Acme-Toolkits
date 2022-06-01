@@ -67,9 +67,7 @@ public class InventorPatronageUpdateService implements AbstractUpdateService<Inv
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "status", "legalStuff", "code", "budget", "creationMoment", "optionalLink", 
-			"initialDate", "finalDate", "patron.userAccount.identity.name", "patron.userAccount.identity.surname", 
-			"patron.userAccount.username", "patron.company", "patron.statement", "patron.optionalLink");
+		request.bind(entity, errors, "status");
 	}
 
 	@Override

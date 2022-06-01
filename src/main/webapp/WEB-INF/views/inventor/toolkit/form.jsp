@@ -17,9 +17,11 @@
 
 <acme:form>
 	
+	<jstl:if test="${command != 'create'}">
+	<acme:input-money readonly= "true" code="patron.patronage.form.label.exchange" path="exchange"/>
 	<acme:input-textbox readonly ="true" code="inventor.toolkit.form.label.code" path="code"/>
 	<acme:input-money readonly="true" code="inventor.toolkit.form.label.totalPrice" path="totalPrice"/>
-	
+	</jstl:if>
 	<acme:input-textbox code="inventor.toolkit.form.label.title" path="title"/>
 	<acme:input-textarea code="inventor.toolkit.form.label.description" path="description"/>
 	<acme:input-textarea code="inventor.toolkit.form.label.assemblyNotes" path="assemblyNotes"/>

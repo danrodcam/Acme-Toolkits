@@ -16,14 +16,21 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form> 
-
+	<jstl:if test="${command != 'create'}">
 	<acme:input-moment readonly = "true" code="patron.patronage.form.label.creationMoment" path="creationMoment"/>
-
 	<acme:input-textbox readonly="true" code="patron.patronage.form.label.status" path="status"/>
+	</jstl:if>
+	
 	<acme:input-textarea code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
+	<jstl:if test="${command != 'create'}">
 	<acme:input-textbox readonly="true" code="patron.patronage.form.label.code" path="code"/>
+	</jstl:if>
+	
 	<acme:input-money code="patron.patronage.form.label.budget" path="budget"/>
+	<jstl:if test="${command != 'create'}">
 	<acme:input-money readonly= "true" code="patron.patronage.form.label.exchange" path="exchange"/>
+	</jstl:if>
+	
 	
 	<acme:input-url code="patron.patronage.form.label.optionalLink" path="optionalLink"/>
 	<acme:input-moment code="patron.patronage.form.label.initialDate" path="initialDate"/>

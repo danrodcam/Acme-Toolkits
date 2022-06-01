@@ -22,9 +22,8 @@ import org.springframework.stereotype.Service;
 import acme.entities.toolkit.Toolkit;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
-
-import acme.forms.MoneyExchange;
 import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -103,7 +102,7 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code", "title", "description","assemblyNotes", "link","totalPrice");
+		request.bind(entity, errors, "title", "description","assemblyNotes", "link");
 		
 	}
 
