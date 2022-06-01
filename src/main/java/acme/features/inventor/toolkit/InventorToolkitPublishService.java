@@ -12,11 +12,14 @@
 
 package acme.features.inventor.toolkit;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.Amount;
+import acme.entities.item.ItemType;
 import acme.entities.toolkit.Toolkit;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
@@ -116,8 +119,12 @@ public class InventorToolkitPublishService implements AbstractUpdateService<Inve
 			errors.state(request, !this.spamFilterService.isSpam(entity.getAssemblyNotes()), "assemblyNotes", "inventor.toolkit.form.error.spam");
 		}
 		
+		final Collection<Amount> amounts = this.repository.findAmountsByToolkit(entity.getId());
+		final Boolean anyComponents = amounts.stream().anyMatch(a->a.getItem().getType().equals(ItemType.COMPONENT));
+		final Boolean anyTools = amounts.stream().anyMatch(a->a.getItem().getType().equals(ItemType.TOOL));
 		
-		errors.state(request, !this.repository.findAmountsByToolkit(entity.getId()).isEmpty(), "*", "inventor.toolkit.form.error.empty");		
+		errors.state(request, anyComponents && anyTools, "*", "inventor.toolkit.form.error.empty");
+		
 		
 	}
 
