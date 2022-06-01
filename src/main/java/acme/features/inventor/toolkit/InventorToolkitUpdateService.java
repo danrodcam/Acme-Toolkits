@@ -75,15 +75,6 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		if (!errors.hasErrors("code")) {
-			Toolkit existing;
-
-			existing = this.repository.findOneToolkitByCode(entity.getCode());
-			errors.state(request, existing == null || existing.getId()==entity.getId(), "code", "inventor.toolkit.form.error.code.unique");
-			
-			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
-			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.toolkit.form.error.code.regexp");
-		}
 		
 		if (!errors.hasErrors("title")) {
 			errors.state(request, !this.spamFilterService.isSpam(entity.getTitle()), "title", "inventor.toolkit.form.error.spam");
