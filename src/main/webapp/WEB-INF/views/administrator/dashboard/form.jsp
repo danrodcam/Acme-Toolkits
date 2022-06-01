@@ -99,3 +99,34 @@
 </jstl:forEach>
 </table>
 
+
+<h3>
+	<acme:message code="administrator.dashboard.form.title.chimpumStats"/>
+</h3>
+<table class="table table-sm">
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.ratio"/>
+		</th>
+		<td>
+			<acme:print value="${ratioToolsChimpum}"/><br>
+		</td>
+	</tr>
+	
+	<jstl:forEach var="entry" items="${statsChimpums}">
+	<tr>
+		<th scope="row">
+			<strong><acme:print value="${entry.key}"/></strong>
+		</th>	
+	<jstl:forEach var="map" items="${entry.value}">
+		<th scope="row">
+			<acme:print value="${map.key}"/>
+		</th>
+		<td>
+			<acme:print value="${map.value}"/>
+		</td>	
+	</jstl:forEach>
+</jstl:forEach>
+	
+</table>
+

@@ -59,10 +59,37 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setNumberOfTools(this.repository.numberOfTools());
 		result.setNumberOfComponents(this.repository.numberOfComponents());
 		result.setStatsPatronages(this.createStatsPatronageMap());
+		result.setRatioToolsChimpum(this.ratioToolsChimpum());
+		result.setStatsChimpums(this.createStatsChimpumMap());
 		
 
 		return result;
 		
+	}
+	
+	
+	
+	private Double ratioToolsChimpum() {
+		final int numberToolsWithChimpum = this.repository.numberToolsWithChimpum();
+		final int numberOfTools = this.repository.numberOfTools();
+		
+		return (double) numberToolsWithChimpum/numberOfTools;
+	}
+	
+	
+	private Map<String,Map<String,Double>> createStatsChimpumMap(){
+		final List<List<Object>> statsList = this.repository.getStatsChimpum();
+		final Map<String,Map<String,Double>> map = new HashMap<String,Map<String,Double>>();
+		for (final List<Object> l:statsList) {
+			final Map<String, Double> stats = new HashMap<String,Double>();
+			stats.put("AVG", (Double) l.get(1));
+			stats.put("STDEV", (Double) l.get(2));
+			stats.put("MIN", (Double) l.get(4));
+			stats.put("MAX", (Double) l.get(3));
+			map.put((String) l.get(0), stats);
+			
+		}
+		return map;
 	}
 
 	@Override
@@ -71,7 +98,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "statsComponents", "numberOfComponents", "statsPatronages", "numberOfTools","statsTools");
+		request.unbind(entity, model, "statsComponents", "numberOfComponents", "statsPatronages", "numberOfTools","statsTools","ratioToolsChimpum","statsChimpums");
 	}
 	
 	private Map<Record,Map<String,Double>> createStatsComponentsMap(){
