@@ -65,7 +65,7 @@ public class InventorAmountUpdateService implements AbstractUpdateService<Invent
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "units", "item.code");
+		request.bind(entity, errors, "units");
 	}
 
 	@Override

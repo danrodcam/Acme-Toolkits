@@ -85,7 +85,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "status", "legalStuff", "code", "budget", "optionalLink", 
+		request.bind(entity, errors, "legalStuff", "budget", "optionalLink", 
 				"initialDate", "finalDate");
 		
 		final Inventor inventor = this.repository.findInventorById(request.getModel().getInteger("inventor"));

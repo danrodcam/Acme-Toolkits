@@ -17,12 +17,18 @@
 
 <acme:form>
 	<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
+	<jstl:if test="${command != 'create'}">
 	<acme:input-textbox readonly= "true" code="inventor.item.form.label.code" path="code"/>
+	</jstl:if>
+	
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
 	<acme:input-textarea code="inventor.item.form.label.description" path="description"/>
 	<acme:input-url code="inventor.item.form.label.link" path="link"/>
 	<acme:input-money code="inventor.item.form.label.price" path="retailPrice"/>
+	<jstl:if test="${command != 'create'}">
 	<acme:input-money readonly = "true" code="inventor.item.form.label.exchange" path="exchange"/>
+	</jstl:if>
+	
 	
 	
 <jstl:choose>	 

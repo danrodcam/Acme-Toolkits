@@ -93,7 +93,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "memorandum", "link", "creationMoment","authomaticSequenceNumber", "patronage");
+		request.unbind(entity, model, "memorandum", "link", "creationMoment", "patronage");
 	}
 
 	@Override

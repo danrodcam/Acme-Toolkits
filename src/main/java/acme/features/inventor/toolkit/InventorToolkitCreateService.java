@@ -84,7 +84,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code","title", "description","assemblyNotes", "link", "totalPrice");
+		request.bind(entity, errors, "title", "description","assemblyNotes", "link");
 		
 	}
 
@@ -94,15 +94,6 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		if (!errors.hasErrors("code")) {
-			Toolkit existing;
-
-			existing = this.repository.findOneToolkitByCode(entity.getCode());
-			errors.state(request, existing == null, "code", "inventor.toolkit.form.error.code.unique");
-			
-			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
-			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.toolkit.form.error.code.regexp");
-		}
 		
 		if (!errors.hasErrors("title")) {
 			errors.state(request, !this.spamFilterService.isSpam(entity.getTitle()), "title", "inventor.toolkit.form.error.spam");
@@ -123,7 +114,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "description","assemblyNotes", "link", "totalPrice", "draftMode");
+		request.unbind(entity, model, "title", "description","assemblyNotes", "link", "draftMode");
 	}
 
 	@Override
