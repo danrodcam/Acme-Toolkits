@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Amount;
+import acme.entities.item.ItemType;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -70,7 +71,12 @@ public class InventorAmountDeleteService implements AbstractDeleteService<Invent
 
 		request.unbind(entity, model, "units", "item.code");
 		model.setAttribute("publishedItems", this.repository.findManyPublishedTools());
-		model.setAttribute("type", "tool");
+		if (entity.getItem().getType()==ItemType.COMPONENT) {
+			model.setAttribute("type", "component");
+		}
+		if (entity.getItem().getType()==ItemType.TOOL) {
+			model.setAttribute("type", "tool");
+		}
 	}
 
 	@Override
