@@ -142,7 +142,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		
 		item.setChimpum(entity);
 		
-		this.repository.save(item);
+		this.itemRepository.save(item);
 		
 		
 		
