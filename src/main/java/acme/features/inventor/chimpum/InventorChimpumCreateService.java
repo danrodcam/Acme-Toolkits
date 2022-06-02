@@ -34,7 +34,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		boolean result;
 		final Item item = this.repository.findOneItemById(request.getModel().getInteger("masterId"));
 		result = item.getInventor().getUserAccount().getId() == request.getPrincipal().getAccountId() && 
-		item.getType()==ItemType.TOOL && item.getPublished()==true;
+		item.getType()==ItemType.TOOL && item.getPublished()==true && item.getChimpum() == null;
 		
 		return result;
 	}

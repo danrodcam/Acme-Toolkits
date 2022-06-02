@@ -31,6 +31,11 @@ public class InventorChimpumCreateTest extends TestHarness{
 		super.clickOnButton("Show Chimpum");
 		
 		super.checkFormExists();
+			super.checkInputBoxHasValue("title", title);
+			super.checkInputBoxHasValue("description", description);
+			super.checkInputBoxHasValue("initialDate", initialDate);
+			super.checkInputBoxHasValue("finalDate", finalDate);
+			super.checkInputBoxHasValue("budget", budget);
 	}
 	
 	@ParameterizedTest
