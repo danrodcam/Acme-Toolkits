@@ -6,7 +6,7 @@ item-04,Item 4,AAB-003,Technology 4,Description 4,1.0USD,http://www.item4.com,CO
 item-05,Item 5,AAB-004,Technology 5,Description 5,2.0GBP,http://www.item5.com,TOOL,true,inventor-01,chimpum-02
 item-06,Item 6,AAB-005,Technology 6,Description 6,3.0GBP,,COMPONENT,true,inventor-03,null
 item-07,Item 7,AAB-006,Technology 7,Description 7,1.0GBP,http://www.item7.com,COMPONENT,true,inventor-03,null
-item-08,Item 8,AAB-007,Technology 8,Description 8,2.0EUR,,TOOL,true,inventor-04,null
+item-08,Item 8,AAB-007,Technology 8,Description 8,2.0EUR,,COMPONENT,true,inventor-04,null
 item-09,Item 9,AAB-008,Technology 9,Description 9,3.0USD,http://www.item9.com,COMPONENT,true,inventor-04,null
 item-10,Item 10,AAB-009,Technology 10,Description 10,1.0USD,http://www.item10.com,COMPONENT,true,inventor-05,null
 item-11,Item 11,AAB-010,Technology 11,Description 11,2.0GBP,http://www.item11.com,TOOL,true,inventor-06,
@@ -27,3 +27,5 @@ item-25,Item 25,AAB-025,Technology 25,Description 25,2.0EUR,http://www.item25.co
 item-26,Item 26,AAB-026,Technology 26,Description 26,2.0EUR,http://www.item26.com,TOOL,false,inventor-04,null
 item-27,Item 27,AAB-027,Technology 27,Description 27,2.0EUR,http://www.item27.com,TOOL,false,inventor-04,null
 item-28,Item 28,AAB-028,Technology 28,Description 28,2.0EUR,http://www.item28.com,TOOL,false,inventor-04,null
+item-29,Item 29,AAB-029,Technology 29,Description 29,2.0EUR,http://www.item29.com,TOOL,false,inventor-04,null
+item-30,Item 30,AAB-030,Technology 30,Description 30,2.0EUR,http://www.item30.com,TOOL,false,inventor-01,chimpum-08
