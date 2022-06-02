@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.patronages.Patronage;
 import acme.entities.patronages.PatronageStatus;
+import acme.features.administrator.systemConfiguration.AdministratorSystemConfigurationRepository;
 import acme.features.any.userAccount.AnyUserAccountRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -41,6 +42,9 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 	
 	@Autowired
 	protected AnyUserAccountRepository invRepository;
+	
+	@Autowired
+	protected AdministratorSystemConfigurationRepository sys;
 
 	// AbstractCreateService<Employer, Job> interface -------------------------
 
@@ -117,6 +121,26 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 			final Date minimumDeadline = calendar.getTime();
 			
 			errors.state(request, entity.getFinalDate().after(minimumDeadline), "finalDate", "patron.patronage.form.error.date.duration");
+		}
+		
+		if (!errors.hasErrors("budget")) {
+			errors.state(request, entity.getBudget().getAmount() > 0, "budget", "patron.create.patronage.price.error.positive");
+			
+			final String acceptedCurrency = this.sys.findSystemConfiguration().getAcceptedCurrency();
+			
+			final String[]currencys = acceptedCurrency.split(";");
+			
+			Boolean res = false;
+			
+			for(int i=0;i<currencys.length;i++) {
+				if(currencys[i].equals(entity.getBudget().getCurrency())) {
+					res = true;
+					break;
+				}
+			}
+			
+			
+			errors.state(request, res.equals(true),"budget", "patron.create.patronage.price.error.currency");
 		}
 	}
 

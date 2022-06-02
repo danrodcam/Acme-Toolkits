@@ -42,6 +42,9 @@ patron.patronage.form.button.patron = Patron
 patron.patronage.form.error.date.creation= The initial date must be one month later the patronage's creation
 patron.patronage.form.error.date.duration = The final date must be one month later than the initial date
 patron.patronage.form.error.code.unique = The patronage's code must be unique
+patron.create.patronage.price.error.positive = The price must be positive
+
+patron.create.patronage.price.error.currency = The currency is not available
 
 patron.patronage.form.label.inventor = Inventor
 patron.patronage.create.button = New Patronage
