@@ -38,7 +38,26 @@ inventor.item.form.error.spam = Este campo contiene spam
 inventor.create.item.null.price = Rellene este campo
 inventor.create.item.price.positive = El precio debe ser cero o positivo
 
-inventor.chimpum.form.button.create = Crear Chimpum
-inventor.chimpum.form.button.update = Editar Chimpum
-inventor.chimpum.form.button.show-chimpum = Mostrar Chimpum
-inventor.chimpum.form.button.create-chimpum = Crear Chimpum
+inventor.chimpum.list.label.code = Código
+inventor.chimpum.list.label.title = Título
+inventor.chimpum.list.label.description = Descripción
+inventor.chimpum.list.label.budget = Presupuesto
+
+inventor.chimpum.form.label.code = Código
+inventor.chimpum.form.label.creation-moment = Momento de creación
+inventor.chimpum.form.label.title = Título
+inventor.chimpum.form.label.description = Descripción
+inventor.chimpum.form.label.initialDate = Fecha inicial
+inventor.chimpum.form.label.finalDate = Fecha final
+inventor.chimpum.form.label.budget = Presupuesto
+inventor.chimpum.form.label.optional-link = Link
+
+inventor.chimpum.form.button.confirm = Confirmar
+
+inventor.chimpum.form.error.initial-date.duration = La fecha inicial debe ser un mes posterior al momento de creación
+inventor.chimpum.form.error.final-date.duration = La fecha inicial debe ser al menos una semana después de la fecha inicial
+inventor.create.chimpum.null.budget = Debe rellenar el campo de presupuesto
+inventor.create.chimpum.budget.positive = El presupuesto debe ser positivo
+inventor.chimpum.form.error.code.regexp = El código no se adapta al patrón
+
+inventor.chimpum.form.button.delete = Eliminar Chimpum
