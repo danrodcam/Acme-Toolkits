@@ -15,29 +15,30 @@ public class InventorChimpumListTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/chimpum/list.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(5)
-	public void positiveTest(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice,
-			final String link, final String type) {
+	public void positiveTest(final int recordIndex, final String code, final String creationMoment, final String title, final String description, final String initialDate, final String finalDate,
+			final String budget, final String link) {
 		super.signIn("inventor1", "inventor1");
 
 		super.clickOnMenu("Inventor", "List Chimpum");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 		
-		super.checkColumnHasValue(recordIndex, 0, name);
-		super.checkColumnHasValue(recordIndex, 1, code);
-		super.checkColumnHasValue(recordIndex, 2, type);
-		super.checkColumnHasValue(recordIndex, 3, technology);
-		super.checkColumnHasValue(recordIndex, 4, retailPrice);
+		super.checkColumnHasValue(recordIndex, 0, code);
+		super.checkColumnHasValue(recordIndex, 1, title);
+		super.checkColumnHasValue(recordIndex, 2, description);
 
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
-		super.checkInputBoxHasValue("name", name);
+		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("code", code);
-		super.checkInputBoxHasValue("type", type);
-		super.checkInputBoxHasValue("technology", technology);
 		super.checkInputBoxHasValue("description", description);
+		super.checkInputBoxHasValue("description", description);
+		super.checkInputBoxHasValue("initialDate", initialDate);
+		super.checkInputBoxHasValue("finalDate", finalDate);
+		super.checkInputBoxHasValue("budget", budget);
 		super.checkInputBoxHasValue("link", link);
-		super.checkInputBoxHasValue("retailPrice", retailPrice);
+
+
 		
 		super.signOut();
 	}
