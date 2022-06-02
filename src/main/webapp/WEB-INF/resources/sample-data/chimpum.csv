@@ -2,3 +2,4 @@ key,code,creationMoment,title,description,initialDate,finalDate,budget,link
 chimpum-01,22-05-26,2022/05/26 23:00,"prueba","prueba",2022/06/26 23:00,2022/08/09 23:00,10.0 EUR,null
 chimpum-02,22-06-01,2022/06/01 22:00,"prueba","prueba",2022/07/26 23:00,2022/08/09 23:00,3.0 EUR,null
 chimpum-03,22-06-01,2022/06/01 22:00,"prueba","prueba",2022/07/26 23:00,2022/08/09 23:00,5.0 USD,null
+chimpum-04,22-06-02,2022/06/02 10:00,"prueba","prueba",2022/07/26 23:00,2022/08/09 23:00,5.0 USD,null
