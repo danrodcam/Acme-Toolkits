@@ -1,0 +1,6 @@
+key,code,creation-moment,title,description,initial-date,final-date,budget,optional-link
+chimpum-01,14/01/2000,2022/04/04 00:00,PRIMER CHIMPUM,Prueba de chimpum,2022/06/10 00:00,2022/06/20 00:00,25.00EUR,null
+chimpum-02,14/01/2000,2022/04/04 00:00,Chimpum Premium,Chimpum cantaba la rana,2022/08/10 00:00,2022/09/20 00:00,31.00EUR,https://rana.com
+chimpum-03,14/01/2000,2022/04/04 00:00,Chimpum Básico,Chimpum cantaba la rana pobre,2022/07/10 00:00,2022/07/18 00:00,28.00EUR,https://rana.com
+chimpum-04,15/02/2008,2022/04/04 00:00,Chimpum Básico,Chimpum cantaba la rana pobre,2022/07/10 00:00,2022/07/18 00:00,12.30USD,https://rana1.com
+chimpum-05,25/10/2018,2022/04/04 00:00,Chimpum Básico,Chimpum cantaba la rana pobre,2022/07/10 00:00,2022/07/18 00:00,7.99GBP,https://rana2.com

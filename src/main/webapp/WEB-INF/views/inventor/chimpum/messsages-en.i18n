@@ -37,7 +37,26 @@ inventor.create.item.null.price = Fill this field
 inventor.create.item.price.positive = The retail price must be zero or positive
 inventor.item.form.error.spam = This field is spam
 
-inventor.chimpum.form.button.create = Create Chimpum
-inventor.chimpum.form.button.update = Edit Chimpum
-inventor.chimpum.form.button.show-chimpum = Show Chimpum
-inventor.chimpum.form.button.create-chimpum = Create Chimpum
+inventor.chimpum.list.label.code = Code
+inventor.chimpum.list.label.title = Title
+inventor.chimpum.list.label.description = Description
+inventor.chimpum.list.label.budget = Budget
+
+inventor.chimpum.form.label.code = Code
+inventor.chimpum.form.label.creation-moment = Creation Moment
+inventor.chimpum.form.label.title = Title
+inventor.chimpum.form.label.description = Description
+inventor.chimpum.form.label.initialDate = Initial Date
+inventor.chimpum.form.label.finalDate = Final Date
+inventor.chimpum.form.label.budget = Budget
+inventor.chimpum.form.label.optional-link = Link
+
+inventor.chimpum.form.button.confirm = Confirm
+
+inventor.chimpum.form.error.initial-date.duration = Initial date must be one month later than the creation moment
+inventor.chimpum.form.error.final-date.duration = Final date must be at least one week ago from initial date
+inventor.create.chimpum.null.budget = You mut fill the budget field
+inventor.create.chimpum.budget.positive = The budget must be positive
+inventor.chimpum.form.error.code.regexp = The code does not muth the pattern
+
+inventor.chimpum.form.button.delete = Delete Chimpum
