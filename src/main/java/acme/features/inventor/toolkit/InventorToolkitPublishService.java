@@ -12,14 +12,18 @@
 
 package acme.features.inventor.toolkit;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.Amount;
+import acme.entities.item.ItemType;
 import acme.entities.toolkit.Toolkit;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
 import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -41,6 +45,9 @@ public class InventorToolkitPublishService implements AbstractUpdateService<Inve
 	
 	@Autowired
 	protected AuthenticatedMoneyExchangePerformService exchangeService;
+	
+	@Autowired
+	protected SystemConfigurationSpamFilterService spamFilterService;
 
 	// AbstractUpdateService<Inventor, Toolkit> interface ---------------------------
 
@@ -82,7 +89,7 @@ public class InventorToolkitPublishService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code", "title", "description","assemblyNotes", "link", "totalPrice");
+		request.bind(entity, errors, "title", "description","assemblyNotes", "link");
 	}
 
 	@Override
@@ -102,7 +109,22 @@ public class InventorToolkitPublishService implements AbstractUpdateService<Inve
 		}
 		
 		
-		errors.state(request, !this.repository.findAmountsByToolkit(entity.getId()).isEmpty(), "*", "inventor.toolkit.form.error.empty");		
+		if (!errors.hasErrors("title")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getTitle()), "title", "inventor.toolkit.form.error.spam");
+		}
+		if (!errors.hasErrors("description")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getDescription()), "description", "inventor.toolkit.form.error.spam");
+		}
+		if (!errors.hasErrors("assemblyNotes")) {
+			errors.state(request, !this.spamFilterService.isSpam(entity.getAssemblyNotes()), "assemblyNotes", "inventor.toolkit.form.error.spam");
+		}
+		
+		final Collection<Amount> amounts = this.repository.findAmountsByToolkit(entity.getId());
+		final Boolean anyComponents = amounts.stream().anyMatch(a->a.getItem().getType().equals(ItemType.COMPONENT));
+		final Boolean anyTools = amounts.stream().anyMatch(a->a.getItem().getType().equals(ItemType.TOOL));
+		
+		errors.state(request, anyComponents && anyTools, "*", "inventor.toolkit.form.error.empty");
+		
 		
 	}
 

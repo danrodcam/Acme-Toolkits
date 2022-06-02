@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+import acme.features.administrator.systemConfiguration.AdministratorSystemConfigurationRepository;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
-
 import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
 import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
@@ -34,6 +34,9 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 	
 	@Autowired
 	protected SystemConfigurationSpamFilterService spamFilterService;
+	
+	@Autowired
+	protected AdministratorSystemConfigurationRepository sys;
 
 	// AbstractCreateService<Inventor, Item> interface -------------------------
 
@@ -60,7 +63,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "name", "code", "technology", "description","retailPrice", "link");
+		request.bind(entity, errors, "name", "technology", "description","retailPrice", "link");
 		
 	}
 
@@ -119,6 +122,22 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		
 		if (!errors.hasErrors("retailPrice")) {
 			errors.state(request, entity.getRetailPrice().getAmount() >= 0, "retailPrice", "inventor.create.item.price.positive");
+			
+			final String acceptedCurrency = this.sys.findSystemConfiguration().getAcceptedCurrency();
+			
+			final String[]currencys = acceptedCurrency.split(";");
+			
+			Boolean res = false;
+			
+			for(int i=0;i<currencys.length;i++) {
+				if(currencys[i].equals(entity.getRetailPrice().getCurrency())) {
+					res = true;
+					break;
+				}
+			}
+			
+			
+			errors.state(request, res.equals(true),"retailPrice", "inventor.create.item.price.error.currency");
 		}
 		
 	}

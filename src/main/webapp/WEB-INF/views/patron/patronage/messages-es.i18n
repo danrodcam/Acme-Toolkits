@@ -42,6 +42,9 @@ patron.patronage.form.button.patron = Patron
 patron.patronage.form.error.date.creation= La fecha inicial debe ser un mes posterior a la de creación
 patron.patronage.form.error.date.duration = La fecha final debe ser un mes posterior a la inicial
 patron.patronage.form.error.code.unique = El código debe ser único
+patron.create.patronage.price.error.positive = El precio debe ser positivo
+patron.create.patronage.price.error.currency = La moneda no esta disponible
+
 
 patron.patronage.form.label.inventor = Inventor
 patron.patronage.create.button = Nuevo Patrocinio

@@ -1,17 +1,9 @@
 key,creation-moment,title,body,critical,info
-announcement-01,2000/01/01 00:00,INFO,Very old announcement,false,null
-announcement-02,2001/02/01 00:00,INFO,Prueba 2,true,http://www.example.com
-announcement-03,2002/05/01 00:00,INFO,Prueba 3,false,null
-announcement-04,2003/07/01 00:00,INFO,Prueba 4,false,null
-announcement-05,2004/08/01 00:00,INFO,Prueba 5,true,http://www.example.com
-announcement-06,2005/08/01 00:00,INFO,Prueba 6,true,null
-announcement-07,2006/01/01 00:00,INFO,Prueba 7,true,null
-announcement-08,2006/09/01 00:00,INFO,Prueba 8,false,null
-announcement-09,2006/11/01 00:00,INFO,Prueba 9,true,http://www.example.com
-announcement-10,2007/10/01 00:00,INFO,Prueba 10,false,http://www.example.com
-announcement-11,2010/02/01 00:00,INFO,Prueba 11,true,http://www.example.com
-announcement-12,2014/03/01 00:00,INFO,Prueba 12,true,http://www.example.com
-announcement-13,2015/12/01 00:00,INFO,Prueba 13,false,http://www.example.com
-announcement-14,2022/03/29 00:00,INFO,Prueba 14,false,null
-announcement-15,2022/04/12 00:00,INFO,Prueba 15,true,null
-announcement-16,2022/04/20 00:00,INFO,Prueba 16,true,null
+announcement-01,2020/01/01 00:00,INFO,Very old announcement,false,null
+announcement-02,2020/02/01 00:00,INFO,Prueba 2,true,http://www.example.com
+announcement-03,2021/05/01 00:00,INFO,Prueba 3,false,null
+announcement-04,2021/07/01 00:00,INFO,Prueba 4,false,null
+announcement-05,2022/05/26 00:00,INFO,Prueba 5,true,http://www.example.com
+announcement-06,2022/05/27 00:00,INFO,Prueba 6,true,null
+announcement-07,2022/05/28 00:00,INFO,Prueba 7,true,null
+announcement-08,2022/05/29 00:00,INFO,Prueba 8,false,null
