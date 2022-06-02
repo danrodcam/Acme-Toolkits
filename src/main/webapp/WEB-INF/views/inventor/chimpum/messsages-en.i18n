@@ -31,3 +31,4 @@ inventor.chimpum.form.error.initialDate = The Initial Date at least one month af
 inventor.chimpum.form.error.finalDate = The Final Date at least one week after Initial Date
 inventor.chimpum.form.error.positivePrice = The budget must be greater than 0
 inventor.create.chimpum.price.error.currency = The currency is not available
+

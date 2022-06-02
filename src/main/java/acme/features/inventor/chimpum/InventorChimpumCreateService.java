@@ -146,7 +146,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			}
 			
 			
-			errors.state(request, res.equals(true),"retailPrice", "inventor.create.chimpum.price.error.currency");
+			errors.state(request, res.equals(true),"budget", "inventor.create.chimpum.price.error.currency");
 		}
 		
 		
