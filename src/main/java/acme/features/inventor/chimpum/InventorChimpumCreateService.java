@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.chimpum.Chimpum;
 import acme.entities.item.Item;
 import acme.entities.item.ItemType;
+import acme.features.administrator.systemConfiguration.AdministratorSystemConfigurationRepository;
 import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -29,6 +30,9 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	
 	@Autowired
 	protected InventorItemRepository    itemRepository;
+	
+	@Autowired
+	protected AdministratorSystemConfigurationRepository sys;
 	
 	
 
@@ -127,7 +131,24 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		
 		if (!errors.hasErrors("budget")) {
 			errors.state(request, entity.getBudget().getAmount() > 0, "budget", "inventor.Chimpum.form.error.positivePrice");
+			
+			final String acceptedCurrency = this.sys.findSystemConfiguration().getAcceptedCurrency();
+			
+			final String[]currencys = acceptedCurrency.split(";");
+			
+			Boolean res = false;
+			
+			for(int i=0;i<currencys.length;i++) {
+				if(currencys[i].equals(entity.getBudget().getCurrency())) {
+					res = true;
+					break;
+				}
+			}
+			
+			
+			errors.state(request, res.equals(true),"retailPrice", "inventor.create.chimpum.price.error.currency");
 		}
+		
 		
 	}
 		
