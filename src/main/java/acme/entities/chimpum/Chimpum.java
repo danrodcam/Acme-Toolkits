@@ -31,7 +31,7 @@ public class Chimpum extends AbstractEntity{
 		
 		// Attributes -------------------------------------------------------------
 
-		@Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$")
+		//@Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$")
 		protected String 				code;
 		
 		@Temporal(TemporalType.TIMESTAMP)
