@@ -40,3 +40,7 @@ inventor.create.item.null.price = Fill this field
 inventor.create.item.price.positive = The retail price must be zero or positive
 inventor.item.form.error.spam = This field is spam
 inventor.create.item.price.error.currency = The currency is not available
+
+inventor.item.form.button.chimpum = Show Chimpum
+inventor.item.form.button.create-chimpum = Create Chimpum
+
