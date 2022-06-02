@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Amount;
+import acme.entities.item.ItemType;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractShowService;
@@ -52,7 +53,12 @@ public class InventorAmountShowService implements AbstractShowService<Inventor, 
 
 		request.unbind(entity, model, "units", "item.code");
 		model.setAttribute("publishedItems", this.repository.findManyPublishedTools());
-		model.setAttribute("type", "tool");
+		if (entity.getItem().getType()==ItemType.COMPONENT) {
+			model.setAttribute("type", "component");
+		}
+		if (entity.getItem().getType()==ItemType.TOOL) {
+			model.setAttribute("type", "tool");
+		}
 		model.setAttribute("masterId", entity.getToolkit().getId());
 		model.setAttribute("itemId", entity.getItem().getId());
 		model.setAttribute("draftMode", entity.getToolkit().getDraftMode());

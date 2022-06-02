@@ -18,7 +18,7 @@ public class InventorItemListOwnToolsService implements AbstractListService<Inve
 
 		@Autowired
 		protected InventorItemRepository repository;
-
+		
 		// AbstractCreateService<Authenticated, Provider> interface ---------------
 
 	@Override

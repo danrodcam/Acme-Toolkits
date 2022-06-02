@@ -14,3 +14,7 @@ administrator.dashboard.form.title.patronageStats = Patrocinios
 administrator.dashboard.form.title.toolStats = Herramientas
 administrator.dashboard.form.title.componentStats = Componentes
 administrator.dashboard.form.total = TOTAL :
+
+
+administrator.dashboard.form.title.chimpumStats = Chimpums
+administrator.dashboard.form.ratio = Ratio Tools Con Chimpum :

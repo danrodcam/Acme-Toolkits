@@ -22,9 +22,8 @@ import org.springframework.stereotype.Service;
 import acme.entities.toolkit.Toolkit;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
-
-import acme.forms.MoneyExchange;
 import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -76,15 +75,6 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		if (!errors.hasErrors("code")) {
-			Toolkit existing;
-
-			existing = this.repository.findOneToolkitByCode(entity.getCode());
-			errors.state(request, existing == null || existing.getId()==entity.getId(), "code", "inventor.toolkit.form.error.code.unique");
-			
-			final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
-			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.toolkit.form.error.code.regexp");
-		}
 		
 		if (!errors.hasErrors("title")) {
 			errors.state(request, !this.spamFilterService.isSpam(entity.getTitle()), "title", "inventor.toolkit.form.error.spam");
@@ -103,7 +93,7 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code", "title", "description","assemblyNotes", "link","totalPrice");
+		request.bind(entity, errors, "title", "description","assemblyNotes", "link");
 		
 	}
 

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.patronages.Patronage;
+import acme.features.administrator.systemConfiguration.AdministratorSystemConfigurationRepository;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.framework.components.models.Model;
@@ -35,6 +36,9 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 	protected AuthenticatedSystemConfigurationRepository repositorySC;
 	@Autowired
 	protected AuthenticatedMoneyExchangePerformService exchangeService;
+	
+	@Autowired
+	protected AdministratorSystemConfigurationRepository sys;
 
 	// AbstractUpdateService<Employer, Job> interface ---------------------------
 
@@ -75,7 +79,7 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "status", "legalStuff", "code", "budget", "optionalLink", "initialDate", "finalDate");
+		request.bind(entity, errors, "legalStuff", "budget", "optionalLink", "initialDate", "finalDate");
 	}
 
 	@Override
@@ -89,7 +93,25 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		existing = this.repository.findOnePatronageByCode(entity.getCode());
 		errors.state(request, existing == null || existing.getId()==entity.getId(), "code", "patron.patronage.form.error.code.unique");
 		
-		
+		if (!errors.hasErrors("budget")) {
+			errors.state(request, entity.getBudget().getAmount() > 0, "budget", "patron.create.patronage.price.error.positive");
+			
+			final String acceptedCurrency = this.sys.findSystemConfiguration().getAcceptedCurrency();
+			
+			final String[]currencys = acceptedCurrency.split(";");
+			
+			Boolean res = false;
+			
+			for(int i=0;i<currencys.length;i++) {
+				if(currencys[i].equals(entity.getBudget().getCurrency())) {
+					res = true;
+					break;
+				}
+			}
+			
+			
+			errors.state(request, res.equals(true),"budget", "patron.create.patronage.price.error.currency");
+		}
 	}
 
 	@Override
