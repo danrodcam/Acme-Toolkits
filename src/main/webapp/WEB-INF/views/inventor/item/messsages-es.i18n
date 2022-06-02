@@ -37,6 +37,8 @@ inventor.item.form.error.spam = Este campo contiene spam
 
 inventor.create.item.null.price = Rellene este campo
 inventor.create.item.price.positive = El precio debe ser cero o positivo
+inventor.create.item.price.error.currency = La moneda no esta disponible
+
 
 inventor.item.form.button.chimpum = Mostrar Chimpum
 inventor.item.form.button.create-chimpum = Crear Chimpum
