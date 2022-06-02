@@ -3,13 +3,13 @@ item-01,Item 1,AAB-000,Technology 1,Description 1,1.0EUR,http://www.item1.com,CO
 item-02,Item 2,AAB-001,Technology 2,Description 2,2.0EUR,http://www.item2.com,TOOL,true,inventor-01,chimpum-01
 item-03,Item 3,AAB-002,Technology 1,Description 3,3.0EUR,http://www.item3.com,COMPONENT,true,inventor-01,null
 item-04,Item 4,AAB-003,Technology 4,Description 4,1.0USD,http://www.item4.com,COMPONENT,true,inventor-02,null
-item-05,Item 5,AAB-004,Technology 5,Description 5,2.0GBP,http://www.item5.com,TOOL,true,inventor-03,chimpum-02
+item-05,Item 5,AAB-004,Technology 5,Description 5,2.0GBP,http://www.item5.com,TOOL,true,inventor-01,chimpum-02
 item-06,Item 6,AAB-005,Technology 6,Description 6,3.0GBP,,COMPONENT,true,inventor-03,null
 item-07,Item 7,AAB-006,Technology 7,Description 7,1.0GBP,http://www.item7.com,COMPONENT,true,inventor-03,null
-item-08,Item 8,AAB-007,Technology 8,Description 8,2.0EUR,,TOOL,true,inventor-04,chimpum-03
+item-08,Item 8,AAB-007,Technology 8,Description 8,2.0EUR,,TOOL,true,inventor-04,null
 item-09,Item 9,AAB-008,Technology 9,Description 9,3.0USD,http://www.item9.com,COMPONENT,true,inventor-04,null
 item-10,Item 10,AAB-009,Technology 10,Description 10,1.0USD,http://www.item10.com,COMPONENT,true,inventor-05,null
-item-11,Item 11,AAB-010,Technology 11,Description 11,2.0GBP,http://www.item11.com,TOOL,true,inventor-06,null
+item-11,Item 11,AAB-010,Technology 11,Description 11,2.0GBP,http://www.item11.com,TOOL,true,inventor-06,
 item-12,Item 12,AAB-011,Technology 12,Description 12,3.0GBP,,COMPONENT,true,inventor-06,null
 item-13,Item 13,AAB-012,Technology 13,Description 13,1.0USD,http://www.item13.com,COMPONENT,true,inventor-07,null
 item-14,Item 14,AAB-013,Technology 14,Description 14,2.0GBP,http://www.item14.com,TOOL,true,inventor-08,null
@@ -21,3 +21,9 @@ item-19,Item 19,AAB-018,Technology 19,Description 19,1.0EUR,http://www.item19.co
 item-20,Item 20,AAB-019,Technology 20,Description 20,2.0EUR,http://www.item20.com,TOOL,true,inventor-10,null
 item-21,Item 21,AAB-021,Technology 21,Description 21,2.0EUR,http://www.item21.com,TOOL,false,inventor-01,chimpum-04
 item-22,Item 22,AAB-022,Technology 22,Description 22,2.0EUR,http://www.item22.com,TOOL,false,inventor-02,chimpum-05
+item-23,Item 23,AAB-023,Technology 23,Description 23,2.0EUR,http://www.item23.com,TOOL,false,inventor-03,chimpum-03
+item-24,Item 24,AAB-024,Technology 24,Description 24,2.0EUR,http://www.item24.com,TOOL,false,inventor-03,chimpum-06
+item-25,Item 25,AAB-025,Technology 25,Description 25,2.0EUR,http://www.item25.com,TOOL,false,inventor-03,chimpum-07
+item-26,Item 26,AAB-026,Technology 26,Description 26,2.0EUR,http://www.item26.com,TOOL,false,inventor-04,null
+item-27,Item 27,AAB-027,Technology 27,Description 27,2.0EUR,http://www.item27.com,TOOL,false,inventor-04,null
+item-28,Item 28,AAB-028,Technology 28,Description 28,2.0EUR,http://www.item28.com,TOOL,false,inventor-04,null

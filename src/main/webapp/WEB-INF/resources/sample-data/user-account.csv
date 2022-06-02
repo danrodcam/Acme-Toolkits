@@ -1,11 +1,11 @@
 key,enabled,identity,password,username
 user-account-inventor-01,true,"UserIdentity{name: 'Inventor', surname: 'One', email: 'inventor1@mail.com'}",inventor1,inventor1
 user-account-inventor-02,true,"UserIdentity{name: 'Inventor', surname: 'Two', email: 'inventor2@mail.com'}",inventor2,inventor2
-user-account-inventor-03,false,"UserIdentity{name: 'Inventor', surname: 'Three', email: 'inventor3@mail.com'}",inventor3,inventor3
+user-account-inventor-03,true,"UserIdentity{name: 'Inventor', surname: 'Three', email: 'inventor3@mail.com'}",inventor3,inventor3
 user-account-inventor-04,true,"UserIdentity{name: 'Inventor', surname: 'Forth', email: 'inventor4@mail.com'}",inventor4,inventor4
 user-account-inventor-05,true,"UserIdentity{name: 'Inventor', surname: 'Five', email: 'inventor5@mail.com'}",inventor5,inventor5
-user-account-inventor-06,false,"UserIdentity{name: 'Inventor', surname: 'Six', email: 'inventor6@mail.com'}",inventor6,inventor6
-user-account-inventor-07,true,"UserIdentity{name: 'Inventor', surname: 'Seven', email: 'inventor7@mail.com'}",inventor7,inventor7
+user-account-inventor-06,true,"UserIdentity{name: 'Inventor', surname: 'Six', email: 'inventor6@mail.com'}",inventor6,inventor6
+user-account-inventor-07,false,"UserIdentity{name: 'Inventor', surname: 'Seven', email: 'inventor7@mail.com'}",inventor7,inventor7
 user-account-inventor-08,true,"UserIdentity{name: 'Inventor', surname: 'Eight', email: 'inventor8@mail.com'}",inventor8,inventor8
 user-account-inventor-09,false,"UserIdentity{name: 'Inventor', surname: 'Nine', email: 'inventor9@mail.com'}",inventor9,inventor9
 user-account-inventor-10,true,"UserIdentity{name: 'Inventor', surname: 'Ten', email: 'inventor10@mail.com'}",inventor10,inventor10
