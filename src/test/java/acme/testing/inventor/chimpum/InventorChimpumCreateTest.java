@@ -16,7 +16,7 @@ public class InventorChimpumCreateTest extends TestHarness{
             final String finalDate, final String budget) {
         super.signIn("inventor4", "inventor4");
 
-        super.clickOnMenu("Inventor", "My Tools");
+        super.clickOnMenu("Inventor", "My Components");
         super.checkListingExists();
 
         super.clickOnListingRecord(recordIndex);
@@ -53,7 +53,7 @@ public class InventorChimpumCreateTest extends TestHarness{
     
     	super.signIn("inventor4", "inventor4");
 
-    	super.clickOnMenu("Inventor", "My Tools");
+    	super.clickOnMenu("Inventor", "My Components");
     	super.checkListingExists();
 
     	super.clickOnListingRecord(recordIndex);

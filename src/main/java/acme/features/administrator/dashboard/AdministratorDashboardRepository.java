@@ -38,8 +38,8 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	List<List<Object>> getStatsPatronages();
 	
 	
-	@Query("select count(i) from Item i where i.type = acme.entities.item.ItemType.TOOL and i.chimpum !=null")
-	Integer numberToolsWithChimpum();
+	@Query("select count(i) from Item i where i.type = acme.entities.item.ItemType.COMPONENT and i.chimpum !=null")
+	Integer numberComponentsWithChimpum();
 	
 	
 	@Query("select c.budget.currency, avg(c.budget.amount), stddev(c.budget.amount), max(c.budget.amount), min(c.budget.amount) from Chimpum c group by c.budget.currency")

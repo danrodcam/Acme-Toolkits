@@ -19,7 +19,7 @@ public class InventorChimpumUpdateTest extends TestHarness {
 		
 		super.signIn("inventor3", "inventor3");
 
-        super.clickOnMenu("Inventor", "My Tools");
+        super.clickOnMenu("Inventor", "My Components");
         super.checkListingExists();
 
         super.clickOnListingRecord(recordIndex);
@@ -52,7 +52,7 @@ public class InventorChimpumUpdateTest extends TestHarness {
 		
 		super.signIn("inventor3", "inventor3");
 
-        super.clickOnMenu("Inventor", "My Tools");
+        super.clickOnMenu("Inventor", "My Components");
         super.checkListingExists();
 
         super.clickOnListingRecord(recordIndex);

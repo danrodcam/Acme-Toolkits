@@ -109,7 +109,7 @@
 			<acme:message code="administrator.dashboard.form.ratio"/>
 		</th>
 		<td>
-			<acme:print value="${ratioToolsChimpum}"/><br>
+			<acme:print value="${ratioComponentsChimpum}"/><br>
 		</td>
 	</tr>
 	

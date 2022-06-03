@@ -59,7 +59,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setNumberOfTools(this.repository.numberOfTools());
 		result.setNumberOfComponents(this.repository.numberOfComponents());
 		result.setStatsPatronages(this.createStatsPatronageMap());
-		result.setRatioToolsChimpum(this.ratioToolsChimpum());
+		result.setRatioComponentsChimpum(this.ratioComponentsChimpum());
 		result.setStatsChimpums(this.createStatsChimpumMap());
 		
 
@@ -69,11 +69,11 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	
 	
 	
-	private Double ratioToolsChimpum() {
-		final int numberToolsWithChimpum = this.repository.numberToolsWithChimpum();
-		final int numberOfTools = this.repository.numberOfTools();
+	private Double ratioComponentsChimpum() {
+		final int numberComponentsWithChimpum = this.repository.numberComponentsWithChimpum();
+		final int numberOfComponents = this.repository.numberOfComponents();
 		
-		return (double) numberToolsWithChimpum/numberOfTools;
+		return (double) numberComponentsWithChimpum/numberOfComponents;
 	}
 	
 	
@@ -98,7 +98,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "statsComponents", "numberOfComponents", "statsPatronages", "numberOfTools","statsTools","ratioToolsChimpum","statsChimpums");
+		request.unbind(entity, model, "statsComponents", "numberOfComponents", "statsPatronages", "numberOfTools","statsTools","ratioComponentsChimpum","statsChimpums");
 	}
 	
 	private Map<Record,Map<String,Double>> createStatsComponentsMap(){
