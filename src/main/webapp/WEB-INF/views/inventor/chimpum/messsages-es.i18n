@@ -23,7 +23,7 @@ inventor.chimpum.form.button.update = Actualizar
 inventor.chimpum.form.button.delete = Borrar
 
 inventor.chimpum.form.error.code.regexp = Error en el patron
-inventor.chimpum.form.error.initialDate = La fecha inicial al menos un mes despues de la fecha de creacion
+inventor.chimpum.form.error.initialDate = La fecha inicial al menos un mes despues de la fecha actual
 inventor.chimpum.form.error.finalDate = La fecha final al menos una semana despues de la fecha inicial
 inventor.chimpum.form.error.positivePrice = El monedero debe ser mayor que 0
 inventor.create.chimpum.price.error.currency = La moneda no esta disponible
