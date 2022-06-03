@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.chimpum.Chimpum;
 import acme.entities.item.Item;
 import acme.entities.item.ItemType;
+import acme.features.administrator.systemConfiguration.AdministratorSystemConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -25,6 +26,8 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	@Autowired
 	protected InventorChimpumRepository repository;
 	
+	@Autowired
+	protected AdministratorSystemConfigurationRepository sys;
 	// AbstractCreateService<Inventor, Item> interface -------------------------
 	
 	@Override
@@ -109,6 +112,18 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			errors.state(request, entity.getBudget().getAmount() >= 0, "budget", "inventor.create.chimpum.budget.positive");
 		}
 		
+		final String acceptedCurrency = this.sys.findSystemConfiguration().getAcceptedCurrency();
+		final String[]currencys = acceptedCurrency.split(";");
+		Boolean res = false;
+
+		for(int i=0;i<currencys.length;i++) {
+			if(currencys[i].equals(entity.getBudget().getCurrency())) {
+				res = true;
+				break;
+			}
+		}
+		errors.state(request, res.equals(true),"budget", "inventor.create.chimpum.budget.error.currency");
+		
 		if (!errors.hasErrors("initialDate")) {
 			final Calendar calendar = Calendar.getInstance();
 			calendar.setTime(entity.getCreationMoment());
@@ -126,6 +141,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			
 			errors.state(request, entity.getFinalDate().after(minimumDeadline), "finalDate", "inventor.chimpum.form.error.final-date.duration");
 		}
+		
 	}
 
 	@Override
