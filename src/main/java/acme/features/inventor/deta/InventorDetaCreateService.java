@@ -1,4 +1,4 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.deta;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -8,7 +8,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.deta.Deta;
 import acme.entities.item.Item;
 import acme.entities.item.ItemType;
 import acme.features.administrator.systemConfiguration.AdministratorSystemConfigurationRepository;
@@ -19,69 +19,69 @@ import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorChimpumCreateService implements AbstractCreateService<Inventor, Chimpum>{
+public class InventorDetaCreateService implements AbstractCreateService<Inventor, Deta>{
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorChimpumRepository repository;
+	protected InventorDetaRepository repository;
 	
 	@Autowired
 	protected AdministratorSystemConfigurationRepository sys;
 	// AbstractCreateService<Inventor, Item> interface -------------------------
 	
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Deta> request) {
 		assert request != null;
 		
 		boolean result;
 		final Item item = this.repository.findOneItemById(request.getModel().getInteger("masterId"));
 		result = item.getInventor().getUserAccount().getId() == request.getPrincipal().getAccountId() && 
-		item.getType()==ItemType.TOOL && item.getPublished()==true && item.getChimpum() == null;
+		item.getType()==ItemType.TOOL && item.getPublished()==true && item.getDeta() == null;
 		
 		return result;
 	}
 
 	@Override
-	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void bind(final Request<Deta> request, final Deta entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "title", "description", "initialDate", 
-				"finalDate", "budget", "optionalLink");
+		request.bind(entity, errors, "summary", "subject", "initialDate", 
+				"finalDate", "allowance", "moreInfo");
 		
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Deta> request, final Deta entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
 		
-		request.unbind(entity, model, "code", "creationMoment", "title", "description", "initialDate", 
-				"finalDate", "budget", "optionalLink");
+		request.unbind(entity, model, "code", "creationMoment", "summary", "subject", "initialDate", 
+				"finalDate", "allowance", "moreInfo");
 		model.setAttribute("item", this.repository.findOneItemById(request.getModel().getInteger("masterId")));
 	}
 
 	@Override
-	public Chimpum instantiate(final Request<Chimpum> request) {
+	public Deta instantiate(final Request<Deta> request) {
 		assert request != null;
 
-		Chimpum result;
+		Deta result;
 		final Date moment = new Date(System.currentTimeMillis() -1);
 
-		result = new Chimpum();
+		result = new Deta();
 		result.setCreationMoment(moment);
-		result.setTitle("");
-		result.setDescription("");
-		result.setOptionalLink("");
+		result.setSubject("");
+		result.setSummary("");
+		result.setMoreInfo("");
 		String code = this.generateCode();
-		Chimpum existing = this.repository.findOneChimpumByCode(code);
+		Deta existing = this.repository.findOneDetaByCode(code);
 		while(existing != null) {
 			code = this.generateCode();
-			existing = this.repository.findOneChimpumByCode(code);
+			existing = this.repository.findOneDetaByCode(code);
 		}
 		result.setCode(code);
 		
@@ -89,27 +89,27 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	}
 
 	@Override
-	public void validate(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void validate(final Request<Deta> request, final Deta entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
 
 		if (!errors.hasErrors("code")) {
-			Chimpum existing;
+			Deta existing;
 
-			existing = this.repository.findOneChimpumByCode(entity.getCode());
-			errors.state(request, existing == null, "code", "inventor.chimpum.form.error.code.unique");
+			existing = this.repository.findOneDetaByCode(entity.getCode());
+			errors.state(request, existing == null, "code", "inventor.deta.form.error.code.unique");
 			
-			//final String regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$";
-			//errors.state(request, entity.getCode().matches(regexp), "code", "inventor.chimpum.form.error.code.regexp");
+			final String regexp = "^\\w{6}:\\d{2}\\d{4}:\\d{2}$";
+			errors.state(request, entity.getCode().matches(regexp), "code", "inventor.deta.form.error.code.regexp");
 		}
 		
-		if (!errors.hasErrors("budget")) {
-			errors.state(request, entity.getBudget() != null, "budget", "inventor.create.chimpum.null.budget");
+		if (!errors.hasErrors("allowance")) {
+			errors.state(request, entity.getAllowance() != null, "allowance", "inventor.create.deta.null.allowance");
 		}
 		
-		if (!errors.hasErrors("budget")) {
-			errors.state(request, entity.getBudget().getAmount() >= 0, "budget", "inventor.create.chimpum.budget.positive");
+		if (!errors.hasErrors("allowance")) {
+			errors.state(request, entity.getAllowance().getAmount() >= 0, "allowance", "inventor.create.deta.allowance.positive");
 		}
 		
 		final String acceptedCurrency = this.sys.findSystemConfiguration().getAcceptedCurrency();
@@ -117,12 +117,12 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		Boolean res = false;
 
 		for(int i=0;i<currencys.length;i++) {
-			if(currencys[i].equals(entity.getBudget().getCurrency())) {
+			if(currencys[i].equals(entity.getAllowance().getCurrency())) {
 				res = true;
 				break;
 			}
 		}
-		errors.state(request, res.equals(true),"budget", "inventor.create.chimpum.budget.error.currency");
+		errors.state(request, res.equals(true),"allowance", "inventor.create.deta.allowance.error.currency");
 		
 		if (!errors.hasErrors("initialDate")) {
 			final Calendar calendar = Calendar.getInstance();
@@ -130,7 +130,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			calendar.add(Calendar.MONTH, 1);
 			final Date minimumDeadline = calendar.getTime();
 			
-			errors.state(request, entity.getInitialDate().after(minimumDeadline), "initialDate", "inventor.chimpum.form.error.initial-date.duration");
+			errors.state(request, entity.getInitialDate().after(minimumDeadline), "initialDate", "inventor.deta.form.error.initial-date.duration");
 		}
 		
 		if (!errors.hasErrors("finalDate")) {
@@ -139,17 +139,17 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			calendar.add(Calendar.WEEK_OF_YEAR, 1);
 			final Date minimumDeadline = calendar.getTime();
 			
-			errors.state(request, entity.getFinalDate().after(minimumDeadline), "finalDate", "inventor.chimpum.form.error.final-date.duration");
+			errors.state(request, entity.getFinalDate().after(minimumDeadline), "finalDate", "inventor.deta.form.error.final-date.duration");
 		}
 		
 	}
 
 	@Override
-	public void create(final Request<Chimpum> request, final Chimpum entity) {
+	public void create(final Request<Deta> request, final Deta entity) {
 		assert request != null;
 		assert entity != null;
 		final Item item = this.repository.findOneItemById(request.getModel().getInteger("masterId"));
-		item.setChimpum(entity);
+		item.setDeta(entity);
 		this.repository.save(item);
 		this.repository.save(entity);
 	}

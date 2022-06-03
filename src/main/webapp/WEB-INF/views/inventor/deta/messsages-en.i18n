@@ -37,26 +37,26 @@ inventor.create.item.null.price = Fill this field
 inventor.create.item.price.positive = The retail price must be zero or positive
 inventor.item.form.error.spam = This field is spam
 
-inventor.chimpum.list.label.code = Code
-inventor.chimpum.list.label.title = Title
-inventor.chimpum.list.label.description = Description
-inventor.chimpum.list.label.budget = Budget
+inventor.deta.list.label.code = Code
+inventor.deta.list.label.summary = Summary
+inventor.deta.list.label.subject = Subject
+inventor.deta.list.label.allowance = Allowance
 
-inventor.chimpum.form.label.code = Code
-inventor.chimpum.form.label.creation-moment = Creation Moment
-inventor.chimpum.form.label.title = Title
-inventor.chimpum.form.label.description = Description
-inventor.chimpum.form.label.initialDate = Initial Date
-inventor.chimpum.form.label.finalDate = Final Date
-inventor.chimpum.form.label.budget = Budget
-inventor.chimpum.form.label.optional-link = Link
+inventor.deta.form.label.code = Code
+inventor.deta.form.label.creation-moment = Creation moment
+inventor.deta.form.label.summary = Summary
+inventor.deta.form.label.subject = Subject
+inventor.deta.form.label.initialDate = Initial date
+inventor.deta.form.label.finalDate = Final date
+inventor.deta.form.label.allowance = Allowance
+inventor.deta.form.label.more-info = More info
 
-inventor.chimpum.form.button.confirm = Confirm
+inventor.deta.form.button.confirm = Confirm
 
-inventor.chimpum.form.error.initial-date.duration = Initial date must be one month later than the creation moment
-inventor.chimpum.form.error.final-date.duration = Final date must be at least one week ago from initial date
-inventor.create.chimpum.null.budget = You mut fill the budget field
-inventor.create.chimpum.budget.positive = The budget must be positive
-inventor.chimpum.form.error.code.regexp = The code does not muth the pattern
+inventor.deta.form.error.initial-date.duration = Initial date must be one month later than the creation moment
+inventor.deta.form.error.final-date.duration = Final date must be at least one week ago from initial date
+inventor.create.deta.null.allowance = You must fill the allowance field
+inventor.create.deta.allowance.positive = The allowance must be positive
+inventor.deta.form.error.code.regexp = The code does not match the pattern
 
-inventor.chimpum.form.button.delete = Delete Chimpum
+inventor.deta.form.button.delete = Delete Deta

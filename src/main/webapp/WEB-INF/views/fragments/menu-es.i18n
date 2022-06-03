@@ -36,7 +36,7 @@ master.menu.inventor = Inventor
 master.menu.patron = Patron
 master.menu.inventor.component.list.own = Mis Componentes
 master.menu.inventor.patronage-report.list.own = Mis informes de patrocinio
-master.menu.inventor.chimpum.list-own = Mis Chimpums
+master.menu.inventor.deta.list-own = Mis Detas
 
 # master.menu.patron ##########################################################
 

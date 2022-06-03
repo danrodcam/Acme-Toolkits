@@ -10,46 +10,46 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.inventor.chimpum;
+package acme.features.inventor.deta;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.deta.Deta;
 import acme.framework.controllers.AbstractController;
 import acme.roles.Inventor;
 
 @Controller
-public class InventorChimpumController extends AbstractController<Inventor, Chimpum> {
+public class InventorDetaController extends AbstractController<Inventor, Deta> {
 
 	// Internal state ---------------------------------------------------------
 	
 	@Autowired
-	protected InventorChimpumListService	listService;
+	protected InventorDetaListService	listService;
 
 	@Autowired
-	protected InventorChimpumShowService	showService;
+	protected InventorDetaShowService	showService;
 	
 	@Autowired
-	protected InventorChimpumCreateService	createService;
+	protected InventorDetaCreateService	createService;
 	
 	@Autowired
-	protected InventorChimpumUpdateService 		updateService;
+	protected InventorDetaUpdateService 		updateService;
 	
 	@Autowired
-	protected InventorChimpumDeleteService 		deleteService;
+	protected InventorDetaDeleteService 		deleteService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("list-own-chimpum", "list" ,this.listService);
+		super.addCommand("list-own-deta", "list" ,this.listService);
 		super.addCommand("show", this.showService);
 		super.addCommand("update", this.updateService);
 		super.addCommand("delete", this.deleteService);
-		super.addCommand("create-chimpum", "create", this.createService);
+		super.addCommand("create-deta", "create", this.createService);
 	}
 }

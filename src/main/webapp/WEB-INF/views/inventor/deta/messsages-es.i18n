@@ -38,26 +38,26 @@ inventor.item.form.error.spam = Este campo contiene spam
 inventor.create.item.null.price = Rellene este campo
 inventor.create.item.price.positive = El precio debe ser cero o positivo
 
-inventor.chimpum.list.label.code = Código
-inventor.chimpum.list.label.title = Título
-inventor.chimpum.list.label.description = Descripción
-inventor.chimpum.list.label.budget = Presupuesto
+inventor.deta.list.label.code = Código
+inventor.deta.list.label.summary = Resumen
+inventor.deta.list.label.subject = Asunto
+inventor.deta.list.label.allowance = Asignación
 
-inventor.chimpum.form.label.code = Código
-inventor.chimpum.form.label.creation-moment = Momento de creación
-inventor.chimpum.form.label.title = Título
-inventor.chimpum.form.label.description = Descripción
-inventor.chimpum.form.label.initialDate = Fecha inicial
-inventor.chimpum.form.label.finalDate = Fecha final
-inventor.chimpum.form.label.budget = Presupuesto
-inventor.chimpum.form.label.optional-link = Link
+inventor.deta.form.label.code = Código
+inventor.deta.form.label.creation-moment = Momento de creación
+inventor.deta.form.label.summary = Resumen
+inventor.deta.form.label.subject = Asunto
+inventor.deta.form.label.initialDate = Fecha inicial
+inventor.deta.form.label.finalDate = Fecha final
+inventor.deta.form.label.allowance = Asignación
+inventor.deta.form.label.more-info = Más información
 
-inventor.chimpum.form.button.confirm = Confirmar
+inventor.deta.form.button.confirm = Confirmar
 
-inventor.chimpum.form.error.initial-date.duration = La fecha inicial debe ser un mes posterior al momento de creación
-inventor.chimpum.form.error.final-date.duration = La fecha inicial debe ser al menos una semana después de la fecha inicial
-inventor.create.chimpum.null.budget = Debe rellenar el campo de presupuesto
-inventor.create.chimpum.budget.positive = El presupuesto debe ser positivo
-inventor.chimpum.form.error.code.regexp = El código no se adapta al patrón
+inventor.deta.form.error.initial-date.duration = La fecha inicial debe ser un mes posterior al momento de creación
+inventor.deta.form.error.final-date.duration = La fecha inicial debe ser al menos una semana después de la fecha inicial
+inventor.create.deta.null.allowance = Debe rellenar el campo de asignación
+inventor.create.deta.allowance.positive = La asignación debe ser positiva
+inventor.deta.form.error.code.regexp = El código no se adapta al patrón
 
-inventor.chimpum.form.button.delete = Eliminar Chimpum
+inventor.deta.form.button.delete = Eliminar Deta

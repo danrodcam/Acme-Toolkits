@@ -10,33 +10,33 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.inventor.chimpum;
+package acme.features.inventor.deta;
 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.deta.Deta;
 import acme.entities.item.Item;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
-public interface InventorChimpumRepository extends AbstractRepository {
+public interface InventorDetaRepository extends AbstractRepository {
 
 	@Query("select item from Item item where item.inventor.id = :inventorId")
 	Collection<Item> findManyItemByInventor(int inventorId);
 	
-	@Query("select item from Item item where item.chimpum.id = :chimpumId")
-	Item findOneItemByChimpum(int chimpumId);
+	@Query("select item from Item item where item.deta.id = :detaId")
+	Item findOneItemByDeta(int chimpumId);
 	
-	@Query("select chimpum from Chimpum chimpum where chimpum.id = :chimpumId")
-	Chimpum findOneChimpumById(int chimpumId);
+	@Query("select deta from Deta deta where deta.id = :detaId")
+	Deta findOneDetaById(int chimpumId);
 	
 	@Query("select item from Item item where item.id = :itemId")
 	Item findOneItemById(int itemId);
 	
-	@Query("select chimpum from Chimpum chimpum where chimpum.code = :code")
-	Chimpum findOneChimpumByCode(String code);
+	@Query("select deta from Deta deta where deta.code = :code")
+	Deta findOneDetaByCode(String code);
 	
 }

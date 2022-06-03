@@ -10,12 +10,12 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.inventor.chimpum;
+package acme.features.inventor.deta;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.deta.Deta;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.framework.components.models.Model;
@@ -25,12 +25,12 @@ import acme.roles.Inventor;
 
 
 @Service
-public class InventorChimpumShowService implements AbstractShowService<Inventor, Chimpum> {
+public class InventorDetaShowService implements AbstractShowService<Inventor, Deta> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorChimpumRepository repository;
+	protected InventorDetaRepository repository;
 	
 	@Autowired
 	protected AuthenticatedSystemConfigurationRepository repositorySC;
@@ -42,7 +42,7 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 
 
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Deta> request) {
 		assert request != null;
 
 	
@@ -51,26 +51,26 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Deta> request, final Deta entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "creationMoment", "title", "description", "initialDate", 
-				"finalDate", "budget", "optionalLink");
+		request.unbind(entity, model, "code", "creationMoment", "summary", "subject", "initialDate", 
+				"finalDate", "allowance", "moreInfo");
 	}
 
 
 
 	@Override
-	public Chimpum findOne(final Request<Chimpum> request) {
+	public Deta findOne(final Request<Deta> request) {
 		assert request != null;
 		
-		Chimpum result;
+		Deta result;
 		int id;
 		
 		id = request.getModel().getInteger("id");
-		result = this.repository.findOneChimpumById(id);
+		result = this.repository.findOneDetaById(id);
 		return result;
 	}
 	

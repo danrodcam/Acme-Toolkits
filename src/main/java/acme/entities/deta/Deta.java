@@ -1,4 +1,4 @@
-package acme.entities.chimpum;
+package acme.entities.deta;
 
 import java.util.Date;
 
@@ -23,7 +23,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Chimpum extends AbstractEntity{
+public class Deta extends AbstractEntity {
 	
 	// Serialisation identifier -----------------------------------------------
 
@@ -31,7 +31,7 @@ public class Chimpum extends AbstractEntity{
 		
 		// Attributes -------------------------------------------------------------
 
-		//@Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$")
+		@Pattern(regexp = "^\\w{6}:\\d{2}\\d{4}:\\d{2}$")
 		protected String 				code;
 		
 		@Temporal(TemporalType.TIMESTAMP)
@@ -41,11 +41,11 @@ public class Chimpum extends AbstractEntity{
 		
 		@NotBlank
 		@Length(max=100)
-		protected String 				title;
+		protected String 				subject;
 		
 		@NotBlank
 		@Length(max=255)
-		protected String 				description;
+		protected String 				summary;
 		
 		@NotNull
 		protected Date 					initialDate;
@@ -54,10 +54,10 @@ public class Chimpum extends AbstractEntity{
 		protected Date 					finalDate;
 		
 		@Valid
-		protected Money					budget;
+		protected Money					allowance;
 		
 		@URL
-		protected String				optionalLink;
+		protected String				moreInfo;
 		
 		// Derived attributes -----------------------------------------------------
 		

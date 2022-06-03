@@ -1,5 +1,0 @@
-recordIndex,code,creation-moment,title,description,initial-date,final-date,budget,optional-link
-0,14/01/2000,2022/04/04 00:00, , ,2022/06/10 00:00,2022/06/20 00:00,EUR 25.00,null
-1,14/01/2000,2022/04/04 00:00,PRIMER CHIMPUM,Prueba de chimpum,2022/04/10 00:00,2022/06/20 00:00,EUR 25.00,null
-0,14/01/2000,2022/04/04 00:00,PRIMER CHIMPUM,Prueba de chimpum,2022/06/10 00:00,2022/06/20 00:00,EUR -25.00,null
-0,14/01/2000,2022/04/04 00:00,PRIMER CHIMPUM,Prueba de chimpum,2022/06/10 00:00,2022/06/11 00:00,EUR 25.00,null

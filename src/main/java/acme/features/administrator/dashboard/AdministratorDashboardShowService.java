@@ -59,8 +59,8 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setNumberOfTools(this.repository.numberOfTools());
 		result.setNumberOfComponents(this.repository.numberOfComponents());
 		result.setStatsPatronages(this.createStatsPatronageMap());
-		result.setStatsChimpum(this.createStatsChimpumMap());
-		result.setRatioChimpum((double) this.repository.numberOfChimpums() / (double) this.repository.numberOfTools() * 100);
+		result.setStatsDeta(this.createStatsChimpumMap());
+		result.setRatioDeta((double) this.repository.numberOfDetas() / (double) this.repository.numberOfTools() * 100);
 		
 
 		return result;
@@ -126,7 +126,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	}
 	
 	private Map<String,Map<String,Double>> createStatsChimpumMap(){
-		final List<List<Object>> statsList = this.repository.getStatsChimpum();
+		final List<List<Object>> statsList = this.repository.getStatsDeta();
 		final Map<String,Map<String,Double>> map = new HashMap<String,Map<String,Double>>();
 		for (final List<Object>l:statsList) {
 			final Map<String, Double> stats = new HashMap<String,Double>();
