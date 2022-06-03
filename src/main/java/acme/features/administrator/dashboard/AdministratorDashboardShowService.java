@@ -59,10 +59,34 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setNumberOfTools(this.repository.numberOfTools());
 		result.setNumberOfComponents(this.repository.numberOfComponents());
 		result.setStatsPatronages(this.createStatsPatronageMap());
+		result.setRatioComponentPiripi(this.ratioComponentPiripi());
+		result.setStatsPiripis(this.createStatsPiripiMap());
 		
 
 		return result;
 		
+	}
+	
+	private Double ratioComponentPiripi() {
+		final int numberComponentWithPiripi = this.repository.numComponentWithPiripi();
+		final int numberOfComponent = this.repository.numberOfComponents();
+		
+		return (double) numberComponentWithPiripi/numberOfComponent;
+	}
+	
+	private Map<String,Map<String,Double>> createStatsPiripiMap(){
+		final List<List<Object>> statsList = this.repository.getStatsPiripi();
+		final Map<String,Map<String,Double>> map = new HashMap<String,Map<String,Double>>();
+		for (final List<Object> l:statsList) {
+			final Map<String, Double> stats = new HashMap<String,Double>();
+			stats.put("AVG", (Double) l.get(1));
+			stats.put("STDEV", (Double) l.get(2));
+			stats.put("MIN", (Double) l.get(4));
+			stats.put("MAX", (Double) l.get(3));
+			map.put((String) l.get(0), stats);
+			
+		}
+		return map;
 	}
 
 	@Override
@@ -71,7 +95,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "statsComponents", "numberOfComponents", "statsPatronages", "numberOfTools","statsTools");
+		request.unbind(entity, model, "statsComponents", "numberOfComponents", "statsPatronages", "numberOfTools","statsTools","ratioComponentPiripi","statsPiripis");
 	}
 	
 	private Map<Record,Map<String,Double>> createStatsComponentsMap(){

@@ -31,6 +31,10 @@ public class Dashboard implements Serializable {
 	
 	
 	Map<Record,Map<String,Double>>   statsPatronagesCurrency;  //Patronages agrupados por el estado del Patronage y por currency
+	
+	Double                          ratioComponentPiripi;
+	
+	Map<String,Map<String,Double>>   statsPiripis;
 
 	
 	// Derived attributes -----------------------------------------------------

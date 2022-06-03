@@ -1,0 +1,127 @@
+package acme.testing.inventor.piripi;
+
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+
+import acme.testing.TestHarness;
+
+public class InventorPiripiCreateTest extends TestHarness{
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/inventor/piripi/create-positive-1.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(10)
+	public void positiveTest(final int recordIndex, final String title, final String description, final String initialDate, 
+			final String finalDate, final String budget) {
+		super.signIn("inventor1", "inventor1");
+		
+		super.clickOnMenu("Inventor", "My Components");
+		super.checkListingExists();
+		
+		super.clickOnListingRecord(2);
+		super.clickOnButton("Create Piripi");
+		
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("description", description);
+		super.fillInputBoxIn("initialDate", initialDate);
+		super.fillInputBoxIn("finalDate", finalDate);
+		super.fillInputBoxIn("budget", budget);
+		
+		super.clickOnSubmit("Create");
+		super.clickOnButton("Show Piripi");
+		
+		super.checkFormExists();
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/inventor/piripi/create-negative-1.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(10)
+	public void negativeTest1(final int recordIndex, final String title, final String description, final String initialDate, 
+			final String finalDate, final String budget) {
+		super.signIn("inventor1", "inventor1");
+		
+		super.clickOnMenu("Inventor", "My Components");
+		super.checkListingExists();
+		
+		super.clickOnListingRecord(2);
+		super.clickOnButton("Create Piripi");
+		
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("description", description);
+		super.fillInputBoxIn("initialDate", initialDate);
+		super.fillInputBoxIn("finalDate", finalDate);
+		super.fillInputBoxIn("budget", budget);
+		
+		super.clickOnSubmit("Create");
+		super.checkErrorsExist();
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/inventor/piripi/create-negative-2.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(10)
+	public void negativeTest2(final int recordIndex, final String title, final String description, final String initialDate, 
+			final String finalDate, final String budget) {
+		super.signIn("inventor1", "inventor1");
+		
+		super.clickOnMenu("Inventor", "My Components");
+		super.checkListingExists();
+		
+		super.clickOnListingRecord(2);
+		super.clickOnButton("Create Piripi");
+		
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("description", description);
+		super.fillInputBoxIn("initialDate", initialDate);
+		super.fillInputBoxIn("finalDate", finalDate);
+		super.fillInputBoxIn("budget", budget);
+		
+		super.clickOnSubmit("Create");
+		super.checkErrorsExist();
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/inventor/piripi/create-negative-3.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(10)
+	public void negativeTest3(final int recordIndex, final String title, final String description, final String initialDate, 
+			final String finalDate, final String budget) {
+		super.signIn("inventor1", "inventor1");
+		
+		super.clickOnMenu("Inventor", "My Components");
+		super.checkListingExists();
+		
+		super.clickOnListingRecord(2);
+		super.clickOnButton("Create Piripi");
+		
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("description", description);
+		super.fillInputBoxIn("initialDate", initialDate);
+		super.fillInputBoxIn("finalDate", finalDate);
+		super.fillInputBoxIn("budget", budget);
+		
+		super.clickOnSubmit("Create");
+		super.checkErrorsExist();
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/inventor/piripi/create-negative-4.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(10)
+	public void negativeTest4(final int recordIndex, final String title, final String description, final String initialDate, 
+			final String finalDate, final String budget) {
+		super.signIn("inventor1", "inventor1");
+		
+		super.clickOnMenu("Inventor", "My Components");
+		super.checkListingExists();
+		
+		super.clickOnListingRecord(2);
+		super.clickOnButton("Create Piripi");
+		
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("description", description);
+		super.fillInputBoxIn("initialDate", initialDate);
+		super.fillInputBoxIn("finalDate", finalDate);
+		super.fillInputBoxIn("budget", budget);
+		
+		super.clickOnSubmit("Create");
+		super.checkErrorsExist();
+	}
+}

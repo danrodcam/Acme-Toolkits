@@ -30,6 +30,8 @@ inventor.item.form.button.update = Actualizar
 inventor.item.form.button.delete = Eliminar
 inventor.item.form.button.publish = Publicar
 inventor.item.form.button.create = Crear
+inventor.Piripi.form.button.create-piripi = Crear Piripi
+inventor.Piripi.form.button.show-piripi = Mostrar Piripi
 
 inventor.item.form.error.code.regexp = El código debe coincidir con el patrón '^[A-Z]{3}-[0-9]{3}(-[A-Z])?$'
 inventor.item.form.error.code.unique = El código ya existe

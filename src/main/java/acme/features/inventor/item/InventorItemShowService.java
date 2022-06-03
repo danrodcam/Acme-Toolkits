@@ -15,6 +15,7 @@ package acme.features.inventor.item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.piripi.Piripi;
 import acme.entities.item.Item;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
@@ -67,10 +68,12 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		final Piripi piripi = entity.getPiripi();
 
 
 		request.unbind(entity, model, "name", "code", "type", "technology","description", "retailPrice", "link","published");
 		model.setAttribute("exchange", this.moneyExchange(request));
+		model.setAttribute("piripi", piripi);
 	}
 
 

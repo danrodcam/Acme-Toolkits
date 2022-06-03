@@ -29,16 +29,34 @@
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && published == false }">
 			<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>	
 			<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update"/>
-			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>	
+			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>
+			
+			<jstl:if test="${type == 'TOOL'}">
+				<jstl:if test="${piripi!=null}">
+					<acme:button code="inventor.Piripi.form.button.piripi" action="/inventor/piripi/show?id=${id}"/>
+				</jstl:if>
+		   	</jstl:if>
 		</jstl:when>
+		
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') }">
+			<jstl:if test="${type == 'COMPONENT'}">
+				<jstl:if test="${piripi!=null}">
+					<acme:button code="inventor.Piripi.form.button.show-piripi" action="/inventor/piripi/show?id=${piripi.id}"/>
+				</jstl:if>
+    	 	</jstl:if>	
+    	</jstl:when>
 
 		<jstl:when test="${command == 'create-component'}">
-			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-component"/>
+			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-component"/>	
 		</jstl:when>
 		
 		<jstl:when test="${command == 'create-tool'}">
 			<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create-tool"/>
 		</jstl:when>		
 	</jstl:choose>
+	
+	<jstl:if test="${piripi==null && published == true}">
+		<acme:button code="inventor.Piripi.form.button.create-piripi" action="/inventor/piripi/create-piripi?masterId=${id}"/>
+	</jstl:if>
 	
 </acme:form>

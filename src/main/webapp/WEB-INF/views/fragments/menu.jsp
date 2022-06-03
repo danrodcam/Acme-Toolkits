@@ -43,6 +43,7 @@
 			<acme:menu-suboption code="master.menu.inventor.toolkit.list.own" action="/inventor/toolkit/list-own"/>
 			<acme:menu-suboption code="master.menu.inventor.patronage.list.own" action="/inventor/patronage/list-own-patronage"/>		
       		<acme:menu-suboption code="master.menu.inventor.patronage-report.list.own" action="/inventor/patronage-report/list-own-patronage-report"/>
+      		<acme:menu-suboption code="master.menu.inventor.piripi.list.own" action="/inventor/piripi/list-piripi"/>
 
 		</acme:menu-option>
 		

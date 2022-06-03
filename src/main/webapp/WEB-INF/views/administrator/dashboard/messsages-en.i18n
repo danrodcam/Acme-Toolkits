@@ -14,3 +14,6 @@ administrator.dashboard.form.title.patronageStats = Patronages
 administrator.dashboard.form.title.toolStats = Tools
 administrator.dashboard.form.title.componentStats = Components
 administrator.dashboard.form.total = TOTAL :
+
+administrator.dashboard.form.title.piripiStats = Piripis
+administrator.dashboard.form.ratio = Ratio of Components With Piripi :

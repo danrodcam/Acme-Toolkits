@@ -36,4 +36,10 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	
 	@Query("select  p.status,avg(p.budget.amount),stddev(p.budget.amount),max(p.budget.amount),min(p.budget.amount),count(p) from Patronage p group by p.status")
 	List<List<Object>> getStatsPatronages();
+	
+	@Query("select count(i) from Item i where i.type = acme.entities.item.ItemType.COMPONENT and i.piripi !=null")
+	Integer numComponentWithPiripi();
+	
+	@Query("select c.budget.currency, avg(c.budget.amount), stddev(c.budget.amount), max(c.budget.amount), min(c.budget.amount) from Piripi c group by c.budget.currency")
+	List<List<Object>> getStatsPiripi();
 }

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import acme.entities.item.Item;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
-
 import acme.features.systemConfiguration.SpamFilter.SystemConfigurationSpamFilterService;
 import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
@@ -49,7 +48,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		masterId = request.getModel().getInteger("id");
 		item = this.repository.findOneItemById(masterId);
 		inventor = item.getInventor();
-		result = (!item.getPublished()) && request.isPrincipal(inventor);
+		result = (item.getPublished()) && request.isPrincipal(inventor);
 
 		return result;
 	}
